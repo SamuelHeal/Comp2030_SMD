@@ -15,7 +15,15 @@ CREATE TABLE User(
     email varchar(100) NOT NULL,
     employmentdate varchar(100) NOT NULL,
     pin varchar(100) NOT NULL,
+    PRIMARY KEY (id),
 ) AUTO_INCREMENT = 1;
+
+CREATE TABLE Job(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    OperatorID int,
+    FOREIGN KEY (OperatorID) REFERENCES User(id),
+    PRIMARY KEY (id)
+)
 
 INSERT INTO User(firstname, lastname, dob, position, phonenumber, email, employmentdate, pin) VALUES('Sam', 'Heal', '06/08/1999', 'Factory Manager', '04111111111', 'heal0163@flinders.edu.au', '12/09/2024', '0000');
 
