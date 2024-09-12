@@ -1,0 +1,97 @@
+/* * {
+    margin: 15px;
+} */
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 15px;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.list {
+    padding: 0px;
+    margin: 0px;
+}
+.list-item {
+    line-height: 1.5em;
+    list-style: none;
+}
+
+.list-item a {
+    text-decoration: none;
+    color: black;
+}
+
+.list-item a:hover {
+    color: #1565c0;
+    text-decoration: line-through;
+}
+
+#menu {
+    margin: 0px;
+}
+
+nav a {
+    margin: 0px;
+}
+nav ul {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+nav li {
+    margin: 0px;
+    color: black;
+    list-style-type: none;
+    /* display: inline; */
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    margin-right: 15px;
+    float: left;
+}
+
+nav a:hover{
+    color: #1565c0;
+}
+
+.selected {
+    color: #1565c0;
+    font-weight: bold;
+}
+
+
+nav {
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+input {
+    display: block;
+    border: solid 1px #babdbe;
+    padding: 3px 6px 3px 6px;
+    margin-bottom: 10px;
+}
+
+.form-item {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+#submit-button:hover {
+    color: #1565C0;
+}
+
+.history {
+    text-decoration: line-through;
+    color: grey;
+}
