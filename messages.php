@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav>
-        <?php require_once "inc/menu.inc.php"; ?>
+        <?php require_once "inc/floor_menu.inc.php"; ?>
     </nav>
     
     <h1>Messages</h1>
