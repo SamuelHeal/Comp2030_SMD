@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav>
-        <p>S Heal test</p>
+        <p>S Heal testing branches</p>
         <?php require_once "inc/menu.inc.php"; ?>
     </nav>
     
