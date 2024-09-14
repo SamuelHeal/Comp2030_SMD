@@ -3,7 +3,7 @@
 
         require_once "inc/dbconn.inc.php";
         // Prepare and bind the SQL statement 
-        $sql = "INSERT INTO Users (firstname, lastname, dob, position, phonenumber, email, employmentdate, pin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; 
+        $sql = "INSERT INTO Person (firstname, lastname, dob, position, phonenumber, email, employmentdate, pin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; 
         $statement = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($statement, $sql); 
         mysqli_stmt_bind_param($statement, "ssssssss", $firstname, $lastname, $dob, $position, $phonenumber, $email, $employmentdate, $pin); 
