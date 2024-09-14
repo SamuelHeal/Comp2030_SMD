@@ -67,22 +67,6 @@ CREATE TABLE Note(
     FOREIGN KEY (managerID) REFERENCES Person(personID)
 );
 
--- CREATE TABLE Log(
---     machineID INTEGER NOT NULL AUTO_INCREMENT,
---     timestamp DATETIME NOT NULL,
---     operationalStatus VARCHAR(20) NOT NULL,
---     maintenanceLog VARCHAR(100),
---     errorCode VARCHAR(5),
---     productionCount INTEGER NOT NULL,
---     humidity FLOAT,
---     powerConsumption FLOAT,
---     pressure FLOAT,
---     speed FLOAT,
---     temperature FLOAT,
---     vibration FLOAT,
---     PRIMARY KEY (machineID, timestamp),
---     FOREIGN KEY (machineID) REFERENCES Machine(machineID)
--- );
 
 CREATE TABLE Log (
     timestamp DATETIME NOT NULL,
@@ -122,12 +106,6 @@ GRANT ALL PRIVILEGES ON Group_18_SMD.Log TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group_18_SMD.Part TO dbadmin@localhost;
 
 /* Insert Statements */
-INSERT INTO Machine VALUES(
-    1000,
-    "3D Printer",
-    "B0",
-    2
-);
 
 INSERT INTO Person VALUES(
     1,

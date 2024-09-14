@@ -99,8 +99,8 @@ CREATE TEMPORARY TABLE TempLog (
     speed FLOAT
 );
 
-
-LOAD DATA INFILE 'factory_logs/factory_logs.csv'
+-- Load data from csv
+LOAD DATA INFILE 'factory_logs/factory_logs.csv' -- replace with the path to the factory logs file (from xampp/mysql/data/)
 INTO TABLE TempLog
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
