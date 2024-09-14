@@ -67,20 +67,37 @@ CREATE TABLE Note(
     FOREIGN KEY (managerID) REFERENCES Person(personID)
 );
 
-CREATE TABLE Log(
-    machineID INTEGER NOT NULL AUTO_INCREMENT,
+-- CREATE TABLE Log(
+--     machineID INTEGER NOT NULL AUTO_INCREMENT,
+--     timestamp DATETIME NOT NULL,
+--     operationalStatus VARCHAR(20) NOT NULL,
+--     maintenanceLog VARCHAR(100),
+--     errorCode VARCHAR(5),
+--     productionCount INTEGER NOT NULL,
+--     humidity FLOAT,
+--     powerConsumption FLOAT,
+--     pressure FLOAT,
+--     speed FLOAT,
+--     temperature FLOAT,
+--     vibration FLOAT,
+--     PRIMARY KEY (machineID, timestamp),
+--     FOREIGN KEY (machineID) REFERENCES Machine(machineID)
+-- );
+
+CREATE TABLE Log (
     timestamp DATETIME NOT NULL,
-    operationalStatus VARCHAR(20) NOT NULL,
-    maintenanceLog VARCHAR(100),
-    errorCode VARCHAR(5),
-    productionCount INTEGER NOT NULL,
-    humidity FLOAT,
-    powerConsumption FLOAT,
-    pressure FLOAT,
-    speed FLOAT,
+    machineID INT NOT NULL,
     temperature FLOAT,
+    pressure FLOAT,
     vibration FLOAT,
-    PRIMARY KEY (machineID, timestamp),
+    humidity FLOAT,
+    power_consumption FLOAT,
+    operational_status VARCHAR(20) NOT NULL,
+    error_code VARCHAR(5),
+    production_count INT,
+    maintenance_log TEXT,
+    speed FLOAT,
+    PRIMARY KEY (timestamp, machineID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID)
 );
 
@@ -106,7 +123,7 @@ GRANT ALL PRIVILEGES ON Group_18_SMD.Part TO dbadmin@localhost;
 
 /* Insert Statements */
 INSERT INTO Machine VALUES(
-    999,
+    1000,
     "3D Printer",
     "B0",
     2
@@ -139,7 +156,7 @@ INSERT INTO Person VALUES(
 INSERT INTO Job VALUES(
     2,
     "There's a problem with the 3D printer. Please see what the problem is and fix it.",
-    999,
+    1000,
     2,
     4,
     NOW()
@@ -166,24 +183,10 @@ INSERT INTO Note VALUES(
     "Lorem ipsum dolor"
 );
 
-INSERT INTO Log VALUES(
-    999,
-    "2024/04/01 00:00:00",
-    "active",
-    NULL,
-    NULL,
-    96,
-    36.76,
-    330.36,
-    3.16,
-    3.35,
-    71.18,
-    0.24
-);
 
 INSERT INTO Part VALUES(
     1001,
-    999,
+    1000,
     "PLA Filament [F1001]",
     "Part for the 3D printer."
 );
