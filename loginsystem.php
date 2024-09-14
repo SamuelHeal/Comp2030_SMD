@@ -1,12 +1,18 @@
 <?php 
 if (isset($_POST['login'])) { 
     require_once "inc/dbconn.inc.php";
-    $sql = "SELECT id, pin FROM Users WHERE pin = ?";
+    // $sql = "SELECT personid, pin FROM Person WHERE pin = ?";
+    // $statement = mysqli_stmt_init($conn);
+    // mysqli_stmt_prepare($statement, $sql); 
+    // mysqli_stmt_bind_param($statement, 's', $pin);
+    // $pin = $_POST['pin']; 
+
+    $sql = "SELECT personid, pin FROM Person";
     $statement = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($statement, $sql); 
     mysqli_stmt_bind_param($statement, 's', $pin);
     $pin = $_POST['pin']; 
-
+    
     // Execute the SQL statement 
     $statement->execute(); 
     $statement->store_result(); 

@@ -23,7 +23,7 @@ CREATE TABLE Person(
     employmentDate VARCHAR(100) NOT NULL,
     phoneNumber VARCHAR(100) NOT NULL,
     position VARCHAR(100) NOT NULL,
-    PIN INTEGER NOT NULL,
+    PIN VARCHAR(255) NOT NULL,
     PRIMARY KEY (personID)
 );
 
@@ -69,7 +69,7 @@ CREATE TABLE Note(
 
 CREATE TABLE Log(
     machineID INTEGER NOT NULL AUTO_INCREMENT,
-    timestamp INTEGER NOT NULL,
+    timestamp datetime NOT NULL,
     operationalStatus VARCHAR(20) NOT NULL,
     maintenanceLog VARCHAR(100),
     errorCode VARCHAR(5),
@@ -168,7 +168,7 @@ INSERT INTO Note VALUES(
 
 INSERT INTO Log VALUES(
     999,
-    "01/04/2024 00:00",
+    "2024-04-01 00:00:00",
     "active",
     NULL,
     NULL,

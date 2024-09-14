@@ -9,21 +9,21 @@
         mysqli_stmt_bind_param($statement, "ssssssss", $firstname, $lastname, $dob, $position, $phonenumber, $email, $employmentdate, $pin); 
 
         // Get the form data 
-        $firstname = $_POST['firstname']; $lastname = $_POST['lastname']; $dob = $_POST['dob'];  $position = $_POST['position']; $phonenumber = $_POST['phonenumber']; $email = $_POST['email']; $employmentdate = $_POST['employmentdate']; $pin = $_POST['pin'];
-
+        $firstname = $_POST['firstname']; $lastname = $_POST['lastname']; $dob = $_POST['dob'];  $position = $_POST['position']; $phonenumber = $_POST['phonenumber']; $email = $_POST['email']; $employmentdate = $_POST['employmentdate']; 
         // Hash the password 
-        // $pin = password_hash($pin, PASSWORD_DEFAULT); 
+        $pin = password_hash($_POST['pin'], PASSWORD_BCRYPT); 
 
         // Execute the SQL statement 
         if (mysqli_stmt_execute($statement)) {
                 header("location: factory.php"); 
+                exit;
             } else {
                 mysqli_error($conn);
             }
             mysqli_close($conn);
         
 } else {
-        header("location: jobs.php");
+    echo "Failed to create user"; 
 }
 
 // if (isset($_POST["task-name"])) { 

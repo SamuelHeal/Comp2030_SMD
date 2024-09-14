@@ -26,7 +26,7 @@
         <label for="employmentdate">Date of employment:</label>
         <input id="employmentdate" name="employmentdate" required type="text" />
         <label for="pin">User pin:</label>
-        <input id="pin" name="pin" required type="text" />
+        <input id="pin" name="pin" required type="password" />
         <input name="register" type="submit" value="Register" />
     </form>
 </body>
