@@ -33,8 +33,8 @@ with open("./insert-logs.sql", "w") as output:
     reader = csv.DictReader(input)
     for line in reader:
       output.write(f"""INSERT INTO Log VALUES(
-                   {name_id_map[line["machine_name"]]},
-                   \"{line["machine_name"]}\",
+                    {name_id_map[line["machine_name"]]},
+                    \"{line["machine_name"]}\",
                     \"{convertTimestamp(line["timestamp"])}\",
                     \"{line["operational_status"]}\",
                     {"NULL" if line["maintenance_log"] == "" else f"\"{line["maintenance_log"]}\""},
