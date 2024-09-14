@@ -29,7 +29,7 @@ IGNORE 1 ROWS -- Because first row is column names
 (@timestamp, machine_name, temperature, pressure, vibration, humidity, power_consumption, operational_status, @error_code, production_count, @maintenance_log, @speed)
 SET timestamp = STR_TO_DATE(@timestamp, '%d/%m/%Y %H:%i'), -- Reformats timestamp into correct datetime format
     error_code = NULLIF(TRIM(@error_code), ''), -- Set missing values to NULL (otherwise would be an empty string)
-    maintenance_log = NULLIF(TRIM(@manitenance_log), ''), -- Set missing values to NULL (otherwise would be an empty string)
+    maintenance_log = NULLIF(TRIM(@maintenance_log), ''), -- Set missing values to NULL (otherwise would be an empty string)
     speed = NULLIF(TRIM(@speed), 0); -- Set missing values to NULL (otherwise would be 0)
 
 -- Insert templog into log, but including the machineID from the corresponding machine name in Machine table
