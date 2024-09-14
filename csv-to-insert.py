@@ -16,6 +16,7 @@ name_id_map = {
 def convertDate(string):
   parts = string.split("/")
   parts.reverse()
+  parts[2] = parts[2] if len(parts[2]) == 2 else "0"+parts[2]
   return "/".join(parts)
 
 def convertTime(string):
