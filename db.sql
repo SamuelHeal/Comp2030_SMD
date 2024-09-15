@@ -68,7 +68,7 @@ CREATE TABLE Note(
 );
 
 CREATE TABLE Log(
-    machineID INTEGER NOT NULL AUTO_INCREMENT,
+    machineID INTEGER NOT NULL,
     machineName VARCHAR(100),
     timestamp DATETIME NOT NULL,
     operationalStatus VARCHAR(20) NOT NULL,
