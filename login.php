@@ -14,11 +14,6 @@
         <label for="pin">Pin:</label> <input id="pin" name="pin" required type="text" />
         <input name="login" type="submit" value="Login" />
     </form>
-    <!-- <?php
-    require_once "inc/dbconn.inc.php";
-    
-    mysqli_close($conn);
 
-    ?> -->
 </body>
 </html>

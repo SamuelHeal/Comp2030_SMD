@@ -14,11 +14,6 @@
     </nav>
     
     <h1>Factory Performance</h1>
-    <!-- <?php
-    require_once "inc/dbconn.inc.php";
-    
-    // mysqli_close($conn);
 
-    ?> -->
 </body>
 </html>
