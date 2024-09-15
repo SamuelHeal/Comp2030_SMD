@@ -18,9 +18,9 @@ CREATE TABLE Person(
     personID INTEGER NOT NULL AUTO_INCREMENT,
     firstName VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
-    DOB VARCHAR(100) NOT NULL,
+    DOB DATETIME NOT NULL,
     email VARCHAR(100) NOT NULL,
-    employmentDate VARCHAR(100) NOT NULL,
+    employmentDate DATETIME NOT NULL,
     phoneNumber VARCHAR(100) NOT NULL,
     position VARCHAR(100) NOT NULL,
     PIN INTEGER NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE Job(
     machineID INTEGER NOT NULL,
     OperatorID INTEGER NOT NULL,
     priority INTEGER NOT NULL,
-    timeUpdated date NOT NULL,
+    timeUpdated DATETIME NOT NULL,
     PRIMARY KEY (jobID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID),
     FOREIGN KEY (OperatorID) REFERENCES Person(personID)
@@ -41,7 +41,7 @@ CREATE TABLE Job(
 
 CREATE TABLE Message(
     messageID INTEGER NOT NULL AUTO_INCREMENT,
-    timestamp date NOT NULL,
+    timestamp DATETIME NOT NULL,
     authorID INTEGER NOT NULL,
     recipientID INTEGER NOT NULL,
     jobID INTEGER NOT NULL,
@@ -67,11 +67,18 @@ CREATE TABLE Note(
     FOREIGN KEY (managerID) REFERENCES Person(personID)
 );
 
-
-CREATE TABLE Log (
+CREATE TABLE Log(
+    machineID INTEGER NOT NULL AUTO_INCREMENT,
+    machineName VARCHAR(100),
     timestamp DATETIME NOT NULL,
-    machineID INT NOT NULL,
-    machine_name VARCHAR(100) NOT NULL,
+    operationalStatus VARCHAR(20) NOT NULL,
+    maintenanceLog VARCHAR(100),
+    errorCode VARCHAR(5),
+    productionCount INTEGER NOT NULL,
+    humidity FLOAT,
+    powerConsumption FLOAT,
+    pressure FLOAT,
+    speed FLOAT,
     temperature FLOAT,
     pressure FLOAT,
     vibration FLOAT,
