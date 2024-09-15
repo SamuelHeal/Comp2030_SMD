@@ -8,17 +8,8 @@
     <script src="scripts/script.js" defer></script>
 </head>
 <body>
-    <?php require_once "check-floor-permission.php"; ?>
-    <nav>
-        <?php require_once "inc/floor_menu.inc.php"; ?>
-    </nav>
     
-    <h1>Factory Performance</h1>
-    <!-- <?php
-    require_once "inc/dbconn.inc.php";
-    
-    // mysqli_close($conn);
-
-    ?> -->
+    <h3>You do not have the correct permissions to access this page</h3>
+    <a href="login.php">Login</a>
 </body>
 </html>

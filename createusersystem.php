@@ -9,8 +9,14 @@
         mysqli_stmt_bind_param($statement, "ssssssss", $firstname, $lastname, $dob, $position, $phonenumber, $email, $employmentdate, $pin); 
 
         // Get the form data 
-        $firstname = $_POST['firstname']; $lastname = $_POST['lastname']; $dob = $_POST['dob'];  $position = $_POST['position']; $phonenumber = $_POST['phonenumber']; $email = $_POST['email']; $employmentdate = $_POST['employmentdate']; 
-        $pin = $_POST['pin'];
+        $firstname = htmlspecialchars($_POST['firstname']); 
+        $lastname = htmlspecialchars($_POST['lastname']); 
+        $dob = htmlspecialchars($_POST['dob']);  
+        $position = htmlspecialchars($_POST['position']); 
+        $phonenumber = htmlspecialchars($_POST['phonenumber']); 
+        $email = htmlspecialchars($_POST['email']); 
+        $employmentdate = htmlspecialchars($_POST['employmentdate']); 
+        $pin = htmlspecialchars($_POST['pin']);
 
         // Hash the password 
         $pin = password_hash($pin, PASSWORD_DEFAULT); 
