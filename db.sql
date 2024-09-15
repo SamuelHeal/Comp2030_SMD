@@ -12,7 +12,7 @@ CREATE TABLE Machine(
     location VARCHAR(4) NOT NULL,
     status INTEGER NOT NULL,
     PRIMARY KEY (machineID)
-) AUTO_INCREMENT = 1;
+);
 
 CREATE TABLE Person(
     personID INTEGER NOT NULL AUTO_INCREMENT,
@@ -37,7 +37,7 @@ CREATE TABLE Job(
     PRIMARY KEY (jobID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID),
     FOREIGN KEY (OperatorID) REFERENCES Person(personID)
-) AUTO_INCREMENT = 1;
+);
 
 CREATE TABLE Message(
     messageID INTEGER NOT NULL AUTO_INCREMENT,
@@ -51,7 +51,7 @@ CREATE TABLE Message(
     FOREIGN KEY (authorID) REFERENCES Person(personID),
     FOREIGN KEY (recipientID) REFERENCES Person(personID),
     FOREIGN KEY (jobID) REFERENCES Job(jobID)
-) AUTO_INCREMENT = 1;
+);
 
 CREATE TABLE Note(
     noteID INTEGER NOT NULL AUTO_INCREMENT,
@@ -68,9 +68,8 @@ CREATE TABLE Note(
 );
 
 CREATE TABLE Log(
-    machineID INTEGER NOT NULL,
-    machineName VARCHAR(100),
     timestamp DATETIME NOT NULL,
+    machineID INTEGER NOT NULL,
     operationalStatus VARCHAR(20) NOT NULL,
     maintenanceLog VARCHAR(100),
     errorCode VARCHAR(5),
@@ -92,7 +91,7 @@ CREATE TABLE Part(
     description VARCHAR(1000),
     PRIMARY KEY (partID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID)
-) AUTO_INCREMENT = 1;
+);
 
 /* Create User Statement */
 DROP USER IF EXISTS dbadmin@localhost;
