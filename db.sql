@@ -81,7 +81,7 @@ CREATE TABLE Log(
     speed FLOAT,
     temperature FLOAT,
     vibration FLOAT,
-    PRIMARY KEY (machineID, timestamp),
+    PRIMARY KEY (timestamp, machineID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID)
 );
 
