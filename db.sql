@@ -68,7 +68,7 @@ CREATE TABLE Note(
 );
 
 CREATE TABLE Log(
-    machineID INTEGER NOT NULL AUTO_INCREMENT,
+    machineID INTEGER NOT NULL,
     machineName VARCHAR(100),
     timestamp DATETIME NOT NULL,
     operationalStatus VARCHAR(20) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE Log(
     speed FLOAT,
     temperature FLOAT,
     vibration FLOAT,
-    PRIMARY KEY (machineID, timestamp),
+    PRIMARY KEY (timestamp, machineID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID)
 );
 
