@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="scripts/script.js" defer></script>
+    <script src="./scripts/script.js" defer></script>
 </head>
 <body>
     
