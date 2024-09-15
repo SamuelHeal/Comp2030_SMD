@@ -1,7 +1,7 @@
 <?php
 
 define("DB_HOST", "localhost");
-define("DB_NAME", "Group_18_SMD");
+define("DB_NAME", "Group18_SMD");
 define("DB_USER", "dbadmin");
 define("DB_PASS", "");
 

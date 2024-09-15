@@ -6,9 +6,18 @@
     <li><a href="">Logout</a></li>
 </ul> -->
 
+
 <div class="headerContainer">
     <div class="username">
-        <p>User name</p>
+        <?php
+        require_once "inc/dbconn.inc.php";
+        session_start();
+        echo "<p>";
+        echo $_SESSION['username'];
+        echo "</p>";
+        mysqli_close($conn);
+        ?>
+        <!-- <p>User name</p> -->
     </div>
     <div class="navButtons">
         <div id="menu-items">
@@ -16,7 +25,7 @@
             <a class="menu-item" href="jobs.php">Jobs</a>
             <a class="menu-item" href="machines.php">Machines</a>
             <a class="menu-item" href="messages.php">Messages</a>
-            <a class="menu-item" href="">Logout</a>
+            <a class="menu-item" href="logoutsystem.php">Logout</a>
         </div>
         
     </div>

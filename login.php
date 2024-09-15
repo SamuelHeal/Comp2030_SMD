@@ -11,14 +11,9 @@
     
     <h1>Login</h1>
     <form action="loginsystem.php" method="POST">
-        <label for="pin">Pin:</label> <input id="pin" name="pin" required="" type="text" />
+        <label for="pin">Pin:</label> <input id="pin" name="pin" required type="text" />
         <input name="login" type="submit" value="Login" />
     </form>
-    <!-- <?php
-    require_once "inc/dbconn.inc.php";
-    
-    mysqli_close($conn);
 
-    ?> -->
 </body>
 </html>
