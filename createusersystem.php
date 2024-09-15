@@ -10,18 +10,34 @@
 
         // Get the form data 
         $firstname = $_POST['firstname']; $lastname = $_POST['lastname']; $dob = $_POST['dob'];  $position = $_POST['position']; $phonenumber = $_POST['phonenumber']; $email = $_POST['email']; $employmentdate = $_POST['employmentdate']; 
+        $pin = $_POST['pin'];
+
         // Hash the password 
-        $pin = password_hash($_POST['pin'], PASSWORD_BCRYPT); 
+        $pin = password_hash($pin, PASSWORD_DEFAULT); 
 
         // Execute the SQL statement 
         if (mysqli_stmt_execute($statement)) {
                 header("location: factory.php"); 
-                exit;
             } else {
                 mysqli_error($conn);
             }
             mysqli_close($conn);
         
 } else {
-    echo "Failed to create user"; 
+        header("location: jobs.php");
 }
+
+// if (isset($_POST["task-name"])) { 
+//         require_once "inc/dbconn.inc.php";
+//         $sql = "INSERT INTO Task(name) VALUES(?);" ;
+//         $statement = mysqli_stmt_init($conn);
+//         mysqli_stmt_prepare($statement, $sql); 
+//         mysqli_stmt_bind_param($statement, 's', htmlspecialchars($_POST["task-name"]));
+        // if (mysqli_stmt_execute($statement)) {
+        //     header("location: index.php"); 
+        // } else {
+        //     mysqli_error($conn);
+        // }
+        // mysqli_close($conn);
+//     }
+// 

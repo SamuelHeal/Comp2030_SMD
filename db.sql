@@ -18,12 +18,12 @@ CREATE TABLE Person(
     personID INTEGER NOT NULL AUTO_INCREMENT,
     firstName VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
-    DOB DATETIME NOT NULL,
+    DOB DATE NOT NULL,
     email VARCHAR(100) NOT NULL,
-    employmentDate DATETIME NOT NULL,
+    employmentDate DATE NOT NULL,
     phoneNumber VARCHAR(100) NOT NULL,
     position VARCHAR(100) NOT NULL,
-    PIN INTEGER NOT NULL,
+    PIN VARCHAR(255) NOT NULL,
     PRIMARY KEY (personID)
 );
 
@@ -80,16 +80,8 @@ CREATE TABLE Log(
     pressure FLOAT,
     speed FLOAT,
     temperature FLOAT,
-    pressure FLOAT,
     vibration FLOAT,
-    humidity FLOAT,
-    power_consumption FLOAT,
-    operational_status VARCHAR(20) NOT NULL,
-    error_code VARCHAR(5),
-    production_count INT,
-    maintenance_log TEXT,
-    speed FLOAT,
-    PRIMARY KEY (timestamp, machineID),
+    PRIMARY KEY (machineID, timestamp),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID)
 );
 
@@ -105,10 +97,10 @@ CREATE TABLE Part(
 /* Create User Statement */
 DROP USER IF EXISTS dbadmin@localhost;
 CREATE USER dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group_18_SMD.Machine TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group_18_SMD.Person TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group_18_SMD.Job TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group_18_SMD.Message TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group_18_SMD.Note TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group_18_SMD.Log TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group_18_SMD.Part TO dbadmin@localhost;
+GRANT ALL PRIVILEGES ON Group18_SMD.Machine TO dbadmin@localhost;
+GRANT ALL PRIVILEGES ON Group18_SMD.Person TO dbadmin@localhost;
+GRANT ALL PRIVILEGES ON Group18_SMD.Job TO dbadmin@localhost;
+GRANT ALL PRIVILEGES ON Group18_SMD.Message TO dbadmin@localhost;
+GRANT ALL PRIVILEGES ON Group18_SMD.Note TO dbadmin@localhost;
+GRANT ALL PRIVILEGES ON Group18_SMD.Log TO dbadmin@localhost;
+GRANT ALL PRIVILEGES ON Group18_SMD.Part TO dbadmin@localhost;
