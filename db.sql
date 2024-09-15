@@ -18,9 +18,9 @@ CREATE TABLE Person(
     personID INTEGER NOT NULL AUTO_INCREMENT,
     firstName VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
-    DOB VARCHAR(100) NOT NULL,
+    DOB DATETIME NOT NULL,
     email VARCHAR(100) NOT NULL,
-    employmentDate VARCHAR(100) NOT NULL,
+    employmentDate DATETIME NOT NULL,
     phoneNumber VARCHAR(100) NOT NULL,
     position VARCHAR(100) NOT NULL,
     PIN INTEGER NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE Job(
     machineID INTEGER NOT NULL,
     OperatorID INTEGER NOT NULL,
     priority INTEGER NOT NULL,
-    timeUpdated date NOT NULL,
+    timeUpdated DATETIME NOT NULL,
     PRIMARY KEY (jobID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID),
     FOREIGN KEY (OperatorID) REFERENCES Person(personID)
@@ -41,7 +41,7 @@ CREATE TABLE Job(
 
 CREATE TABLE Message(
     messageID INTEGER NOT NULL AUTO_INCREMENT,
-    timestamp date NOT NULL,
+    timestamp DATETIME NOT NULL,
     authorID INTEGER NOT NULL,
     recipientID INTEGER NOT NULL,
     jobID INTEGER NOT NULL,
@@ -69,6 +69,7 @@ CREATE TABLE Note(
 
 CREATE TABLE Log(
     machineID INTEGER NOT NULL AUTO_INCREMENT,
+    machineName VARCHAR(100),
     timestamp DATETIME NOT NULL,
     operationalStatus VARCHAR(20) NOT NULL,
     maintenanceLog VARCHAR(100),
@@ -103,87 +104,3 @@ GRANT ALL PRIVILEGES ON Group_18_SMD.Message TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group_18_SMD.Note TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group_18_SMD.Log TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group_18_SMD.Part TO dbadmin@localhost;
-
-/* Insert Statements */
-INSERT INTO Machine VALUES(
-    999,
-    "3D Printer",
-    "B0",
-    2
-);
-
-INSERT INTO Person VALUES(
-    1,
-    "Frank",
-    "Colson",
-    "10/08/1978 00:00",
-    "frank.colson@bigpond.com.au",
-    "01/02/2010",
-    "0489780234",
-    "Manager",
-    4545
-);
-
-INSERT INTO Person VALUES(
-    2,
-    "Robert",
-    "McKenna",
-    "14/12/1990 00:00",
-    "robmckenna@messaging.com.au",
-    "01/08/2019",
-    "0412546802",
-    "Production Operator",
-    9900
-);
-
-INSERT INTO Job VALUES(
-    2,
-    "There's a problem with the 3D printer. Please see what the problem is and fix it.",
-    999,
-    2,
-    4,
-    NOW()
-);
-
-INSERT INTO Message VALUES(
-    5,
-    NOW(),
-    2,
-    1,
-    2,
-    "Building Maintenance",
-    "The tap nearest the door in the gent's bathroom doesn't work"
-);
-
-INSERT INTO Note VALUES(
-    9,
-    2,
-    "Issue with Parts/Materials",
-    "Parts Running Low",
-    "PLA Filament [F1001]",
-    1,
-    3,
-    "Lorem ipsum dolor"
-);
-
-INSERT INTO Log VALUES(
-    999,
-    "2024/04/01 00:00:00",
-    "active",
-    NULL,
-    NULL,
-    96,
-    36.76,
-    330.36,
-    3.16,
-    3.35,
-    71.18,
-    0.24
-);
-
-INSERT INTO Part VALUES(
-    1001,
-    999,
-    "PLA Filament [F1001]",
-    "Part for the 3D printer."
-);
