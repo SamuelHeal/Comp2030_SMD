@@ -19,7 +19,9 @@ if (isset($_POST['login'])) {
                         'Production Operator' => 'factory.php'
                     );
 
-                    header('location: '.$home[$_SESSION['position']]);
+                    $_SESSION['home'] = $home[$_SESSION['position']];
+
+                    header('location: '.$_SESSION['home']);
                     exit; 
                 }
             };

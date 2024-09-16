@@ -2,10 +2,7 @@
     <div class="headerContainer">
         <div class="username">
             <?php
-            require_once "inc/dbconn.inc.php";
-            echo "<p>";
-            echo $_SESSION['username'];
-            echo "</p>";
+            echo '<p>'.$_SESSION['username'].'</p>';
             ?>
         </div>
         <div class="navButtons">
@@ -35,7 +32,7 @@
                     );
                     
                     foreach ($items[$_SESSION['position']] as $title => $address) {
-                        echo '<a class="menu-item" href="'.$address.'"'.'>'.$title.'</a>';
+                        echo '<a class="menu-item" href="'.$address.'">'.$title.'</a>';
                     }
                 ?>
                 <a class="menu-item" href="messages.php">Messages</a>

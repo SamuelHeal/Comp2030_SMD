@@ -9,6 +9,16 @@
 </head>
 <body>
     <h3>You do not have the correct permissions to access this page</h3>
-    <a href="login.php">Login</a>
+    <?php 
+        session_start();
+        if (isset($_SESSION['home'])) {
+            echo '<a href="'.$_SESSION['home'].'">Home</a>';
+        }
+        else {
+            echo '<a href="login.php">Login</a>';
+            session_destroy();
+        }
+    ?>
+    
 </body>
 </html>
