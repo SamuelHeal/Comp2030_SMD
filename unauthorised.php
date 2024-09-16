@@ -8,8 +8,7 @@
     <script src="scripts/script.js" defer></script>
 </head>
 <body>
-    
-    <h3>Please login to access this page</h3>
+    <h3>You do not have the correct permissions to access this page</h3>
     <a href="login.php">Login</a>
 </body>
 </html>

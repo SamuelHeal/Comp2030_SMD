@@ -5,14 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/script.js" defer></script>
+    <script src="scripts/script.js" defer></script>
 </head>
 <body>
-    <?php require_once "check-admin-permission.php"; ?>
-    <nav>
-        <?php require_once "admin_menu.inc.php"; ?>
-    </nav>
-    
-    <h1>Factory Performance</h1>
+    <?php
+        require_once "inc/dbconn.inc.php";
+        require_once "inc/check-authorisation.php";
+        require_once "inc/menu.php";
+        mysqli_close($conn);
+    ?>
+    <h1>Dashboard Access</h1>
 </body>
 </html>

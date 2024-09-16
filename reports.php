@@ -14,7 +14,6 @@
         require_once "inc/menu.php";
         mysqli_close($conn);
     ?>
-    <h1>Current Jobs</h1>
-
+    <h1>Reports</h1>
 </body>
 </html>

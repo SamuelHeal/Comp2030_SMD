@@ -8,11 +8,12 @@
     <script src="scripts/script.js" defer></script>
 </head>
 <body>
-    <?php require_once "check-floor-permission.php"; ?>
-    <nav>
-        <?php require_once "inc/floor_menu.inc.php"; ?>
-    </nav>
-    
+    <?php
+        require_once "inc/dbconn.inc.php";
+        require_once "inc/check-authorisation.php";
+        require_once "inc/menu.php";
+        mysqli_close($conn);
+    ?>
     <h1>Factory Performance</h1>
 
 </body>

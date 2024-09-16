@@ -8,8 +8,12 @@
     <script src="scripts/script.js" defer></script>
 </head>
 <body>
-    
-    <h3>You do not have the correct permissions to access this page</h3>
-    <a href="login.php">Login</a>
+    <?php
+        require_once "inc/dbconn.inc.php";
+        require_once "inc/check-authorisation.php";
+        require_once "inc/menu.php";
+        mysqli_close($conn);
+    ?>
+    <h1>Manage</h1>
 </body>
 </html>
