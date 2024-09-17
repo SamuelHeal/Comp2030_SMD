@@ -18,7 +18,7 @@
         }
     ?>
     <div id=header-container>
-        <div id=login-message>Smart Manafacturing Dashboard</div>
+        <p id=login-message>Smart Manafacturing Dashboard</p>
     </div>
     <div id=body-container>
         <h1>Login</h1>
