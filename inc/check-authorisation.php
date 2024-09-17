@@ -1,13 +1,13 @@
 <?php 
 $authorisation = array(
     'Administrator' => array(
-        'dashboardaccess.php' => true,
+        'users.php' => true,
         'reports.php' => true,
         'manage.php' => true,
         'messages.php' => true
     ),
     'Auditor' => array(
-        'dashboardaccess.php' => true,
+        'users.php' => true,
         'reports.php' => true,
         'manage.php' => true,
         'messages.php' => true

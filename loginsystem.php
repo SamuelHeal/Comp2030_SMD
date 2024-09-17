@@ -13,8 +13,8 @@ if (isset($_POST['login'])) {
                     $_SESSION['position'] = $row['position'];
 
                     $home = array(
-                        'Administrator' => 'dashboardaccess.php',
-                        'Auditor' => 'dashboardaccess.php',
+                        'Administrator' => 'users.php',
+                        'Auditor' => 'users.php',
                         'Factory Manager' => 'factory.php',
                         'Production Operator' => 'factory.php'
                     );

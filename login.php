@@ -17,11 +17,18 @@
             session_destroy();
         }
     ?>
-    <h1>Login</h1>
-    <form action="loginsystem.php" method="POST">
-        <label for="pin">Pin:</label> <input id="pin" name="pin" required type="text" />
-        <input name="login" type="submit" value="Login" />
-    </form>
-
+    <div id=header-container>
+        <div id=login-message>Smart Manafacturing Dashboard</div>
+    </div>
+    <div id=body-container>
+        <h1>Login</h1>
+        <div id=login-container>
+            <form action="loginsystem.php" method="POST">
+                <input id="pin" name="pin" required type="text" placeholder="Enter PIN"/>
+                <br>
+                <input id=login-button name="login" type="submit" value="Submit"/>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

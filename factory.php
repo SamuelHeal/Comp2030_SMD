@@ -14,7 +14,8 @@
         require_once "inc/menu.php";
         mysqli_close($conn);
     ?>
-    <h1>Factory Performance</h1>
-
+    <div id=body-container>
+        <h1>Factory Performance</h1>
+    </div>
 </body>
 </html>
