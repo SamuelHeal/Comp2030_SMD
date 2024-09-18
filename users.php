@@ -5,14 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="styles\style.css">
-    <script src="scripts/script.js" defer></script>
+    <script src="scripts\banner.js"></script>
 </head>
 <body>
     <?php
-        require_once "inc/dbconn.inc.php";
-        require_once "inc/check-authorisation.php";
-        require_once "inc/menu.php";
-        // mysqli_close($conn);
+        require_once 'inc\functions.php';
+        require_once 'inc\dbconn.inc.php';
+        require_once 'inc\check-authorisation.php';
+        require_once 'inc\menu.php';
+        setBannerColour($conn);
     ?>
     <div id="body-container">
         <h1>Users</h1>
@@ -21,7 +22,7 @@
             $result = mysqli_query($conn, $sql);
             if ($result && mysqli_num_rows($result)) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<ul>';
+                    echo '<ul class=list>';
                         echo '<li>';
                             echo '<div>'.$row['firstName'].' '.$row['lastName'].'</div>';
                             echo '<table>';

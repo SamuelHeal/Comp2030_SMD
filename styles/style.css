@@ -7,17 +7,9 @@
 }
 
 body {
-    background-color: #faf8f6;
+    background-color: #fffafa;
     overflow-x: hidden;
     width: 100%;
-}
-
-div p {
-    color: #212c58;
-    display: none;
-    font-size: 48px;
-    font-weight: bold;
-    margin-left: 24px;
 }
 
 h1 {
@@ -25,23 +17,24 @@ h1 {
     width: 60%;
 }
 
-table {
-    height: 100%;
-    width: 80%;
-}
-
-td {
-    font-size: 10px;
-    height: 33%;
-}
-
-ul {
+.list {
     height: fit-content;
     margin: 24px auto;
     width: 60%;
 }
 
-ul li {
+.list table {
+    height: 100%;
+    width: 80%;
+}
+
+.list td {
+    font-size: 11px;
+    padding-left: 6px;
+    height: 100/3%;
+}
+
+.list li {
     align-items: center;
     border: 3px solid #212c58;
     border-radius: 6px;
@@ -49,36 +42,35 @@ ul li {
     display: flex;
     height: 120px;
     list-style-type: none;
-    margin: 24px 0px;
     overflow: hidden;
     text-align: left;
 }
 
-ul li:hover {
-    background-color: #212c5811;
-    /* cursor: pointer; */
-}
+/* .list li:hover {
+    background-color: #ededed;
+} */
 
-ul li div {
+.list li div {
     padding: 0px 12px;
     width: 20%;
 }
 
-ul li div:nth-child(1) {
+.list li div:nth-child(1) { 
     font-size: 16px;
     font-weight: bold;
 }
 
 .menu-item {
     align-items: center;
-    background-color: #faf8f6;
+    background-color: #ededed;
     border: 3px solid #212c58;
     border-radius: 6px;
+    color:#212c58;
     cursor: pointer;
     display: flex;
     font-size: 24px;
     font-weight: bold;
-    height: 97%;
+    height: 80%;
     justify-content: center;
     margin: 6px;
     text-align: center;
@@ -88,11 +80,12 @@ ul li div:nth-child(1) {
 
 .menu-item:hover {
     background-color: #212c58;
-    color: #faf8f6;
+    color: #fffafa;
 }
 
 #body-container {
     height: fit-content;
+    min-height: 60%;
     position: absolute;
     top: 20vh;
     width: 100%;
@@ -102,7 +95,7 @@ ul li div:nth-child(1) {
     align-items: center;
     display: flex;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
-    background-color: #faf8f6;
+    background-color: #fffafa;
     height: 20vh;
     justify-content: space-between;
     position: fixed;
@@ -111,30 +104,133 @@ ul li div:nth-child(1) {
     z-index: 1;
 }
 
-#login-button {
-    font-size: 48px;
-    font-weight: bold;
-    height: 124px;
-    margin-top: 24px;
-    width: 100%;
-}
-
-#login-container {
-    margin: 0px auto;
-    width: 60%;
-}
-
-#login-message {
-    color: #faf8f6;
+#header-message {
     align-items: center;
-    color: #212c58;
+    color: #fffafa;
     display: flex;
-    font-size: 32px;
+    font-size: 64px;
     font-weight: bold;
     height: 100%;
     justify-content: center;
     text-align: center;
     width: 100%;
+}
+
+#keypad-0 {
+    grid-column: 2/3;
+    grid-row: 5/6;
+}
+
+#keypad-1 {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+#keypad-2 {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+#keypad-3 {
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+
+#keypad-4 {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+
+#keypad-5 {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+#keypad-6 {
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+
+#keypad-7 {
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+
+#keypad-8 {
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+
+#keypad-9 {
+    grid-column: 3/4;
+    grid-row: 4/5;
+}
+
+#keypad-clear {
+    grid-column: 1/2;
+    grid-row: 5/6;
+}
+
+#keypad-clear:hover {
+    border: 3px solid #ff0000;
+    background-color: #ff0000 !important;
+}
+
+#keypad-submit {
+    background-color: #ededed;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    font-size: 36px;
+    font-weight: bold;
+    grid-column: 3/4;
+    grid-row: 5/6;
+}
+
+#keypad-submit:hover {
+    background-color: #00ff00;
+    border: 3px solid #00ff00;
+    color: #fffafa;
+}
+
+#login-container {
+    display: grid;
+    grid-template-columns: 100/3% 100/3% 100/3%;
+    margin: 0px auto;
+    margin-bottom: 24px;
+    min-height: 65vh;
+    width: 62%;
+}
+
+#login-container div {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    font-size: 36px;
+    font-weight: bold;
+    justify-content: center;
+    margin: 0px 6px 12px 6px;
+}
+
+#login-container input {
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    margin: 0px 6px 12px 6px;
+}
+
+#login-container div:hover {
+    background-color: #212c58;
+    color: #fffafa;
+}
+
+#login-field {
+    background-color: #fffafa;
+    font-size: 24px;
+    grid-column: 1/4;
+    grid-row: 1/2;
+    padding-left: 24px;
+    text-align: left;
 }
 
 #menu-items {
@@ -153,28 +249,38 @@ ul li div:nth-child(1) {
     width: 0%;
 }
 
-#pin {
+#menu-username p {
+    color: #fffafa;
+    display: none;
     font-size: 48px;
-    height: 120px;
-    width: 100%;   
+    font-weight: bold;
+    margin-left: 24px;
 }
 
 @media (min-width: 1200px) {
-    table {
-        width: 70%;
+    h1 {
+        width: 50%;
     }
 
-    td {
+    .list {
+        width: 50%;
+    }
+
+    .list td {
         font-size: 16px;
+        padding: 0px;
     }
 
-    ul li div {
-        padding: 0px 24px;
-        width: 30%;
+    .list li div {
+        padding-left: 24px;
     }
 
-    ul li div:nth-child(1) {
+    .list li div:nth-child(1) {
         font-size: 24px;
+    }
+
+    #login-container {
+        width: 51%;
     }
 
     #login-message {
