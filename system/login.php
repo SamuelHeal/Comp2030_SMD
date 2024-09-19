@@ -7,7 +7,7 @@ $home = array(
 );
 
 if (isset($_POST['login'])) { 
-    require_once 'inc/dbconn.inc.php';
+    require_once '..\\include\\database.php';
     $sql = 'SELECT personid, firstname, lastname, position, pin FROM Person';
     $result = mysqli_query($conn, $sql);
     if ($result && $rows = mysqli_num_rows($result)) {
@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['username'] = $row['firstname'] . ' ' . $row['lastname'];
                 $_SESSION['position'] = $row['position'];
                 $_SESSION['home'] = $home[$_SESSION['position']];
-                header('location: '.$_SESSION['home']);
+                header("location: ..\\pages\\{$_SESSION['home']}");
                 exit; 
             }
         };

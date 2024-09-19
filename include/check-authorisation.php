@@ -30,5 +30,5 @@ $position = $_SESSION['position'];
 $page = basename($_SERVER['PHP_SELF']);
 
 if (!isset($authorisation[$position][$page])) {
-    header('location: unauthorised.php');
+    header('location: ..\pages\unauthorised.php');
 }

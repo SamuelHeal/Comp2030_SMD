@@ -1,7 +1,7 @@
 <?php
 function redirectToDashboardIfLoggedIn() {
     if (isset($_SESSION['position'])) {
-        header("location: {$_SESSION['home']}");
+        header("location: ..pages\\{$_SESSION['home']}");
     }
 }
 
@@ -17,12 +17,12 @@ function setBannerColour($conn) {
 }
 
 function setLoginPageElements($conn) {
-    $sql = "SELECT * FROM Machine WHERE machineID = (SELECT machineID FROM Scenario WHERE isCurrentScenario = 1);";
+    $sql = "SELECT name, status FROM Machine WHERE machineID = (SELECT machineID FROM Scenario WHERE isCurrentScenario = 1);";
     $query = mysqli_query($conn, $sql);
     if ($query && mysqli_num_rows($query)) {
         $result = mysqli_fetch_assoc($query);
         echo '<script>'; 
-            echo "setLoginBanner(\"{$result['name']}\", \"{$result['location']}\", {$result['status']})";
+            echo "setLoginBanner(\"{$result['name']}\", {$result['status']})";
         echo '</script>';
     }
 }

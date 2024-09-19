@@ -1,5 +1,6 @@
+const IDLE = 0, ACTIVE = 1, MAINTENANCE = 2;
+
 function getColourFromStatus(status) {
-    const IDLE = 0, ACTIVE = 1, MAINTENANCE = 2;
     switch (status) {
         case IDLE: return "#212c58";
         case ACTIVE: return "#228b22";
@@ -9,7 +10,6 @@ function getColourFromStatus(status) {
 }
 
 function getMessageFromStatus(status) {
-    const IDLE = 0, ACTIVE = 1, MAINTENANCE = 2;
     switch (status) {
         case IDLE: return "IDLE";
         case ACTIVE: return "ACTIVE";
@@ -23,7 +23,7 @@ function setBannerColour(status) {
     HEADER_CONTAINER.style.backgroundColor = getColourFromStatus(status);
 }
 
-function setLoginBanner(name, location, status) {
+function setLoginBanner(name, status) {
     setBannerColour(status);
     const HEADER_MESSAGE = document.getElementById("header-message");
     const LOGIN_TITLE = document.getElementById("login-title");

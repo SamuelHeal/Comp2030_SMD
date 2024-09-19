@@ -4,13 +4,12 @@
     <title>Practical 3: Current tasks</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
-    <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/script.js" defer></script>
+    <link rel="stylesheet" href="..\styles\style.css">
+    <script src="..\scripts\banner.js" defer></script>
 </head>
 <body>
-    
     <h1>Create User</h1>
-    <form action="createusersystem.php" method="POST">
+    <form action="..\system\create-user.php" method="POST">
         <label for="firstname">First name:</label> 
         <input id="firstname" name="firstname" required type="text" />
         <label for="lastname">Last name:</label>

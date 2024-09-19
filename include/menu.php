@@ -2,7 +2,7 @@
     <div id="header-container">
         <div id=menu-username>
             <?php
-            echo '<p>'.$_SESSION['username'].'</p>';
+                echo "<p>{$_SESSION['username']}</p>";
             ?>
         </div>
         <div id="menu-items">
@@ -31,11 +31,11 @@
                 );
                 
                 foreach ($items[$_SESSION['position']] as $title => $address) {
-                    echo '<a class="menu-item" href="'.$address.'">'.$title.'</a>';
+                    echo "<a class=\"menu-item\" href=\"$address\">$title</a>";
                 }
             ?>
             <a class="menu-item" href="messages.php">Messages</a>
-            <a class="menu-item" href="logoutsystem.php">Logout</a>
+            <a class="menu-item" href="..\system\logout.php">Logout</a>
         </div>
     </div>
 </nav>

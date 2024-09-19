@@ -4,15 +4,15 @@
     <title>Practical 3: Current tasks</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
-    <link rel="stylesheet" href="styles\style.css">
-    <script src="scripts\banner.js"></script>
+    <link rel="stylesheet" href="..\styles\style.css">
+    <script src="..\scripts\banner.js"></script>
 </head>
 <body>
     <?php
-        require_once 'inc\functions.php';
-        require_once 'inc\dbconn.inc.php';
-        require_once 'inc\check-authorisation.php';
-        require_once 'inc\menu.php';
+        require_once '..\\include\functions.php';
+        require_once '..\\include\database.php';
+        require_once '..\\include\check-authorisation.php';
+        require_once '..\\include\menu.php';
         setBannerColour($conn);
         mysqli_close($conn);
     ?>
