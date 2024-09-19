@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Practical 3: Current tasks</title>
+    <title>Login | SMD</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="..\styles\style.css">
     <script src="..\scripts\bad-pin.js" defer></script>
     <script src="..\scripts\banner.js"></script>
     <script src="..\scripts\keypad.js" defer></script>
+    <script src="..\scripts\login.js"></script>
 </head>
 <body>
     <?php

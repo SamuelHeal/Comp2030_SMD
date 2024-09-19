@@ -2,7 +2,7 @@ const IDLE = 0, ACTIVE = 1, MAINTENANCE = 2;
 
 function getColourFromStatus(status) {
     switch (status) {
-        case IDLE: return "#212c58";
+        case IDLE: return "#7b68ee";
         case ACTIVE: return "#228b22";
         case MAINTENANCE: return "#dc143c";
         default: return "#faf8f6";  // Something is wrong.
@@ -26,9 +26,4 @@ function setBannerColour(status) {
 function setBannerMessage(status) {
     const HEADER_MESSAGE = document.getElementById("header-message");
     HEADER_MESSAGE.innerText = getMessageFromStatus(status);
-}
-
-function setLoginTitle(name) {
-    const LOGIN_TITLE = document.getElementById("login-title");
-    LOGIN_TITLE.innerText = `Login to ${name}`;
 }
