@@ -23,6 +23,7 @@
         </div>
     </div>
     <?php 
+        checkMachineIdIsSet($conn);
         setBannerColourAndMessage($conn);
         mysqli_close($conn);
     ?>

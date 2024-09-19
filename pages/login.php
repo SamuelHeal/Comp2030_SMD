@@ -21,7 +21,7 @@
     </div>
     <div id=body-container>
         <h1 id=login-title>Login</h1>
-        <form id=login-container action="..\system\login.php" method="POST">
+        <form id=login-container action="..\system\login.php?machineID=<?php echo $_GET['machineID']?>" method="POST">
             <input id="login-field" name="pin" type="password" placeholder="Enter PIN" required/>
             <div id="keypad-1">1</div>
             <div id="keypad-2">2</div>
@@ -38,6 +38,7 @@
         </form>
     </div>
     <?php
+        checkMachineIdIsSet($conn);
         setBannerColourAndMessage($conn);
         setLoginTitle($conn);
         mysqli_close($conn);

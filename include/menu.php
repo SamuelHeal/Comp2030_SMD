@@ -31,11 +31,11 @@
                 );
                 
                 foreach ($items[$_SESSION['position']] as $title => $address) {
-                    echo "<a class=\"menu-item\" href=\"$address\">$title</a>";
+                    echo "<a class=\"menu-item\" href=\"$address?machineID={$_GET['machineID']}\">$title</a>";
                 }
             ?>
-            <a class="menu-item" href="messages.php">Messages</a>
-            <a class="menu-item" href="..\system\logout.php">Logout</a>
+            <a class="menu-item" href="messages.php?machineID=<?php echo $_GET['machineID'] ?>">Messages</a>
+            <a class="menu-item" href="..\system\logout.php?machineID=<?php echo $_GET['machineID'] ?>">Logout</a>
         </div>
     </div>
 </nav>

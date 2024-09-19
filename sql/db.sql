@@ -93,14 +93,6 @@ CREATE TABLE Part(
     FOREIGN KEY (machineID) REFERENCES Machine(machineID)
 );
 
-CREATE TABLE Scenario(  /* This is a meta table used for demonstration purposes. */
-    scenarioNumber INTEGER NOT NULL AUTO_INCREMENT,
-    machineID INTEGER NOT NULL,
-    isCurrentScenario BOOLEAN NOT NULL,
-    PRIMARY KEY (scenarioNumber),
-    FOREIGN KEY (machineID) REFERENCES Machine(machineID)
-);
-
 /* Create User Statement */
 DROP USER IF EXISTS dbadmin@localhost;
 CREATE USER dbadmin@localhost;
@@ -111,4 +103,3 @@ GRANT ALL PRIVILEGES ON Group18_SMD.Log TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Message TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Note TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Part TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group18_SMD.Scenario TO dbadmin@localhost;

@@ -19,6 +19,19 @@ function appendUserToList($row) {
     echo '</li>';
 };
 
+function checkMachineIdIsSet($conn) {
+    if (!isset($_GET['machineID']) || !is_numeric($_GET['machineID'])) {
+        $_GET['machineID'] = 1;
+        return;
+    }
+    $sql = "SELECT * FROM Machine WHERE machineID = {$_GET['machineID']};";
+    $query = mysqli_query($conn, $sql);
+    if (!$query || !mysqli_num_rows($query)) {
+        $_GET['machineID'] = 1;
+        return;
+    }
+}
+
 function console($string) {  // For debugging, delete for submission.
     echo '<script>';
         echo "console.log(\"$string\");";
@@ -27,13 +40,13 @@ function console($string) {  // For debugging, delete for submission.
 
 function redirectToDashboardIfLoggedIn() {
     if (isset($_SESSION['position'])) {
-        header("location: {$_SESSION['home']}");
+        header("location: {$_SESSION['home']}?machineID={$_GET['machineID']}");
     }
 }
 
 function setUnauthorisedButton() {
     if (isset($_SESSION['home'])) {
-        echo "<a href=\"{$_SESSION['home']}\">Home</a>";
+        echo "<a href=\"{$_SESSION['home']}?machineID={$_GET['machineID']}\">Home</a>";
     }
     else {
         echo '<a href="login.php">Login</a>';
@@ -42,7 +55,7 @@ function setUnauthorisedButton() {
 }
 
 function setBannerColour($conn) {
-    $sql = "SELECT status FROM Machine WHERE machineID = (SELECT machineID FROM Scenario WHERE isCurrentScenario = 1);";
+    $sql = "SELECT status FROM Machine WHERE machineID = {$_GET['machineID']};";
     $query = mysqli_query($conn, $sql);
     if ($query && mysqli_num_rows($query)) {
         $result = mysqli_fetch_assoc($query);
@@ -53,7 +66,7 @@ function setBannerColour($conn) {
 }
 
 function setBannerColourAndMessage($conn) {
-    $sql = "SELECT name, status FROM Machine WHERE machineID = (SELECT machineID FROM Scenario WHERE isCurrentScenario = 1);";
+    $sql = "SELECT name, status FROM Machine WHERE machineID = {$_GET['machineID']};";
     $query = mysqli_query($conn, $sql);
     if ($query && mysqli_num_rows($query)) {
         $result = mysqli_fetch_assoc($query);
@@ -65,7 +78,7 @@ function setBannerColourAndMessage($conn) {
 }
 
 function setLoginTitle($conn) {
-    $sql = "SELECT name FROM Machine WHERE machineID = (SELECT machineID FROM Scenario WHERE isCurrentScenario = 1);";
+    $sql = "SELECT name FROM Machine WHERE machineID = {$_GET['machineID']};";
     $query = mysqli_query($conn, $sql);
     if ($query && mysqli_num_rows($query)) {
         $result = mysqli_fetch_assoc($query);
