@@ -34,6 +34,7 @@ CREATE TABLE Job(
     OperatorID INTEGER NOT NULL,
     priority INTEGER NOT NULL,
     timeUpdated DATETIME NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (jobID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID),
     FOREIGN KEY (OperatorID) REFERENCES Person(personID)

@@ -25,6 +25,6 @@ if (isset($_POST['login'])) {
     }
     
     // Close the connection 
-    $statement->close(); $mysqli->close();
+    $mysqli->close();
     
 }
