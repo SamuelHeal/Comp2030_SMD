@@ -23,10 +23,12 @@ function setBannerColour(status) {
     HEADER_CONTAINER.style.backgroundColor = getColourFromStatus(status);
 }
 
-function setLoginBanner(name, status) {
-    setBannerColour(status);
+function setBannerMessage(status) {
     const HEADER_MESSAGE = document.getElementById("header-message");
-    const LOGIN_TITLE = document.getElementById("login-title");
     HEADER_MESSAGE.innerText = getMessageFromStatus(status);
+}
+
+function setLoginTitle(name) {
+    const LOGIN_TITLE = document.getElementById("login-title");
     LOGIN_TITLE.innerText = `Login to ${name}`;
 }

@@ -9,12 +9,18 @@
 body {
     background-color: #fffafa;
     overflow-x: hidden;
+    overflow-y: scroll; /* This makes the vertical scroll bar always present, so page element are always in the same place regardless of overflow. */
     width: 100%;
 }
 
 h1 {
     margin: 24px auto;
     width: 60%;
+}
+
+.bad-pin::placeholder {
+    color: #ff0000;
+    font-weight: bold;
 }
 
 .list {
@@ -38,10 +44,11 @@ h1 {
     align-items: center;
     border: 3px solid #212c58;
     border-radius: 6px;
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    /* box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226); */
     display: flex;
     height: 120px;
     list-style-type: none;
+    margin: 24px 0px;
     overflow: hidden;
     text-align: left;
 }
@@ -212,17 +219,18 @@ h1 {
     font-weight: bold;
     justify-content: center;
     margin: 0px 6px 12px 6px;
+    user-select: none;
+}
+
+#login-container div:hover {
+    background-color: #212c58;
+    color: #fffafa;
 }
 
 #login-container input {
     border: 3px solid #212c58;
     border-radius: 6px;
     margin: 0px 6px 12px 6px;
-}
-
-#login-container div:hover {
-    background-color: #212c58;
-    color: #fffafa;
 }
 
 #login-field {
@@ -258,13 +266,40 @@ h1 {
     margin-left: 24px;
 }
 
+#unauthorised-container {
+    margin: 0px auto;
+    margin-bottom: 24px;
+    min-height: 30vh;
+    width: 60%;
+}
+
+#unauthorised-container a {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    font-size: 36px;
+    font-weight: bold;
+    height: 120px;
+    justify-content: center;
+    margin: 24px 0px;
+    text-decoration: none;
+}
+
+#unauthorised-container a:hover {
+    background-color: #212c58;
+    color: #fffafa;
+}
+
 @media (min-width: 1200px) {
     h1 {
-        width: 50%;
+        width: 54%;
     }
 
     .list {
-        width: 50%;
+        width: 54%;
     }
 
     .list td {
@@ -281,11 +316,15 @@ h1 {
     }
 
     #login-container {
-        width: 51%;
+        width: 55%;
     }
 
     #login-message {
         font-size: 48px;
+    }
+
+    #unauthorised-container {
+        width: 54%;
     }
 
     #menu-items a {

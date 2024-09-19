@@ -8,7 +8,7 @@ function listenForClear() {
     });
 }
 
-function listenForNumberPress() {
+function listenForNumberClick() {
     for (let i = 0; i < 10; i++) {
         const KEYPAD_BUTTON = document.getElementById(`keypad-${i}`);
         KEYPAD_BUTTON.addEventListener("click", (event)=> {
@@ -18,15 +18,5 @@ function listenForNumberPress() {
     }   
 }
 
-function listenForEnterPress() {
-    const SUBMIT_BUTTON = document.getElementById("keypad-submit");
-    document.addEventListener("keypress", (event)=> {
-        if (event.key === "Enter") {
-            SUBMIT_BUTTON.click();
-        }
-    });
-}
-
 listenForClear();
-listenForNumberPress();
-// listenForEnterPress();
+listenForNumberClick();

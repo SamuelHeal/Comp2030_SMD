@@ -1,7 +1,43 @@
 <?php
+function appendUserToList($row) {
+    echo '<li>';
+        echo '<div>'.$row['firstName'].' '.$row['lastName'].'</div>';
+        echo '<table>';
+            echo '<tr>';
+                echo '<td>Position: '.$row['position'].'</td>';
+                echo '<td>User ID: '.$row['personID'].'</td>';
+            echo '</tr>';
+            echo '<tr>';
+                echo '<td>Phone: '.$row['phoneNumber'].'</td>';
+                echo '<td>Email: '.$row['email'].'</td>';
+            echo '</tr>';
+            echo '<tr>';
+                echo '<td>DOB: '.$row['DOB'].'</td>';
+                echo '<td>Start Date: '.$row['employmentDate'].'</td>';
+            echo '</tr>';
+        echo '</table>';
+    echo '</li>';
+};
+
+function console($string) {  // For debugging, delete for submission.
+    echo '<script>';
+        echo "console.log(\"$string\");";
+    echo '</script>';
+}
+
 function redirectToDashboardIfLoggedIn() {
     if (isset($_SESSION['position'])) {
-        header("location: ..pages\\{$_SESSION['home']}");
+        header("location: {$_SESSION['home']}");
+    }
+}
+
+function setUnauthorisedButton() {
+    if (isset($_SESSION['home'])) {
+        echo "<a href=\"{$_SESSION['home']}\">Home</a>";
+    }
+    else {
+        echo '<a href="login.php">Login</a>';
+        session_destroy();
     }
 }
 
@@ -16,19 +52,25 @@ function setBannerColour($conn) {
     }
 }
 
-function setLoginPageElements($conn) {
+function setBannerColourAndMessage($conn) {
     $sql = "SELECT name, status FROM Machine WHERE machineID = (SELECT machineID FROM Scenario WHERE isCurrentScenario = 1);";
     $query = mysqli_query($conn, $sql);
     if ($query && mysqli_num_rows($query)) {
         $result = mysqli_fetch_assoc($query);
-        echo '<script>'; 
-            echo "setLoginBanner(\"{$result['name']}\", {$result['status']})";
+        echo '<script>';
+            echo "setBannerColour({$result['status']});";
+            echo "setBannerMessage({$result['status']});";
         echo '</script>';
     }
 }
 
-function console($string) {  // For debugging, delete for submission.
-    echo '<script>';
-        echo "console.log(\"$string\");";
-    echo '</script>';
+function setLoginTitle($conn) {
+    $sql = "SELECT name FROM Machine WHERE machineID = (SELECT machineID FROM Scenario WHERE isCurrentScenario = 1);";
+    $query = mysqli_query($conn, $sql);
+    if ($query && mysqli_num_rows($query)) {
+        $result = mysqli_fetch_assoc($query);
+        echo '<script>';
+            echo "setLoginTitle(\"{$result['name']}\");";
+        echo '</script>';
+    }
 }

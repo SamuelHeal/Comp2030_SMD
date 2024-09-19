@@ -21,27 +21,11 @@
             $sql = "SELECT * FROM Person ORDER BY lastName;";
             $result = mysqli_query($conn, $sql);
             if ($result && mysqli_num_rows($result)) {
+                echo '<ul class=list>';
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<ul class=list>';
-                        echo '<li>';
-                            echo '<div>'.$row['firstName'].' '.$row['lastName'].'</div>';
-                            echo '<table>';
-                                echo '<tr>';
-                                    echo '<td>Position: '.$row['position'].'</td>';
-                                    echo '<td>User ID: '.$row['personID'].'</td>';
-                                echo '</tr>';
-                                echo '<tr>';
-                                    echo '<td>Phone: '.$row['phoneNumber'].'</td>';
-                                    echo '<td>Email: '.$row['email'].'</td>';
-                                echo '</tr>';
-                                echo '<tr>';
-                                    echo '<td>DOB: '.$row['DOB'].'</td>';
-                                    echo '<td>Start Date: '.$row['employmentDate'].'</td>';
-                                echo '</tr>';
-                            echo '</table>';
-                        echo '</li>';
-                    echo '</ul>';
+                    appendUserToList($row);
                 }
+                echo '</ul>';
                 mysqli_free_result($result);
             }
             mysqli_close($conn);

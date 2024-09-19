@@ -5,19 +5,26 @@
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="..\styles\style.css">
-    <script src="..\scripts\banner.js" defer></script>
+    <script src="..\scripts\banner.js"></script>
 </head>
 <body>
-    <h3>You do not have the correct permissions to access this page</h3>
+    <?php
+        require_once '..\\include\functions.php';
+        require_once '..\\include\database.php';
+    ?>
+    <div id=header-container>
+        <p id=header-message>Smart Manafacturing Dashboard</p>
+    </div>
+    <div id=body-container>
+        <h1>Unauthorised</h1>
+        <div id=unauthorised-container>
+            <p>You do not have the correct permissions to access this page.</p>
+            <?php setUnauthorisedButton(); ?>
+        </div>
+    </div>
     <?php 
-        session_start();
-        if (isset($_SESSION['home'])) {
-            echo '<a href="'.$_SESSION['home'].'">Home</a>';
-        }
-        else {
-            echo '<a href="login.php">Login</a>';
-            session_destroy();
-        }
+        setBannerColourAndMessage($conn);
+        mysqli_close($conn);
     ?>
 </body>
 </html>

@@ -5,8 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="..\styles\style.css">
-    <script src="..\scripts\keypad.js" defer></script>
+    <script src="..\scripts\bad-pin.js" defer></script>
     <script src="..\scripts\banner.js"></script>
+    <script src="..\scripts\keypad.js" defer></script>
 </head>
 <body>
     <?php
@@ -36,7 +37,8 @@
         </form>
     </div>
     <?php
-        setLoginPageElements($conn);
+        setBannerColourAndMessage($conn);
+        setLoginTitle($conn);
         mysqli_close($conn);
     ?>
 </body>
