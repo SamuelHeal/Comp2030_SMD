@@ -7,9 +7,7 @@
         echo "<p>";
         echo $_SESSION['username'];
         echo "</p>";
-        mysqli_close($conn);
         ?>
-        <!-- <p>User name</p> -->
     </div>
     <div class="navButtons">
         <div id="menu-items">
