@@ -1,8 +1,6 @@
-const WARNING = "IMPORTANT: TO RETURN TO THIS PAGE, ENTER\n\n    http://localhost/www/comp2030_smd/index.php\n\nINTO THE ADDRESS BAR.";
-const MESSAGE = "Welcome to a demonstration of the Smart Manafacturing Dashboard (SMD)! This page allows you to select from multiple machines that show the SMD working in different contexts. Please enter a number between 1 and 10. \n";
+const MESSAGE = "To return to this page, type \"http://localhost/www/comp2030_smd/index.php\" into the address bar. This page allows you to view different workstations. Choose a number between 1 and 10 to view a workstation on the factory floor.";
 
 function getMachineId() {
-    alert(WARNING);
     let input;
     do {
         input = prompt(MESSAGE);
