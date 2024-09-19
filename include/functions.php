@@ -56,34 +56,37 @@ function setUnauthorisedButton() {
 
 function setBannerColour($conn) {
     $sql = "SELECT status FROM Machine WHERE machineID = {$_GET['machineID']};";
-    $query = mysqli_query($conn, $sql);
-    if ($query && mysqli_num_rows($query)) {
-        $result = mysqli_fetch_assoc($query);
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        $assoc = mysqli_fetch_assoc($result);
         echo '<script>';
-            echo "setBannerColour({$result['status']});";
+            echo "setBannerColour({$assoc['status']});";
         echo '</script>';
     }
+    mysqli_free_result($result);
 }
 
 function setBannerColourAndMessage($conn) {
     $sql = "SELECT name, status FROM Machine WHERE machineID = {$_GET['machineID']};";
-    $query = mysqli_query($conn, $sql);
-    if ($query && mysqli_num_rows($query)) {
-        $result = mysqli_fetch_assoc($query);
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        $assoc = mysqli_fetch_assoc($result);
         echo '<script>';
-            echo "setBannerColour({$result['status']});";
-            echo "setBannerMessage({$result['status']});";
+            echo "setBannerColour({$assoc['status']});";
+            echo "setBannerMessage({$assoc['status']});";
         echo '</script>';
     }
+    mysqli_free_result($result);
 }
 
 function setLoginTitle($conn) {
     $sql = "SELECT name FROM Machine WHERE machineID = {$_GET['machineID']};";
-    $query = mysqli_query($conn, $sql);
-    if ($query && mysqli_num_rows($query)) {
-        $result = mysqli_fetch_assoc($query);
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        $assoc = mysqli_fetch_assoc($result);
         echo '<script>';
-            echo "setLoginTitle(\"{$result['name']}\");";
+            echo "setLoginTitle(\"{$assoc['name']}\");";
         echo '</script>';
     }
+    mysqli_free_result($result);
 }

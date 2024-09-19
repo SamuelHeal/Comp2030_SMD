@@ -23,8 +23,8 @@
             $result = mysqli_query($conn, $sql);
             if ($result && mysqli_num_rows($result)) {
                 echo '<ul class=list>';
-                while ($row = mysqli_fetch_assoc($result)) {
-                    appendUserToList($row);
+                while ($assoc = mysqli_fetch_assoc($result)) {
+                    appendUserToList($assoc);
                 }
                 echo '</ul>';
                 mysqli_free_result($result);
