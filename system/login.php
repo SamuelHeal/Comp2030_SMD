@@ -7,7 +7,7 @@ $home = array(
 );
 
 if (isset($_POST['login'])) { 
-    require_once '..\include\database.php';
+    require_once '../include/database.php';
     $sql = 'SELECT personid, firstname, lastname, position, pin FROM Person;';
     $result = mysqli_query($conn, $sql);
     if ($result && $rows = mysqli_num_rows($result)) {
@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['username'] = $assoc['firstname'] . ' ' . $assoc['lastname'];
                 $_SESSION['position'] = $assoc['position'];
                 $_SESSION['home'] = $home[$_SESSION['position']];
-                header("location: ..\\pages\\{$_SESSION['home']}?machineID={$_GET['machineID']}");
+                header("location: ../pages/{$_SESSION['home']}?machineID={$_GET['machineID']}");
                 mysqli_free_result($result);
                 mysqli_close($conn);
                 exit;
@@ -27,6 +27,6 @@ if (isset($_POST['login'])) {
     }
     mysqli_free_result($result);
 }
-header("location: ..\pages\login.php?machineID={$_GET['machineID']}&bad_pin=1");
+header("location: ../pages/login.php?machineID={$_GET['machineID']}&bad_pin=1");
 mysqli_close($conn);
 exit;
