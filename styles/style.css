@@ -1,74 +1,343 @@
 * {
+    color: #212c58;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     padding: 0px;
+    transition: 0.2s;
 }
 
 body {
-    background-color: #faf8f6;
-}
-/* Nav Styles */
-.headerContainer {
-    position: sticky;
-    top: 0px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 999;
-    background: none;
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
-    background-color: #faf8f6;
-}
-
-.username {
-    width: 55%;
-}
-
-.username p {
-    font-size: 24px;
-    font-weight: bold;
-    margin-left: 30px;
-    color: #212c58;
-}
-
-.navButtons {
-    width: 40%;
-    height: 100%;
-    background-color: #212c58;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#menu-items {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    background-color: #212c58;
+    background-color: #fffafa;
+    overflow-x: hidden;
+    overflow-y: scroll; /* This makes the vertical scroll bar always present, so page element are always in the same place regardless of overflow. */
     width: 100%;
+}
+
+h1 {
+    margin: 24px auto;
+    width: 60%;
+}
+
+.bad-pin::placeholder {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.list {
+    height: fit-content;
+    margin: 24px auto;
+    width: 60%;
+}
+
+.list table {
     height: 100%;
+    width: 80%;
+}
+
+.list td {
+    font-size: 11px;
+    padding-left: 6px;
+    height: 100/3%;
+}
+
+.list li {
+    align-items: center;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    /* box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226); */
+    display: flex;
+    height: 120px;
+    list-style-type: none;
+    margin: 24px 0px;
+    overflow: hidden;
+    text-align: left;
+}
+
+/* .list li:hover {
+    background-color: #ededed;
+} */
+
+.list li div {
+    padding: 0px 12px;
+    width: 20%;
+}
+
+.list li div:nth-child(1) { 
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .menu-item {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    background-color: #faf8f6;
-    color: #212c58;
-    width: calc((100% / 5));
-    height: 100%;
-    font-size: 110%;
-    text-decoration: none;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    color:#212c58;
     cursor: pointer;
-    transition: color 0.2s;
-    transition: background-color 0.2s;
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+    height: 80%;
+    justify-content: center;
+    margin: 6px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
 }
 
 .menu-item:hover {
-    color: #faf8f6;
     background-color: #212c58;
+    color: #fffafa;
+}
+
+#body-container {
+    height: fit-content;
+    min-height: 60%;
+    position: absolute;
+    top: 20vh;
+    width: 100%;
+}
+
+#header-container {
+    align-items: center;
+    display: flex;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    background-color: #fffafa;
+    height: 20vh;
+    justify-content: space-between;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+}
+
+#header-message {
+    align-items: center;
+    color: #fffafa;
+    display: flex;
+    font-size: 64px;
+    font-weight: bold;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+#keypad-0 {
+    grid-column: 2/3;
+    grid-row: 5/6;
+}
+
+#keypad-1 {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+#keypad-2 {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+#keypad-3 {
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+
+#keypad-4 {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+
+#keypad-5 {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+#keypad-6 {
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+
+#keypad-7 {
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+
+#keypad-8 {
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+
+#keypad-9 {
+    grid-column: 3/4;
+    grid-row: 4/5;
+}
+
+#keypad-clear {
+    grid-column: 1/2;
+    grid-row: 5/6;
+}
+
+#keypad-clear:hover {
+    border: 3px solid #ff0000;
+    background-color: #ff0000 !important;
+}
+
+#keypad-submit {
+    background-color: #ededed;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    font-size: 36px;
+    font-weight: bold;
+    grid-column: 3/4;
+    grid-row: 5/6;
+}
+
+#keypad-submit:hover {
+    background-color: #00ff00;
+    border: 3px solid #00ff00;
+    color: #fffafa;
+}
+
+#login-container {
+    display: grid;
+    grid-template-columns: 100/3% 100/3% 100/3%;
+    margin: 0px auto;
+    margin-bottom: 24px;
+    min-height: 65vh;
+    width: 62%;
+}
+
+#login-container div {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    font-size: 36px;
+    font-weight: bold;
+    justify-content: center;
+    margin: 0px 6px 12px 6px;
+    user-select: none;
+}
+
+#login-container div:hover {
+    background-color: #212c58;
+    color: #fffafa;
+}
+
+#login-container input {
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    margin: 0px 6px 12px 6px;
+}
+
+#login-field {
+    background-color: #fffafa;
+    font-size: 24px;
+    grid-column: 1/4;
+    grid-row: 1/2;
+    padding-left: 24px;
+    text-align: left;
+}
+
+#menu-items {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#menu-items a {
+    font-size: 16px;
+}
+
+#menu-username {
+    width: 0%;
+}
+
+#menu-username p {
+    color: #fffafa;
+    display: none;
+    font-size: 48px;
+    font-weight: bold;
+    margin-left: 24px;
+}
+
+#unauthorised-container {
+    margin: 0px auto;
+    margin-bottom: 24px;
+    min-height: 30vh;
+    width: 60%;
+}
+
+#unauthorised-container a {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    font-size: 36px;
+    font-weight: bold;
+    height: 120px;
+    justify-content: center;
+    margin: 24px 0px;
+    text-decoration: none;
+}
+
+#unauthorised-container a:hover {
+    background-color: #212c58;
+    color: #fffafa;
+}
+
+@media (min-width: 1200px) {
+    h1 {
+        width: 54%;
+    }
+
+    .list {
+        width: 54%;
+    }
+
+    .list td {
+        font-size: 16px;
+        padding: 0px;
+    }
+
+    .list li div {
+        padding-left: 24px;
+    }
+
+    .list li div:nth-child(1) {
+        font-size: 24px;
+    }
+
+    #login-container {
+        width: 55%;
+    }
+
+    #login-message {
+        font-size: 48px;
+    }
+
+    #unauthorised-container {
+        width: 54%;
+    }
+
+    #menu-items a {
+        font-size: 24px;
+    }
+    
+    #menu-username {
+        width: 60%;
+    }
+
+    #menu-username p {
+        display: unset;
+    }
 }
 
 .jobsManagerHeader {
