@@ -35,7 +35,7 @@
                 }
             ?>
             <a class="menu-item" href="messages.php?machineID=<?php echo $_GET['machineID'] ?>">Messages</a>
-            <a class="menu-item" href="..\system\logout.php?machineID=<?php echo $_GET['machineID'] ?>">Logout</a>
+            <a class="menu-item" href="../system/logout.php?machineID=<?php echo $_GET['machineID'] ?>">Logout</a>
         </div>
     </div>
 </nav>

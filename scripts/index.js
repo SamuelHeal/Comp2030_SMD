@@ -13,7 +13,7 @@ function isValidMachineId(character) {
 }
 
 function setMachineId(machineID) {
-    window.location = `pages\\login.php?machineID=${machineID}`;
+    window.location = `pages/login.php?machineID=${machineID}`;
 }
 
 getMachineId();
