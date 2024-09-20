@@ -30,5 +30,5 @@
             mysqli_close($conn);
         
 } else {
-        header("location: jobs.php");
+        header("location: createuser.php");
 }

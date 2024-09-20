@@ -33,6 +33,7 @@ CREATE TABLE Job(
     machineID INTEGER NOT NULL,
     OperatorID INTEGER NOT NULL,
     priority INTEGER NOT NULL,
+    status VARCHAR(100) NOT NULL DEFAULT "In Progress",
     timeUpdated DATETIME NOT NULL,
     completed INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (jobID),

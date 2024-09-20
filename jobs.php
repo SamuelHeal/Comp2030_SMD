@@ -4,7 +4,7 @@
     <title>Practical 3: Current tasks</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <script src="scripts/script.js" defer></script>
 </head>
 <body>
@@ -18,56 +18,17 @@
     require_once "inc/dbconn.inc.php";
     // session_start();
     if ($_SESSION['position'] == "Factory Manager") {
-        echo "<div class='managerHeader'>";
+        echo "<div class='jobsManagerHeader'>";
         echo "<h1>Current Jobs</h1>";
+        echo "<div class='jobsManagerLinks'>";
         echo "<a href='create-job.php'>Create</a>";
         echo "<a href='job-history.php'>History</a>";
         echo "</div>";
+        echo "</div>";
         echo "<div class='managerJobs'>";
-        $sql = "SELECT jobID, machineID, OperatorID, priority FROM Job WHERE completed=0";
-        if ($result = mysqli_query($conn, $sql) ) {
-            if ($rows = mysqli_num_rows($result)) {
-                echo "<div class='jobList'>";
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='list-item'>";
-                    echo "<a href='job.php?id=" . $row['jobid'] . "'>";
-                    $sql1 = "SELECT name FROM Machine WHERE machineID = " . $row['machineID'];
-                    if ($result1 = mysqli_query($conn, $sql1) ) {
-                        if ($rows1 = mysqli_num_rows($result1)) {
-                            $machine = mysqli_fetch_assoc($result1);
-                            echo$machine['name'] . "-" . $row['jobID'];
-                        }
-                        mysqli_free_result($result1);
-
-                    }
-                    $sql2 = "SELECT firstname, lastname FROM Person WHERE personid = " . $row['OperatorID'];
-                    if ($result2 = mysqli_query($conn, $sql2) ) {
-                        if ($rows2 = mysqli_num_rows($result2)) {
-                            $person = mysqli_fetch_assoc($result2);
-                            echo$person['firstname'] . $person['lastname'];
-                        }
-                        mysqli_free_result($result2);
-
-                    }
-
-                    if ($row['priority'] == 1) {
-                        echo "!";
-                    } else if ($row['priority'] == 2) {
-                        echo "!!";
-                    } else {
-                        echo "!!!";
-                    }
-                    echo "</a>";
-                    echo "</div>";
-                };
-                echo "</div>";
-                mysqli_free_result($result);
-            }
-        }
-
+        require_once "inc/getjobs-manager.php";
         echo "</div>";
     }
-    $mysqli->close();
     ?>
 
 </body>

@@ -48,9 +48,9 @@ body {
     background-color: #212c58;
     width: 100%;
     height: 100%;
-  }
+}
 
-  .menu-item {
+.menu-item {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,9 +64,108 @@ body {
     cursor: pointer;
     transition: color 0.2s;
     transition: background-color 0.2s;
-  }
+}
 
-  .menu-item:hover {
+.menu-item:hover {
     color: #faf8f6;
     background-color: #212c58;
-  }
+}
+
+.jobsManagerHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 50vw;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.jobsManagerLinks {
+    display: flex;
+    flex-direction: row;
+}
+
+.jobsManagerLinks a {
+    text-decoration: none;
+    width: 75px;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    margin: 0px 10px 0px 10px;
+    padding: 10px;
+    background-color: #212c58;
+    border-radius: 7px;
+}
+
+.jobList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.job {
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    width: 100%;
+    color: #212c58;
+    margin: 10px;
+}
+
+.jobID {
+    width: 10%;
+    height: 100%;
+    border-right: 1px solid #212c58;
+    border-radius: 7px;
+    text-align: center;
+    padding: 15px;
+}
+
+.jobInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 0px 20px 0px 20px;
+    justify-content: space-between;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.priority {
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.job p {
+    margin: 10px;
+}
+
+.job:hover {
+    background-color: #212c58;
+    color: #faf8f6;
+}
+
+.job:hover .priority {
+    border: 1px solid #faf8f6;
+}
+
+.job:hover .jobID {
+    border-right: 1px solid #faf8f6;
+}
