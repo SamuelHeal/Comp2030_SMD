@@ -266,6 +266,104 @@ h1 {
     margin-left: 24px;
 }
 
+#reports-button-container {
+    display: grid;
+    grid-template-columns: 100/3% 100/3% 100/3%;
+    height: 100px;
+    margin: 0px auto;
+    margin-bottom: 24px;
+    width: 62%;
+}
+
+#reports-button-container div {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    justify-content: center;
+    margin: 0px 6px;
+    user-select: none;
+}
+
+#reports-button-container div:hover {
+    background-color: #212c58;
+    color: #fffafa;
+}
+
+#reports-button-submit {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: bold;
+    grid-column: 3/4;
+    grid-row: 1/2;
+    justify-content: center;
+    margin: 0px 6px;
+    user-select: none;
+}
+
+#reports-button-submit:hover {
+    background-color: #212c58;
+    color: #fffafa;
+}
+
+.reports-button:hover input {
+    color: #fffafa;
+}
+
+.reports-button:hover p {
+    color: #fffafa;
+}
+
+.reports-button input {
+    background: transparent;
+    border: none;
+}
+
+#reports-button-select-start-container {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+#reports-button-select-end-container {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+#reports-table {
+    border: 3px solid #212c58;
+    border-collapse: collapse;
+    border-radius: 6px;
+    display: block;
+    /* max-height: 60vh; */
+    margin: 24px auto;
+    overflow-x: scroll;
+    width: 60%;
+}
+
+#reports-table tr:nth-child(2n+1) {
+    background-color: #ededed;
+}
+
+#reports-table td {
+    padding: 12px 6px;
+    white-space: nowrap;
+}
+
+#reports-table th {
+    padding: 12px 6px;
+    white-space: nowrap;
+}
+
 #unauthorised-container {
     margin: 0px auto;
     margin-bottom: 24px;
@@ -322,11 +420,7 @@ h1 {
     #login-message {
         font-size: 48px;
     }
-
-    #unauthorised-container {
-        width: 54%;
-    }
-
+    
     #menu-items a {
         font-size: 24px;
     }
@@ -334,8 +428,20 @@ h1 {
     #menu-username {
         width: 60%;
     }
-
+    
     #menu-username p {
         display: unset;
+    }
+
+    #reports-button-container {
+        width: 55%;
+    }
+
+    #reports-table {
+        width: 54%;
+    }
+
+    #unauthorised-container {
+        width: 54%;
     }
 }

@@ -15,6 +15,7 @@
         require_once '../include/functions.php';
         require_once '../include/database.php';
         redirectToDashboardIfLoggedIn();
+        checkMachineIdIsSet($conn);
     ?>
     <div id=header-container>
         <p id=header-message>Smart Manafacturing Dashboard</p>
@@ -38,7 +39,6 @@
         </form>
     </div>
     <?php
-        checkMachineIdIsSet($conn);
         setBannerColourAndMessage($conn);
         setLoginTitle($conn);
         mysqli_close($conn);

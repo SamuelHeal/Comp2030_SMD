@@ -1,19 +1,60 @@
 <?php
-function appendUserToList($row) {
+function appendLogToTable($assoc) {
+    echo '<tr>';
+        echo '<td>';
+            echo $assoc['timestamp'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['name'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['operationalStatus'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['maintenanceLog'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['errorCode'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['productionCount'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['humidity'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['powerConsumption'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['pressure'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['speed'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['temperature'];
+        echo '</td>';
+        echo '<td>';
+            echo $assoc['vibration'];
+        echo '</td>';
+    echo '</tr>';
+} 
+
+function appendUserToList($assoc) {
     echo '<li>';
-        echo '<div>'.$row['firstName'].' '.$row['lastName'].'</div>';
+        echo '<div>'.$assoc['firstName'].' '.$assoc['lastName'].'</div>';
         echo '<table>';
             echo '<tr>';
-                echo '<td>Position: '.$row['position'].'</td>';
-                echo '<td>User ID: '.$row['personID'].'</td>';
+                echo '<td>Position: '.$assoc['position'].'</td>';
+                echo '<td>User ID: '.$assoc['personID'].'</td>';
             echo '</tr>';
             echo '<tr>';
-                echo '<td>Phone: '.$row['phoneNumber'].'</td>';
-                echo '<td>Email: '.$row['email'].'</td>';
+                echo '<td>Phone: '.$assoc['phoneNumber'].'</td>';
+                echo '<td>Email: '.$assoc['email'].'</td>';
             echo '</tr>';
             echo '<tr>';
-                echo '<td>DOB: '.$row['DOB'].'</td>';
-                echo '<td>Start Date: '.$row['employmentDate'].'</td>';
+                echo '<td>DOB: '.$assoc['DOB'].'</td>';
+                echo '<td>Start Date: '.$assoc['employmentDate'].'</td>';
             echo '</tr>';
         echo '</table>';
     echo '</li>';
@@ -25,8 +66,8 @@ function checkMachineIdIsSet($conn) {
         return;
     }
     $sql = "SELECT * FROM Machine WHERE machineID = {$_GET['machineID']};";
-    $query = mysqli_query($conn, $sql);
-    if (!$query || !mysqli_num_rows($query)) {
+    $result = mysqli_query($conn, $sql);
+    if (!$result || !mysqli_num_rows($result)) {
         $_GET['machineID'] = 1;
         return;
     }
@@ -36,6 +77,22 @@ function console($string) {  // For debugging, delete for submission.
     echo '<script>';
         echo "console.log(\"$string\");";
     echo '</script>';
+}
+
+function getMachineNames($conn) {
+    $machine_assoc = array();
+    $sql = 'SELECT machineID, name FROM Machine;';
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        while ($assoc = mysqli_fetch_assoc($result)) {
+            $machine_assoc[$assoc['machineID']] = $assoc['name'];
+        }
+    }
+    else {
+        echo 'Unable to get machine names from the database. ';
+    }
+    mysqli_free_result($result);
+    return $machine_assoc;
 }
 
 function redirectToDashboardIfLoggedIn() {
