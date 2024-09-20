@@ -124,3 +124,25 @@ function getJobsManager($conn) {
     }
     echo "</div>";
 }
+
+function getMachinesForJob($conn) {
+    $sql = "SELECT name, machineID FROM Machine";
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value='" . $row['machineID'] . "'>" . $row['name'] . "</option>";
+            }
+        }
+    }
+}
+
+function getOperatorsForJob($conn) {
+    $sql = "SELECT firstname, lastname, personID FROM Person";
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value='" . $row['personID'] . "'>" . $row['firstname'] . " " . $row['lastname'] . "</option>";
+            }
+        }
+    }
+}

@@ -4,16 +4,16 @@
     <title>Login | SMD</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
-    <link rel="stylesheet" href="..\styles\style.css">
-    <script src="..\scripts\bad-pin.js" defer></script>
-    <script src="..\scripts\banner.js"></script>
-    <script src="..\scripts\keypad.js" defer></script>
-    <script src="..\scripts\login.js"></script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="../scripts/bad-pin.js" defer></script>
+    <script src="../scripts/banner.js"></script>
+    <script src="../scripts/keypad.js" defer></script>
+    <script src="../scripts/login.js"></script>
 </head>
 <body>
     <?php
-        require_once '..\\include\functions.php';
-        require_once '..\\include\database.php';
+        require_once '../include/functions.php';
+        require_once '../include/database.php';
         redirectToDashboardIfLoggedIn();
     ?>
     <div id=header-container>
@@ -21,7 +21,7 @@
     </div>
     <div id=body-container>
         <h1 id=login-title>Login</h1>
-        <form id=login-container action="..\system\login.php?machineID=<?php echo $_GET['machineID']?>" method="POST">
+        <form id=login-container action="../system/login.php?machineID=<?php echo $_GET['machineID']?>" method="POST">
             <input id="login-field" name="pin" type="password" placeholder="Enter PIN" required/>
             <div id="keypad-1">1</div>
             <div id="keypad-2">2</div>

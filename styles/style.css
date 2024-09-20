@@ -350,6 +350,10 @@ h1 {
     margin-top: 20px;
 }
 
+.jobsManagerHeader h1 {
+    width: 100%;
+}
+
 .jobsManagerLinks {
     display: flex;
     flex-direction: row;
@@ -428,6 +432,9 @@ h1 {
 
 .job:hover {
     background-color: #212c58;
+}
+
+.job:hover p {
     color: #faf8f6;
 }
 
@@ -437,4 +444,93 @@ h1 {
 
 .job:hover .jobID {
     border-right: 1px solid #faf8f6;
+}
+
+.createJobForm {
+    width: 60vw;
+    margin: auto;
+    margin-top: 20px;
+    border: 2px solid #212c58;
+    border-radius: 50px;
+    padding: 20px 20px 40px 20px;
+}
+
+.createJobForm form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerJobForm {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.innerJobForm label {
+    margin: 30px 0px 5px 0px;
+}
+
+.innerJobForm textarea {
+    width: 80%;
+    height: 80%;
+}
+
+.select-dropdown,
+.select-dropdown * {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    width: 80%;
+}
+.select-dropdown {
+    position: relative;
+    background-color: #E6E6E6;
+    border-radius: 4px;
+}
+.select-dropdown select {
+    font-size: 1rem;
+    font-weight: normal;
+    max-width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    appearance: none;
+}
+.select-dropdown select:active, .select-dropdown select:focus {
+    outline: none;
+    box-shadow: none;
+}
+.select-dropdown:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #aaa;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.createJobForm form input[type='submit'] {
+    text-decoration: none;
+    width: 100px;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    margin: 15px 10px 0px 10px;
+    padding: 10px;
+    background-color: #212c58;
+    border-radius: 7px;
 }

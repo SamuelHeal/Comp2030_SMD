@@ -1,6 +1,6 @@
 <?php 
     if (isset($_POST['register'])) { 
-        require_once "..\\include\\database.php";
+        require_once "../include/database.php";
         // Prepare and bind the SQL statement 
         $sql = "INSERT INTO Person (firstname, lastname, dob, position, phonenumber, email, employmentdate, pin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; 
         $statement = mysqli_stmt_init($conn);
@@ -22,12 +22,12 @@
 
         // Execute the SQL statement 
         if (mysqli_stmt_execute($statement)) {
-                header("location: ..\pages\\factory.php?machineID={$_GET['machineID']}"); 
+                header("location: ../pages/factory.php?machineID={$_GET['machineID']}"); 
             } else {
                 mysqli_error($conn);
             }
             mysqli_close($conn);
         
 } else {
-        header("location: ..\pages\jobs.php?machineID={$_GET['machineID']}");
+        header("location: ../pages/jobs.php?machineID={$_GET['machineID']}");
 }

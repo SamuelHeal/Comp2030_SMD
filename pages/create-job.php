@@ -4,64 +4,58 @@
     <title>Practical 3: Current tasks</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
-    <link rel="stylesheet" href="./styles/style.css">
-    <script src="scripts/script.js" defer></script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="../scripts/banner.js"></script>
 </head>
 <body>
-    <?php require_once "check-floor-permission.php"; ?>
-
-    <nav>
-        <?php require_once "inc/floor_menu.inc.php"; ?>
-    </nav>
-    
-    <?php 
-    require_once "inc/dbconn.inc.php";
-    // session_start();
-    if ($_SESSION['position'] == "Factory Manager") {
-        
-        echo "<div class='jobsManagerHeader'>";
-        echo "<h1>Create Job</h1>";
-        echo "<div class='jobsManagerLinks'>";
-        echo "<a href='jobs.php'>Cancel</a>";
-        echo "</div>";
-        echo "</div>";
-        echo "<div class='createJobForm'>";
-        echo "<form action='createjobsystem.php' method='POST'>";
-        echo "<label for='machine'>Machine:</label> ";
-        echo "<select id='machine' name='machine' required>";
-        $sql = "SELECT name, machineID FROM Machine";
-        if ($result = mysqli_query($conn, $sql) ) {
-            if ($rows = mysqli_num_rows($result)) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<option value='" . $row['machineID'] . "'>" . $row['name'] . "</option>";
-                }
-            }
-        }
-        echo "</select>";
-        echo "<label for='opeartor'>Operator:</label>";
-        echo "<select id='operator' name='operator' required>";
-        $sql = "SELECT firstname, lastname, personID FROM Person";
-        if ($result = mysqli_query($conn, $sql) ) {
-            if ($rows = mysqli_num_rows($result)) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<option value='" . $row['personID'] . "'>" . $row['firstname'] . " " . $row['lastname'] . "</option>";
-                }
-            }
-        }
-        echo "</select>";
-        echo "<label for='priority'>Priority:</label>";
-        echo "<select id='priority' name='priority' required>";
-        echo "<option value='1'>!</option>";
-        echo "<option value='2'>!!</option>";
-        echo "<option value='3'>!!!</option>";
-        echo "</select>";
-        echo "<label for='description'>Description:</label>";
-        echo "<input id='description' name='description' required type='text' />";
-        echo "<input name='submit' type='submit' value='submit' />";
-        echo "</form>";
-        echo "</div>";
-    }
+    <?php
+        require_once '../include/functions.php';
+        require_once '../include/database.php';
+        require_once '../include/check-authorisation.php';
+        checkMachineIdIsSet($conn);
+        require_once '../include/menu.php';
+        setBannerColour($conn);
     ?>
-
+    <div id=body-container>
+    <?php 
+    echo "<div class='jobsManagerHeader'>";
+    echo "<h1>Create Job</h1>";
+    echo "<div class='jobsManagerLinks'>";
+    echo "<a href='jobs.php'>Cancel</a>";
+    echo "</div>";
+    echo "</div>";
+    echo "<div class='createJobForm'>";
+    echo "<form action='../system/create-job.php' method='POST'>";
+    echo "<div class='innerJobForm'>";
+    echo "<label for='machine'>Machine:</label> ";
+    echo "<div class='select-dropdown'>";
+    echo "<select id='machine' name='machine' required>";
+    getMachinesForJob($conn);
+    echo "</select>";
+    echo "</div>";
+    echo "<label for='opeartor'>Operator:</label>";
+    echo "<div class='select-dropdown'>";
+    echo "<select class='select-dropdown' id='operator' name='operator' required>";
+    getOperatorsForJob($conn);
+    echo "</select>";
+    echo "</div>";
+    echo "<label for='priority'>Priority:</label>";
+    echo "<div class='select-dropdown'>";
+    echo "<select id='priority' name='priority' required>";
+    echo "<option value='1'>Low</option>";
+    echo "<option value='2'>Medium</option>";
+    echo "<option value='3'>High</option>";
+    echo "</select>";
+    echo "</div>";
+    echo "</div>";
+    echo "<div class='innerJobForm'>";
+    echo "<label for='description'>Description:</label>";
+    echo "<textarea id='description' name='description' required></textarea>";
+    echo "<input name='submit' type='submit' value='submit' />";
+    echo "</div>";
+    echo "</form>";
+    echo "</div>";
+    ?>
+    </div>
 </body>
 </html>
