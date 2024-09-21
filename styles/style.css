@@ -91,6 +91,46 @@ h1 {
     color: #fffafa;
 }
 
+.reports-button {
+    margin-bottom: 24px;
+    min-height: 80px;
+}
+
+.reports-button:hover input {
+    color: #fffafa;
+}
+
+.reports-button:hover p {
+    color: #fffafa;
+}
+
+.reports-button input {
+    background: transparent;
+    border: none;
+}
+
+.reports-button input:focus {
+    outline: none;
+}
+
+.reports-button:hover input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.reports-input {
+    padding: 0px 6px;
+}
+
+.reports-table-expanded {
+    background-color: #fffafa;
+    height: 100vh !important;
+    margin-bottom: 0px !important;
+    position: absolute;
+    top: 0px;
+    width: 100% !important;
+    z-index: 2;
+}
+
 #body-container {
     height: fit-content;
     min-height: 60%;
@@ -267,12 +307,13 @@ h1 {
 }
 
 #reports-button-container {
-    display: grid;
-    grid-template-columns: 100/3% 100/3% 100/3%;
-    height: 100px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: space-between;
     margin: 0px auto;
-    margin-bottom: 24px;
-    width: 62%;
+    position: relative;
+    width: 60%;
 }
 
 #reports-button-container div {
@@ -285,7 +326,6 @@ h1 {
     flex-direction: column;
     font-weight: bold;
     justify-content: center;
-    margin: 0px 6px;
     user-select: none;
 }
 
@@ -294,74 +334,81 @@ h1 {
     color: #fffafa;
 }
 
-#reports-button-submit {
-    align-items: center;
+#reports-button-select-machine {
     background-color: #ededed;
     border: 3px solid #212c58;
     border-radius: 6px;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
-    display: flex;
-    flex-direction: column;
     font-size: 16px;
     font-weight: bold;
-    grid-column: 3/4;
-    grid-row: 1/2;
-    justify-content: center;
-    margin: 0px 6px;
+    margin-bottom: 24px;
+    min-height: 80px;
+    padding: 0px 24px;
     user-select: none;
 }
 
-#reports-button-submit:hover {
+#reports-button-select-machine:hover {
     background-color: #212c58;
     color: #fffafa;
 }
 
-.reports-button:hover input {
+#reports-button-select-machine:hover option {
     color: #fffafa;
 }
 
-.reports-button:hover p {
+#reports-button-submit {
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 80px;
+    padding: 0px 40px;
+    user-select: none;
+}
+
+#reports-button-submit:hover {
+    background-color: #00ff00;
+    border: 3px solid #00ff00;
     color: #fffafa;
 }
 
-.reports-button input {
-    background: transparent;
-    border: none;
-}
-
-#reports-button-select-start-container {
-    grid-column: 1/2;
-    grid-row: 1/2;
-}
-
-#reports-button-select-end-container {
-    grid-column: 2/3;
-    grid-row: 1/2;
-}
-
-#reports-table {
+#reports-table-wrapper {
     border: 3px solid #212c58;
     border-collapse: collapse;
     border-radius: 6px;
-    display: block;
-    /* max-height: 60vh; */
+    height: 60vh;
     margin: 24px auto;
-    overflow-x: scroll;
-    width: 60%;
+    overflow: scroll;
+    position: relative;
+    transition: none;
+    width: 59%;
 }
 
-#reports-table tr:nth-child(2n+1) {
+#reports-table-wrapper table {
+    border-collapse: collapse;
+}
+
+#reports-table-wrapper td {
+    padding: 12px 6px;
+    white-space: nowrap;
+}
+
+#reports-table-wrapper th {
     background-color: #ededed;
-}
-
-#reports-table td {
     padding: 12px 6px;
+    position: sticky;
+    top: 0px;
     white-space: nowrap;
 }
 
-#reports-table th {
-    padding: 12px 6px;
-    white-space: nowrap;
+#reports-table-wrapper tr {
+    background-color: #fffafa;
+}
+
+#reports-table-wrapper tr:nth-child(2n+1) {
+    background-color: #ededed;
 }
 
 #unauthorised-container {
@@ -393,11 +440,11 @@ h1 {
 
 @media (min-width: 1200px) {
     h1 {
-        width: 54%;
+        width: 60%;
     }
 
     .list {
-        width: 54%;
+        width: 60%;
     }
 
     .list td {
@@ -413,8 +460,12 @@ h1 {
         font-size: 24px;
     }
 
+    .reports-button {
+        margin: 0px;
+    }
+
     #login-container {
-        width: 55%;
+        width: 61%;
     }
 
     #login-message {
@@ -434,14 +485,20 @@ h1 {
     }
 
     #reports-button-container {
-        width: 55%;
+        flex-direction: row;
+        width: 60%;
     }
 
-    #reports-table {
-        width: 54%;
+    #reports-button-select-machine {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #reports-table-wrapper {
+        width: 60%;
     }
 
     #unauthorised-container {
-        width: 54%;
+        width: 60%;
     }
 }
