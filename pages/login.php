@@ -15,9 +15,9 @@
         redirectToDashboardIfLoggedIn();
         checkMachineIdIsSet($conn);
         ?>
-    <div id="header-container">
+    <nav id="header-container">
         <p id="header-message">Smart Manafacturing Dashboard</p>
-    </div>
+    </nav>
     <div id="body-container">
         <h1 id="login-title">Login</h1>
         <form id="login-container" action="../system/login.php?machineID=<?php echo $_GET['machineID']?>" method="POST">
