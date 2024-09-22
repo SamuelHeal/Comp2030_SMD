@@ -2,14 +2,12 @@
 $authorisation = array(
     'Administrator' => array(
         'users.php' => true,
-        'reports.php' => true,
         'manage.php' => true,
         'messages.php' => true
     ),
     'Auditor' => array(
         'users.php' => true,
         'reports.php' => true,
-        'manage.php' => true,
         'messages.php' => true
     ),
     'Factory Manager' => array(

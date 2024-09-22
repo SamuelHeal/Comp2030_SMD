@@ -10,13 +10,11 @@
                 $items = array(
                     'Administrator' => array(
                         'Users' => 'users.php',
-                        'Reports' => 'reports.php',
                         'Manage' => 'manage.php'
                     ),
                     'Auditor' => array(
                         'Users' => 'users.php',
-                        'Reports' => 'reports.php',
-                        'Manage' => 'manage.php'
+                        'Reports' => 'reports.php'
                     ),
                     'Factory Manager' => array(
                         'Factory' => 'factory.php',
