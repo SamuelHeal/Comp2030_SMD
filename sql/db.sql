@@ -61,13 +61,11 @@ CREATE TABLE Message(
     timestamp DATETIME NOT NULL,
     authorID INTEGER NOT NULL,
     recipientID INTEGER NOT NULL,
-    jobID INTEGER NOT NULL,
     subject VARCHAR(100) NOT NULL,
     body VARCHAR(1000) NOT NULL,
     PRIMARY KEY (messageID),
     FOREIGN KEY (authorID) REFERENCES Person(personID),
-    FOREIGN KEY (recipientID) REFERENCES Person(personID),
-    FOREIGN KEY (jobID) REFERENCES Job(jobID)
+    FOREIGN KEY (recipientID) REFERENCES Person(personID)
 );
 
 CREATE TABLE Note(
