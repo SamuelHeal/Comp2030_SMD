@@ -18,14 +18,16 @@ $authorisation = array(
         'machines.php' => true,
         'messages.php' => true,
         'create-job.php' => true,
-        'job.php' => true
+        'job.php' => true,
+        'job-history.php' => true
     ),
     'Production Operator' => array(
         'factory.php' => true,
         'jobs.php' => true,
         'machines.php' => true,
         'messages.php' => true,
-        'job.php' => true
+        'job.php' => true,
+        'job-history.php' => true
     ),
 );
 

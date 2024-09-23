@@ -125,6 +125,40 @@ function getJobsManager($conn) {
     echo "</div>";
 }
 
+function getJobHistoryManager($conn) {
+    $sql = "SELECT Job.jobID, Job.priority, Job.status, Machine.name, Person.firstname, Person.lastname FROM Job INNER JOIN Machine ON Job.machineID=Machine.machineID INNER JOIN Person on Job.OperatorID=Person.personID WHERE Job.completed=1";
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            echo "<div class='jobList'>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                // echo "<div >";
+                echo "<a class='job' href='job.php?id=" . $row['jobID'] . "'>";
+                echo "<div class='jobID'>";
+                echo "<p>" . $row['jobID'];
+                echo "</div>";
+                echo "<div class='jobInfo'>";
+                echo "<p class='bold'>" . $row['name'];
+                echo "<p>" . $row['status'];
+                echo "<p>" . $row['firstname'] . " " . $row['lastname'];
+
+                if ($row['priority'] == 1) {
+                    echo "<p class='priority'>!</p>";
+                } else if ($row['priority'] == 2) {
+                    echo "<p class='priority'>!!</p>";
+                } else {
+                    echo "<p class='priority'>!!!</p>";
+                }
+                echo "</div>";
+                echo "</a>";
+                // echo "</div>";
+            };
+            echo "</div>";
+            mysqli_free_result($result);
+        }
+    }
+    echo "</div>";
+}
+
 function getMachinesForJob($conn) {
     $sql = "SELECT name, machineID FROM Machine";
     if ($result = mysqli_query($conn, $sql) ) {
@@ -189,7 +223,7 @@ function getPrioritySelection($selectedPriority) {
 }
 
 function getJobManager($conn, $jobID) {
-    $sql = 'SELECT Job.description, Job.jobID, Job.priority, Job.OperatorID, Job.machineID, Job.status, Person.firstname, Person.lastname, Machine.name FROM Job INNER JOIN Person ON Person.personID = Job.OperatorID INNER JOIN Machine ON Machine.machineID = Job.machineID WHERE Job.jobID = ' . $jobID;
+    $sql = 'SELECT Job.description, Job.jobID, Job.priority, Job.OperatorID, Job.machineID, Job.status, Job.completed, Person.firstname, Person.lastname, Machine.name FROM Job INNER JOIN Person ON Person.personID = Job.OperatorID INNER JOIN Machine ON Machine.machineID = Job.machineID WHERE Job.jobID = ' . $jobID;
     if ($result = mysqli_query($conn, $sql) ) {
         if ($rows = mysqli_num_rows($result)) {
             $job = mysqli_fetch_assoc($result);
@@ -197,14 +231,25 @@ function getJobManager($conn, $jobID) {
             echo "<h1> Job: " . $job['jobID'] . "</h1>";
             echo "<div class='jobsManagerLinks'>";
             echo "<a href='jobs.php'>Back</a>";
-            echo "<a href='javascript:;' onclick='deleteJob()'>Delete</a>";
+            if ($job['completed'] == 0) {
+                echo "<a href='javascript:;' onclick='deleteJob()'>Delete</a>";
+            } else {
+                echo "<a href='javascript:;' onclick='restoreJob()'>Restore</a>";
+            }
             echo "</div>";
             echo "</div>";
-            echo "<div class='deleteJob hide'>";
+            echo "<div class='deleteJob handleJob hide'>";
             echo "<h2>Are you sure you want to delete this job?</h2>";
             echo "<div class='deleteButtons'>";
             echo "<a class='cancelButton' href='javascript:;' onclick='cancelDelete()'>No</a>";
             echo "<a class='deleteButton' href='../system/delete-job.php?jobID=" . $jobID . "'>Yes</a>";
+            echo "</div>";
+            echo "</div>";
+            echo "<div class='restoreJob handleJob hide'>";
+            echo "<h2>Are you sure you want to restore this job?</h2>";
+            echo "<div class='deleteButtons'>";
+            echo "<a class='cancelButton' href='javascript:;' onclick='cancelDelete()'>No</a>";
+            echo "<a class='restoreButton' href='../system/restore-job.php?jobID=" . $jobID . "'>Yes</a>";
             echo "</div>";
             echo "</div>";
             echo "<div class='createJobForm'>";
