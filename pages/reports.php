@@ -15,23 +15,6 @@
     ?>
     <div id="body-container">
         <h1>Reports</h1>
-        <form id="reports-button-container" action="reports.php" method="GET">
-            <input type="hidden" name="machineID" value="<?php echo $_GET['machineID'] ?>"/>  <!-- This is a bit ugly, it's there because submitting a GET form erases the existing query parameters.  -->
-            <div id="reports-button-input-start-wrapper" class=reports-button>
-                <p>Start date: </p>
-                <input id="reports-button-input-start" class="reports-input" name="start" type="datetime-local" required/>
-            </div>
-            <div id="reports-button-input-end-wrapper" class=reports-button>
-                <p>End date: </p>
-                <input id="reports-button-input-end" class="reports-input" name="end" type="datetime-local" required/>
-            </div>
-            <select id="reports-button-select-machine" name="machine" required>
-                <?php 
-                    appendMachinesToSelect($conn);
-                ?>
-            </select>
-            <input id="reports-button-submit" type="submit" value="✓"/>
-        </form>
         <div id="reports-table-wrapper">
             <table>
                 <tr id="reports-labels">
@@ -72,12 +55,27 @@
                         Vibration
                     </th>
                 </tr>
-                <?php 
-                getLogs($conn);
-                mysqli_close($conn);
-                ?>
+                <?php getLogs($conn); ?>
             </table>
         </div>
+        <form id="reports-button-container" action="reports.php" method="GET">
+            <input type="hidden" name="machineID" value="<?php echo $_GET['machineID'] ?>"/>  <!-- This is a bit ugly, it's there because submitting a GET form erases the existing query parameters.  -->
+            <div id="reports-button-input-start-wrapper" class=reports-button>
+                <p>Start date: </p>
+                <input id="reports-button-input-start" class="reports-input" name="start" type="datetime-local" required/>
+            </div>
+            <div id="reports-button-input-end-wrapper" class=reports-button>
+                <p>End date: </p>
+                <input id="reports-button-input-end" class="reports-input" name="end" type="datetime-local" required/>
+            </div>
+            <select id="reports-button-select-machine" name="machine" required>
+                <?php 
+                    appendMachinesToSelect($conn);
+                ?>
+            </select>
+            <input id="reports-button-submit" type="submit" value="✓"/>
+        </form>
+        <?php mysqli_close($conn); ?>
     </div>
 </body>
 </html>

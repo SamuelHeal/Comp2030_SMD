@@ -61,6 +61,7 @@ CREATE TABLE Message(
     timestamp DATETIME NOT NULL,
     authorID INTEGER NOT NULL,
     recipientID INTEGER NOT NULL,
+    isRead BOOLEAN NOT NULL,
     subject VARCHAR(100) NOT NULL,
     body VARCHAR(1000) NOT NULL,
     PRIMARY KEY (messageID),

@@ -18,6 +18,13 @@ function console($string) {  // For debugging, delete for submission.
     echo '</script>';
 }
 
+function formatDate($timestamp) {
+    $date_object = new DateTimeImmutable($timestamp);
+    $date = date_format($date_object, 'D, j M');
+    $time = date_format($date_object, 'G:i a');
+    return "{$date} at {$time}";
+}
+
 function redirectToDashboardIfLoggedIn() {
     if (isset($_SESSION['position'])) {
         header("location: {$_SESSION['home']}?machineID={$_GET['machineID']}");
