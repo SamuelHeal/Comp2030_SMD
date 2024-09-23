@@ -18,9 +18,10 @@
     ?>
     <div id=body-container>
     <?php 
-    // session_start();
     if ($_SESSION['position'] == "Factory Manager") {
+        $jobID = $_GET['id'];
         
+        getJobManager($conn, $jobID);
     }
     ?>
     </div>

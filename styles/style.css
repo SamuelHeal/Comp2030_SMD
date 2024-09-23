@@ -453,6 +453,8 @@ h1 {
     border: 2px solid #212c58;
     border-radius: 50px;
     padding: 20px 20px 40px 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 .createJobForm form {
@@ -465,7 +467,7 @@ h1 {
 
 .innerJobForm {
     width: 100%;
-    height: 40vh;
+    /* height: 50vh; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -478,6 +480,7 @@ h1 {
 
 .innerJobForm textarea {
     width: 80%;
+    min-height: 50px;
     height: 80%;
 }
 

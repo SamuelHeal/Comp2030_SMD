@@ -136,6 +136,21 @@ function getMachinesForJob($conn) {
     }
 }
 
+function getMachinesForJobSelected($conn, $selectedID) {
+    $sql = "SELECT name, machineID FROM Machine";
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($row['machineID'] == $selectedID) {
+                    echo "<option selected='selected' value='" . $row['machineID'] . "'>" . $row['name'] . "</option>";
+                } else {
+                    echo "<option value='" . $row['machineID'] . "'>" . $row['name'] . "</option>";
+                }
+            }
+        }
+    }
+}
+
 function getOperatorsForJob($conn) {
     $sql = "SELECT firstname, lastname, personID FROM Person";
     if ($result = mysqli_query($conn, $sql) ) {
@@ -143,6 +158,78 @@ function getOperatorsForJob($conn) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<option value='" . $row['personID'] . "'>" . $row['firstname'] . " " . $row['lastname'] . "</option>";
             }
+        }
+    }
+}
+
+function getOperatorsForJobSelected($conn, $selectedID) {
+    $sql = "SELECT firstname, lastname, personID FROM Person";
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($row['personID'] == $selectedID) {
+                    echo "<option selected='selected' value='" . $row['personID'] . "'>" . $row['firstname'] . " " . $row['lastname'] . "</option>";
+                } else {
+                    echo "<option value='" . $row['personID'] . "'>" . $row['firstname'] . " " . $row['lastname'] . "</option>";
+                }
+            }
+        }
+    }
+}
+
+function getPrioritySelection($selectedPriority) {
+    $options = array("Low", "Medium", "High");
+    for ($i = 1; $i < 4; $i++) {
+        if ($i == $selectedPriority) {
+            echo "<option selected='selected' value='" . $selectedPriority . "'>" . $options[$selectedPriority-1] . "</option>";
+        } else {
+            echo "<option value='" . $i . "'>" . $options[$i-1] . "</option>";
+        }
+    }
+}
+
+function getJobManager($conn, $jobID) {
+    $sql = 'SELECT Job.description, Job.jobID, Job.priority, Job.OperatorID, Job.machineID, Job.status, Person.firstname, Person.lastname, Machine.name FROM Job INNER JOIN Person ON Person.personID = Job.OperatorID INNER JOIN Machine ON Machine.machineID = Job.machineID WHERE Job.jobID = ' . $jobID;
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            $job = mysqli_fetch_assoc($result);
+            echo "<div class='jobsManagerHeader'>";
+            echo "<h1> Job: " . $job['jobID'] . "</h1>";
+            echo "<div class='jobsManagerLinks'>";
+            echo "<a href='jobs.php'>Back</a>";
+            echo "</div>";
+            echo "</div>";
+            echo "<div class='createJobForm'>";
+            echo "<form action='../system/update-job.php?jobID=" . $jobID . "' method='POST'>";
+            echo "<div class='innerJobForm'>";
+            echo "<label for='description'>Description:</label>";
+            echo "<textarea id='description' name='description' required>" . $job['description']. "</textarea>";
+            echo "<label for='machine'>Machine:</label> ";
+            echo "<div class='select-dropdown'>";
+            echo "<select id='machine' name='machine' required>";
+            getMachinesForJobSelected($conn, $job['machineID']);
+            echo "</select>";
+            echo "</div>";
+            echo "<label for='opeartor'>Operator:</label>";
+            echo "<div class='select-dropdown'>";
+            echo "<select class='select-dropdown' id='operator' name='operator' required>";
+            getOperatorsForJobSelected($conn, $job['OperatorID']);
+            echo "</select>";
+            echo "</div>";
+            echo "<label for='priority'>Priority:</label>";
+            echo "<div class='select-dropdown'>";
+            echo "<select id='priority' name='priority' required>";
+            getPrioritySelection($job['priority']);
+            echo "</select>";
+            echo "</div>";
+            echo "<label for='status'>Status:</label>";
+            echo "<input id='status' name='status' type='text' value='" . $job['status'] . "'/>";
+            echo "<input name='submit' type='submit' value='submit' />";
+            echo "</div>";
+            echo "</form>";
+            echo "<div class='innerJobForm'>";
+            echo "</div>";
+            echo "</div>";
         }
     }
 }
