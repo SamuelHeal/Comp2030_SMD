@@ -6,6 +6,7 @@
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../scripts/banner.js"></script>
+    <script src="../scripts/deleteJob.js"></script>
 </head>
 <body>
     <?php

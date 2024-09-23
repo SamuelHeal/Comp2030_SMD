@@ -197,6 +197,14 @@ function getJobManager($conn, $jobID) {
             echo "<h1> Job: " . $job['jobID'] . "</h1>";
             echo "<div class='jobsManagerLinks'>";
             echo "<a href='jobs.php'>Back</a>";
+            echo "<a href='javascript:;' onclick='deleteJob()'>Delete</a>";
+            echo "</div>";
+            echo "</div>";
+            echo "<div class='deleteJob hide'>";
+            echo "<h2>Are you sure you want to delete this job?</h2>";
+            echo "<div class='deleteButtons'>";
+            echo "<a class='cancelButton' href='javascript:;' onclick='cancelDelete()'>No</a>";
+            echo "<a class='deleteButton' href='../system/delete-job.php?jobID=" . $jobID . "'>Yes</a>";
             echo "</div>";
             echo "</div>";
             echo "<div class='createJobForm'>";
