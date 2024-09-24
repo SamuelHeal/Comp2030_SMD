@@ -2,26 +2,28 @@
 $authorisation = array(
     'Administrator' => array(
         'users.php' => true,
-        'reports.php' => true,
         'manage.php' => true,
+        'message.php' => true,
         'messages.php' => true
     ),
     'Auditor' => array(
         'users.php' => true,
         'reports.php' => true,
-        'manage.php' => true,
+        'message.php' => true,
         'messages.php' => true
     ),
     'Factory Manager' => array(
         'factory.php' => true,
         'jobs.php' => true,
         'machines.php' => true,
+        'message.php' => true,
         'messages.php' => true,
     ),
     'Production Operator' => array(
         'factory.php' => true,
         'jobs.php' => true,
         'machines.php' => true,
+        'message.php' => true,
         'messages.php' => true,
     ),
 );

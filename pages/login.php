@@ -5,23 +5,22 @@
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="../styles/style.css">
-    <script src="../scripts/bad-pin.js" defer></script>
     <script src="../scripts/banner.js"></script>
-    <script src="../scripts/keypad.js" defer></script>
-    <script src="../scripts/login.js"></script>
 </head>
 <body>
     <?php
-        require_once '../include/functions.php';
+        require_once '../include/utilities.php';
         require_once '../include/database.php';
+        require_once '../scripts/login.php';
         redirectToDashboardIfLoggedIn();
-    ?>
-    <div id=header-container>
-        <p id=header-message>Smart Manafacturing Dashboard</p>
-    </div>
-    <div id=body-container>
-        <h1 id=login-title>Login</h1>
-        <form id=login-container action="../system/login.php?machineID=<?php echo $_GET['machineID']?>" method="POST">
+        checkMachineIdIsSet($conn);
+        ?>
+    <nav id="header-container">
+        <p id="header-message">Smart Manafacturing Dashboard</p>
+    </nav>
+    <div id="body-container">
+        <h1 id="login-title">Login</h1>
+        <form id="login-container" action="../system/login.php?machineID=<?php echo $_GET['machineID']?>" method="POST">
             <input id="login-field" name="pin" type="password" placeholder="Enter PIN" required/>
             <div id="keypad-1">1</div>
             <div id="keypad-2">2</div>
@@ -37,8 +36,8 @@
             <input id="keypad-submit" name="login" type="submit" value="✓"/>
         </form>
     </div>
+    <script src="../scripts/login.js"></script>
     <?php
-        checkMachineIdIsSet($conn);
         setBannerColourAndMessage($conn);
         setLoginTitle($conn);
         mysqli_close($conn);
