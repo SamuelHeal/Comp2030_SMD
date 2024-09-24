@@ -27,5 +27,5 @@
             mysqli_close($conn);
         
 } else {
-    header("location: ../pages/create-job.php']}");
+    header("location: ../pages/create-job.php'");
 }

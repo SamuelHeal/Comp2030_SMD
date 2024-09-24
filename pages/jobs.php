@@ -20,11 +20,11 @@
     <?php 
     // session_start();
     if ($_SESSION['position'] == "Factory Manager") {
-        echo "<div class='jobsManagerHeader'>";
+        echo "<div class='headerContainer'>";
         echo "<h1>Current Jobs</h1>";
-        echo "<div class='jobsManagerLinks'>";
-        echo "<a href='create-job.php'>Create</a>";
-        echo "<a href='job-history.php'>History</a>";
+        echo "<div class='headerLinks'>";
+        echo "<a href='create-job.php?machineID=" . $_GET['machineID'] . "'>Create</a>";
+        echo "<a href='job-history.php?machineID=" . $_GET['machineID'] . "'>History</a>";
         echo "</div>";
         echo "</div>";
         echo "<div class='managerJobs'>";

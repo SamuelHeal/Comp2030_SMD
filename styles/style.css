@@ -340,7 +340,7 @@ h1 {
     }
 }
 
-.jobsManagerHeader {
+.headerContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -350,16 +350,16 @@ h1 {
     margin-top: 20px;
 }
 
-.jobsManagerHeader h1 {
+.headerContainer h1 {
     width: 100%;
 }
 
-.jobsManagerLinks {
+.headerLinks {
     display: flex;
     flex-direction: row;
 }
 
-.jobsManagerLinks a {
+.headerLinks a {
     text-decoration: none;
     width: 75px;
     text-align: center;
@@ -449,6 +449,7 @@ h1 {
 .createJobForm {
     width: 60vw;
     margin: auto;
+    margin-bottom: 20px;
     margin-top: 20px;
     border: 2px solid #212c58;
     border-radius: 50px;
@@ -467,21 +468,21 @@ h1 {
 
 .innerJobForm {
     width: 100%;
-    /* height: 50vh; */
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 }
 
 .innerJobForm label {
-    margin: 30px 0px 5px 0px;
+    margin: 0px 0px 5px 0px;
 }
 
 .innerJobForm textarea {
     width: 80%;
     min-height: 50px;
     height: 80%;
+    margin-bottom: 20px;
 }
 
 .select-dropdown,
@@ -492,15 +493,17 @@ h1 {
     box-sizing: border-box;
     width: 80%;
 }
+
 .select-dropdown {
     position: relative;
     background-color: #E6E6E6;
     border-radius: 4px;
+    margin-bottom: 20px;
 }
 .select-dropdown select {
     font-size: 1rem;
     font-weight: normal;
-    max-width: 100%;
+    width: 100%;
     padding: 8px 24px 8px 10px;
     border: none;
     background-color: transparent;
@@ -585,4 +588,113 @@ h1 {
 
 .hide {
     display: none;
+}
+
+.taskNoteHeader {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskNoteHeader a {
+    display: block;
+    text-decoration: none;
+    width: 80px;
+    text-align: center;
+    font-size: 18px;
+    color: #faf8f6;
+    margin: 0px 10px 0px 10px;
+    padding: 10px;
+    background-color: #212c58;
+    border-radius: 7px;
+}
+
+.taskNotes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.notes {
+    margin-top: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    width: 90%;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+}
+
+.note {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    width: calc(100% - 40px);
+    border-bottom: 1px solid #212c58;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.note .timeCreated {
+    font-size: 90%;
+}
+
+.note .category {
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.note .notePriority {
+    font-size: 110%;
+}
+
+.noteContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+    margin: auto;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+    padding: 20px;
+    margin-top: 20px
+}
+
+.noteContainer .noteHeader {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+ 
+.noteContainer .noteHeader h3 {
+    margin: 20px 0px 5px 0px;
+} 
+
+
+.noteContainer .noteDescription {
+    display: flex;
+    width: 50%;
+    /* height: 100%; */
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    margin-top: 20px;
+}
+
+.noteContainer .noteDescription p {
+    display: block;
+    width: 80%;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    height: 100%;
+    margin-top: 20px;
+    padding: 20px;
 }

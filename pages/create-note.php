@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Practical 3: Current tasks</title>
+    <title>Jobs | SMD</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="../styles/style.css">
@@ -18,25 +18,28 @@
     ?>
     <div id=body-container>
     <?php 
+    
+    $jobID = $_GET['jobID'];
+    
     echo "<div class='headerContainer'>";
-    echo "<h1>Create Job</h1>";
+    echo "<h1>Create Task Note</h1>";
     echo "<div class='headerLinks'>";
-    echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Cancel</a>";
+    echo "<a href='job.php?id=" . $jobID . "&machineID=" . $_GET['machineID']. "'>Cancel</a>";
     echo "</div>";
     echo "</div>";
     echo "<div class='createJobForm'>";
-    echo "<form action='../system/create-job.php?machineID=" . $_GET['machineID'] . "' method='POST'>";
+    echo "<form action='../system/create-note.php?jobID=" . $_GET['jobID'] . "&machineID=" . $_GET['machineID'] . "' method='POST'>";
     echo "<div class='innerJobForm'>";
-    echo "<label for='machine'>Machine:</label> ";
+    echo "<label for='category'>Category:</label> ";
     echo "<div class='select-dropdown'>";
-    echo "<select id='machine' name='machine' required>";
-    getMachinesForJob($conn);
-    echo "</select>";
-    echo "</div>";
-    echo "<label for='opeartor'>Operator:</label>";
-    echo "<div class='select-dropdown'>";
-    echo "<select class='select-dropdown' id='operator' name='operator' required>";
-    getOperatorsForJob($conn);
+    echo "<select id='category' name='category' required>";
+    echo "<option value='Missing part'>Missing part</option>";
+    echo "<option value='Awaiting part'>Awaiting part</option>";
+    echo "<option value='Machine issue'>Machine issue</option>";
+    echo "<option value='Quality concern'>Quality concern</option>";
+    echo "<option value='Issue with job details'>Issue with job details</option>";
+    echo "<option value='Safety concern'>Safety concern</option>";
+    echo "<option value='Other'>Other</option>";
     echo "</select>";
     echo "</div>";
     echo "<label for='priority'>Priority:</label>";
