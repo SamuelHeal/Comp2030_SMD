@@ -9,9 +9,7 @@
 </head>
 <body>
     <h1>Create User</h1>
-    <?php 
-    echo "<form action='../system/create-user.php?machineID=" . $_GET['machineID'] . "' method='POST'>"
-    ?>
+    <form action="../system/create-user.php" method="POST">
         <label for="firstname">First name:</label> 
         <input id="firstname" name="firstname" required type="text" />
         <label for="lastname">Last name:</label>

@@ -9,12 +9,13 @@
 </head>
 <body>
     <?php
-        require_once '../include/functions.php';
+        require_once '../include/utilities.php';
         require_once '../include/database.php';
+        require_once '../scripts/unauthorised.php';
     ?>
-    <div id=header-container>
+    <nav id=header-container>
         <p id=header-message>Smart Manafacturing Dashboard</p>
-    </div>
+    </nav>
     <div id=body-container>
         <h1>Unauthorised</h1>
         <div id=unauthorised-container>

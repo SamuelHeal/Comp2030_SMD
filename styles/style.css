@@ -1,4 +1,5 @@
 * {
+    box-sizing: border-box;
     color: #212c58;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
@@ -23,21 +24,40 @@ h1 {
     font-weight: bold;
 }
 
+.clickable {
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    cursor: pointer;
+}
+
+.clickable:hover {
+    background-color: #ededed;
+}
+
+.date {
+    color: #708090;
+    font-size: 12px;
+    margin-left: 24px;
+    white-space: nowrap;
+}
+
 .list {
     height: fit-content;
-    margin: 24px auto;
+    margin: 0px auto 24px auto;
     width: 60%;
 }
 
-.list table {
-    height: 100%;
-    width: 80%;
-}
-
-.list td {
-    font-size: 11px;
-    padding-left: 6px;
-    height: 100/3%;
+.list a {
+    align-items: center;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    /* box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226); */
+    display: flex;
+    height: 160px;
+    list-style-type: none;
+    margin-bottom: 24px;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
 }
 
 .list li {
@@ -52,19 +72,12 @@ h1 {
     overflow: hidden;
     text-align: left;
 }
-
-/* .list li:hover {
-    background-color: #ededed;
-} */
-
-.list li div {
-    padding: 0px 12px;
-    width: 20%;
-}
-
-.list li div:nth-child(1) { 
-    font-size: 16px;
+    
+.list-label { 
     font-weight: bold;
+    font-size: 16px;
+    padding: 0px 12px;
+    width: 25%;
 }
 
 .menu-item {
@@ -89,6 +102,123 @@ h1 {
 .menu-item:hover {
     background-color: #212c58;
     color: #fffafa;
+}
+
+.message-button {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 24px;
+    min-height: 80px;
+    text-decoration: none;
+    user-select: none;
+    width: 100%;
+}
+
+.message-button:hover {
+    background-color: #212c58;
+    color: #fffafa;
+    cursor: pointer;
+}
+
+.message-button:hover option {
+    background-color: #212c58;
+    color: #fffafa;
+    cursor: pointer;
+}
+
+.messages-content {
+    border-left: 3px solid #212c58;
+    height: 100%;
+    font-size: 14px;
+    padding: 0px 24px 0px 6px;
+    position: relative;
+    width: 100%;
+}
+
+.messages-subject {
+    font-size: 16px;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.messages-subject-date-group {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0px;
+}
+
+.red-hover:hover {
+    border: 3px solid #ff0000 !important;
+    background-color: #ff0000 !important;
+    color: #fffafa;
+}
+
+.reports-button {
+    margin-bottom: 24px;
+    min-height: 80px;
+}
+
+.reports-button:hover input {
+    color: #fffafa;
+}
+
+.reports-button:hover p {
+    color: #fffafa;
+}
+
+.reports-button input {
+    background: transparent;
+    border: none;
+}
+
+.reports-button input:focus {
+    outline: none;
+}
+
+.reports-button:hover input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.reports-input {
+    padding: 0px 6px;
+}
+
+.reports-table-expanded {
+    background-color: #fffafa;
+    height: 100vh !important;
+    margin-bottom: 0px !important;
+    position: absolute;
+    top: 0px;
+    width: 100% !important;
+    z-index: 2;
+}
+
+.unread {
+    background-color: #ffff00;
+}
+
+.unread:hover {
+    background-color: #fffacd !important;
+}
+
+.users-table {
+    border-left: 3px solid #212c58;
+    height: 100%;
+    width: 80%;
+}
+
+.users-table td {
+    font-size: 11px;
+    padding-left: 6px;
+    height: 100/3%;
 }
 
 #body-container {
@@ -179,11 +309,6 @@ h1 {
     grid-row: 5/6;
 }
 
-#keypad-clear:hover {
-    border: 3px solid #ff0000;
-    background-color: #ff0000 !important;
-}
-
 #keypad-submit {
     background-color: #ededed;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
@@ -242,6 +367,35 @@ h1 {
     text-align: left;
 }
 
+#new-message-button-container {
+    display: flex;
+    flex-direction: column;
+    margin: 24px auto 0px auto;
+    width: 60%;
+}
+
+#new-message-container {
+    background-color: #fffafa;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    height: fit-content;
+    margin: 0px auto;
+    min-height: 20vh;
+    padding: 24px;
+    width: 60%;
+}
+
+#new-message-input {
+    resize: none;
+    height: 25vh;
+    padding: 6px;
+    width: 100%;
+}
+
+#new-message-subject {
+    font-style: italic;
+}
+
 #menu-items {
     align-items: center;
     display: flex;
@@ -264,6 +418,168 @@ h1 {
     font-size: 48px;
     font-weight: bold;
     margin-left: 24px;
+}
+
+#message-subject-date-group {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+}
+
+#message-button-container {
+    display: flex;
+    flex-direction: column;
+    margin: 24px auto 0px auto;
+    width: 60%;
+}
+
+#message-button-mark-unread:hover {
+    border: 3px solid #ffff00;
+    background-color: #ffff00;
+}
+
+#message-container {
+    background-color: #fffafa;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    height: fit-content;
+    margin: 0px auto;
+    min-height: 20vh;
+    padding: 24px;
+    width: 60%;
+}
+
+#message-subject {
+    font-style: italic;
+}
+
+#message-button-new {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+    justify-content: center;
+    min-height: 80px;
+    text-decoration: none;
+    user-select: none;
+    width: 100%;
+}
+
+#message-button-new:hover {
+    background-color: #212c58;
+    color: #fffafa;
+    cursor: pointer;
+}
+
+#reports-button-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: space-between;
+    margin: 24px auto;
+    position: relative;
+    width: 60%;
+}
+
+#reports-button-container div {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    justify-content: center;
+    user-select: none;
+}
+
+#reports-button-container div:hover {
+    background-color: #212c58;
+    color: #fffafa;
+}
+
+#reports-button-select-machine {
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    min-height: 80px;
+    padding: 0px 24px;
+    user-select: none;
+    width: 100%;
+}
+
+#reports-button-select-machine:hover {
+    background-color: #212c58;
+    color: #fffafa;
+}
+
+#reports-button-select-machine:hover option {
+    color: #fffafa;
+}
+
+#reports-button-submit {
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 80px;
+    padding: 0px 40px;
+    user-select: none;
+}
+
+#reports-button-submit:hover {
+    background-color: #00ff00;
+    border: 3px solid #00ff00;
+    color: #fffafa;
+}
+
+#reports-table-wrapper {
+    border: 3px solid #212c58;
+    border-collapse: collapse;
+    border-radius: 6px;
+    height: 60vh;
+    margin: 24px auto;
+    overflow: scroll;
+    position: relative;
+    transition: none;
+    width: 59%;
+}
+
+#reports-table-wrapper table {
+    border-collapse: collapse;
+}
+
+#reports-table-wrapper td {
+    padding: 12px 6px;
+    white-space: nowrap;
+}
+
+#reports-table-wrapper th {
+    background-color: #ededed;
+    padding: 12px 6px;
+    position: sticky;
+    top: 0px;
+    white-space: nowrap;
+}
+
+#reports-table-wrapper tr {
+    background-color: #fffafa;
+}
+
+#reports-table-wrapper tr:nth-child(2n+1) {
+    background-color: #ededed;
 }
 
 #unauthorised-container {
@@ -293,52 +609,124 @@ h1 {
     color: #fffafa;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
     h1 {
-        width: 54%;
+        width: 64%;
+    }
+
+    .date {
+        font-size: 14px;
     }
 
     .list {
-        width: 54%;
+        margin-top: 24px;
+        width: 64%;
     }
 
-    .list td {
-        font-size: 16px;
-        padding: 0px;
-    }
-
-    .list li div {
+    .list-label {
+        font-size: 24px;
         padding-left: 24px;
     }
 
-    .list li div:nth-child(1) {
-        font-size: 24px;
+    .message-button {
+        margin-bottom: 0px;
     }
 
+    .messages-body {
+        font-size: 16px;
+    }
+
+    .messages-content {
+        padding-left: 12px;
+    }
+
+    .messages-subject {
+        font-size: 18px;
+    }
+
+    .messages-subject-date-group {
+        padding: 24px 0px;
+    }
+
+    .reports-button {
+        margin: 0px;
+    }
+
+    .users-table {
+        padding-left: 12px;
+    }
+    
+    .users-table td {
+        font-size: 16px;
+        padding: 0px;
+    }
+    
     #login-container {
-        width: 55%;
+        width: 64%;
     }
 
     #login-message {
         font-size: 48px;
     }
-
-    #unauthorised-container {
-        width: 54%;
-    }
-
+    
     #menu-items a {
         font-size: 24px;
     }
     
     #menu-username {
-        width: 60%;
+        width: 64%;
     }
-
+    
     #menu-username p {
         display: unset;
     }
+
+    #message-container {
+        width: 64%;
+    }
+
+    #message-button-container {
+        flex-direction: row;
+        gap: 24px;
+        width: 64%;
+    }
+
+    #new-message-button-container {
+        flex-direction: row;
+        gap: 24px;
+        width: 64%;
+    }
+
+    #new-message-container {
+        min-height: 40vh;
+        width: 64%;
+    }
+
+    #message-container {
+        min-height: 40vh;
+        width: 64%;
+    }
+
+    #reports-button-container {
+        flex-direction: row;
+        gap: 24px;
+        width: 64%;
+    }
+
+    #reports-button-select-machine {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #reports-table-wrapper {
+        width: 64%;
+    }
+
+    #unauthorised-container {
+        width: 64%;
+    }
 }
+
 
 .headerContainer {
     display: flex;

@@ -63,13 +63,12 @@ CREATE TABLE Message(
     timestamp DATETIME NOT NULL,
     authorID INTEGER NOT NULL,
     recipientID INTEGER NOT NULL,
-    jobID INTEGER NOT NULL,
+    isRead BOOLEAN NOT NULL,
     subject VARCHAR(100) NOT NULL,
     body VARCHAR(1000) NOT NULL,
     PRIMARY KEY (messageID),
     FOREIGN KEY (authorID) REFERENCES Person(personID),
-    FOREIGN KEY (recipientID) REFERENCES Person(personID),
-    FOREIGN KEY (jobID) REFERENCES Job(jobID)
+    FOREIGN KEY (recipientID) REFERENCES Person(personID)
 );
 
 CREATE TABLE Note(
@@ -80,18 +79,9 @@ CREATE TABLE Note(
     timeCreated DATETIME NOT NULL,
     description VARCHAR(1000),
     PRIMARY KEY (noteID),
-    FOREIGN KEY (jobID) REFERENCES Job(jobID),
-    FOREIGN KEY (managerID) REFERENCES Person(personID)
+    FOREIGN KEY (jobID) REFERENCES Job(jobID)
 );
 
-CREATE TABLE Part(
-    partID INTEGER NOT NULL AUTO_INCREMENT,
-    machineID INTEGER NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    description VARCHAR(1000),
-    PRIMARY KEY (partID),
-    FOREIGN KEY (machineID) REFERENCES Machine(machineID)
-);
 
 /* Create User Statement */
 DROP USER IF EXISTS dbadmin@localhost;
@@ -102,4 +92,3 @@ GRANT ALL PRIVILEGES ON Group18_SMD.Job TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Log TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Message TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Note TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group18_SMD.Part TO dbadmin@localhost;
