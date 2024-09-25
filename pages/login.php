@@ -31,7 +31,7 @@
             <div id="keypad-7">7</div>
             <div id="keypad-8">8</div>
             <div id="keypad-9">9</div>
-            <div id="keypad-clear">✕</div>
+            <div class="red-hover" id="keypad-clear">✕</div>
             <div id="keypad-0">0</div>
             <input id="keypad-submit" name="login" type="submit" value="✓"/>
         </form>

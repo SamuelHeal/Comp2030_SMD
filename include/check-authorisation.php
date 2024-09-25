@@ -4,13 +4,15 @@ $authorisation = array(
         'users.php' => true,
         'manage.php' => true,
         'message.php' => true,
-        'messages.php' => true
+        'messages.php' => true,
+        'new-message.php' => true
     ),
     'Auditor' => array(
         'users.php' => true,
         'reports.php' => true,
         'message.php' => true,
-        'messages.php' => true
+        'messages.php' => true,
+        'new-message.php' => true
     ),
     'Factory Manager' => array(
         'factory.php' => true,
@@ -18,6 +20,7 @@ $authorisation = array(
         'machines.php' => true,
         'message.php' => true,
         'messages.php' => true,
+        'new-message.php' => true
     ),
     'Production Operator' => array(
         'factory.php' => true,
@@ -25,6 +28,7 @@ $authorisation = array(
         'machines.php' => true,
         'message.php' => true,
         'messages.php' => true,
+        'new-message.php' => true
     ),
 );
 
