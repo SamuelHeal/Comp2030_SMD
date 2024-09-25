@@ -31,7 +31,11 @@
                 echo "<a class=\"menu-item\" href=\"$address?machineID={$_GET['machineID']}\">$title</a>";
             }
         ?>
-        <a class="menu-item" href="messages.php?machineID=<?php echo $_GET['machineID'] ?>">Messages</a>
+        <a class="menu-item" href="messages.php?machineID=<?php echo $_GET['machineID'] ?>" id="menu-messages">Messages</a>
         <a class="menu-item" href="../system/logout.php?machineID=<?php echo $_GET['machineID'] ?>">Logout</a>
     </div>
 </nav>
+<?php
+    checkForMessages($conn);
+    warnIfActive();
+?>

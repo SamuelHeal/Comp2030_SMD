@@ -1,4 +1,16 @@
 <?php
+function checkForMessages($conn) {
+    $sql = "SELECT * FROM Message WHERE recipientID = {$_SESSION['id']} AND isRead = 0;";
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        echo '<script>';
+            echo 'const MESSAGES_BUTTON = document.getElementById("menu-messages");';
+            echo 'MESSAGES_BUTTON.style.backgroundColor = "#ffff00";';
+        echo '</script>';
+    }
+    mysqli_free_result($result);
+}
+
 function checkMachineIdIsSet($conn) {
     if (!isset($_GET['machineID']) || !is_numeric($_GET['machineID'])) {
         $_GET['machineID'] = 1;
@@ -23,6 +35,11 @@ function formatDate($timestamp) {
     $date = date_format($date_object, 'D, j M');
     $time = date_format($date_object, 'G:i a');
     return "{$date} at {$time}";
+}
+
+function timestampNow() {
+    $date_object = new DateTime('now', new DateTimeZone('Australia/Adelaide'));
+    return date_format($date_object, 'Y-m-d H:i:s');
 }
 
 function redirectToDashboardIfLoggedIn() {
@@ -54,4 +71,12 @@ function setBannerColourAndMessage($conn) {
         echo '</script>';
     }
     mysqli_free_result($result);
+}
+
+function warnIfActive() {
+    if (isset($_GET['active'])) {
+        echo '<script>';
+            echo '[...document.getElementsByClassName("menu-item")].forEach(element => {element.onclick = ()=> {return confirm("Are you sure you want to leave this page?");}});';
+        echo '</script>';
+    }
 }
