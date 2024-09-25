@@ -20,7 +20,7 @@
         <div id="message-button-container">
             <a class="message-button red-hover" href="../system/delete-all-messages.php?machineID=<?php echo $_GET['machineID']; ?>&delete_all=1" onclick="return confirm('Are you sure you want to delete all your messages?')">Delete All Messages</a>
             <a class="message-button" href="../system/mark-all-read-messages.php?machineID=<?php echo $_GET['machineID']; ?>&read_all=1">Mark All Read</a>
-            <a class="message-button" href="new-message.php?machineID=<?php echo $_GET['machineID']; ?>">New Message</a>
+            <a class="message-button" href="new-message.php?machineID=<?php echo $_GET['machineID']; ?>&active=1">New Message</a>
         </div>
         <?php 
             $sql = "SELECT * FROM Message WHERE recipientID = {$_SESSION['id']} ORDER BY timestamp DESC;";

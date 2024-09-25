@@ -72,3 +72,11 @@ function setBannerColourAndMessage($conn) {
     }
     mysqli_free_result($result);
 }
+
+function warnIfActive() {
+    if (isset($_GET['active'])) {
+        echo '<script>';
+            echo '[...document.getElementsByClassName("menu-item")].forEach(element => {element.onclick = ()=> {return confirm("Are you sure you want to leave this page?");}});';
+        echo '</script>';
+    }
+}

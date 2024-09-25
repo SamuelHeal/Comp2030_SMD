@@ -4,7 +4,7 @@ function appendButtons($message) {
     echo "<a class=\"message-button\" href=\"messages.php?machineID={$_GET['machineID']}\">Back</a>";
     echo "<a id=\"message-button-mark-unread\" class=\"message-button\" href=\"../system/message.php?machineID={$_GET['machineID']}&messageID={$_GET['messageID']}\">$unread_inner_text</a>";
     echo "<a id=\"message-button-delete\" class=\"message-button red-hover\" href=\"../system/delete-message.php?machineID={$_GET['machineID']}&messageID={$_GET['messageID']}\" onclick=\"return confirm('Are you sure you want to delete this message?')\">Delete</a>";
-    echo "<a class=\"message-button\" href=\"new-message.php?machineID={$_GET['machineID']}&recipientID={$message['authorID']}&reply=1&subject={$message['subject']}\">Reply</a>";
+    echo "<a class=\"message-button\" href=\"new-message.php?machineID={$_GET['machineID']}&active=1&recipientID={$message['authorID']}&reply=1&subject={$message['subject']}\">Reply</a>";
 }
 
 function getMessage($conn) {

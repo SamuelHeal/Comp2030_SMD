@@ -35,4 +35,7 @@
         <a class="menu-item" href="../system/logout.php?machineID=<?php echo $_GET['machineID'] ?>">Logout</a>
     </div>
 </nav>
-<?php checkForMessages($conn); ?>
+<?php
+    checkForMessages($conn);
+    warnIfActive();
+?>
