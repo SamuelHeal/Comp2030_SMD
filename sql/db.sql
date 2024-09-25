@@ -77,8 +77,10 @@ CREATE TABLE Note(
     category VARCHAR(100) NOT NULL,
     priority INTEGER NOT NULL,
     timeCreated DATETIME NOT NULL,
+    personID INTEGER NOT NULL,
     description VARCHAR(1000),
     PRIMARY KEY (noteID),
+    FOREIGN KEY (personID) REFERENCES Person(personID),
     FOREIGN KEY (jobID) REFERENCES Job(jobID)
 );
 

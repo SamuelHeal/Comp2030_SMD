@@ -609,6 +609,537 @@ h1 {
     color: #fffafa;
 }
 
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70vw;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.header-container h1 {
+    width: 100%;
+}
+
+.header-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.header-links a {
+    text-decoration: none;
+    width: 120px;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    margin: 0px 10px 0px 10px;
+    padding: 10px;
+    background-color: #212c58;
+    border-radius: 7px;
+    border: 1px solid #212c58;
+}
+
+.header-links a:hover {
+    background-color: #faf8f6;
+    color: #212c58;
+}
+
+.jobs-container {
+    margin: auto;
+    margin-top: 40px;
+    height: 55vh;
+    width: 75vw;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.job-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    margin: auto;
+}
+
+.job {
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    width: 100%;
+    color: #212c58;
+    margin: 10px;
+}
+
+.complete {
+    background-color: rgb(195, 192, 192);
+}
+
+.job-id {
+    width: 10%;
+    height: 100%;
+    border-right: 1px solid #212c58;
+    border-radius: 7px;
+    text-align: center;
+    padding: 15px;
+}
+
+.job-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 0px 20px 0px 20px;
+    justify-content: space-between;
+}
+
+.job-info p {
+    width: 20%;
+    font-size: 80%;
+
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 80%;
+    width: 30% !important;
+}
+
+.priority {
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    padding: 10px;
+    width: 40px !important;
+    height: 40px;
+    text-align: center;
+}
+
+.job p {
+    margin: 10px;
+}
+
+.job:hover {
+    background-color: #212c58;
+}
+
+.job:hover p {
+    color: #faf8f6;
+}
+
+.job:hover .priority {
+    border: 1px solid #faf8f6;
+}
+
+.job:hover .jobID {
+    border-right: 1px solid #faf8f6;
+}
+
+.create-job-form {
+    width: 70vw;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.create-job-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.create-job-form form input[type='submit']:hover {
+    color: #212c58;
+    background-color: #faf8f6;
+}
+
+
+.inner-job-form {
+    width: 80%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-job-form label {
+    margin: 0px 0px 5px 0px;
+}
+
+.inner-job-form textarea {
+    width: 100%;
+    min-height: 50px;
+    height: 80%;
+    margin-bottom: 20px;
+}
+
+.select-dropdown,
+.select-dropdown * {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.select-dropdown {
+    position: relative;
+    background-color: #E6E6E6;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.select-dropdown select {
+    font-size: 1rem;
+    font-weight: normal;
+    width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    appearance: none;
+}
+.select-dropdown select:active, .select-dropdown select:focus {
+    outline: none;
+    box-shadow: none;
+}
+.select-dropdown:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #aaa;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.create-job-form form input[type='submit'] {
+    align-self: flex-end;
+    text-decoration: none;
+    width: 100px;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    padding: 10px;
+    background-color: #212c58;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.handle-job {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 40vh;
+    margin: auto;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.handle-job .delete-buttons {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.handle-job a {
+    display: block;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    margin: 0px 10px 0px 10px;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.delete-button {
+    margin: 30px;
+    background-color: red;
+    border: 1px solid red;
+}
+
+.delete-button:hover {
+    background-color: rgb(181, 6, 6);
+    border: 1px solid rgb(181, 6, 6);
+}
+
+.cancel-button {
+    margin: 30px;
+    background-color: #212c58;
+    border: 1px solid #212c58;
+}
+
+.cancel-button:hover {
+    background-color: #faf8f6;
+    color: #212c58;
+}
+
+.restore-button {
+    margin: 30px;
+    background-color: green;
+    border: 1px solid green;
+}
+
+.restore-button:hover {
+    background-color: rgb(6, 86, 6);
+    border: 1px solid rgb(6, 86, 6);
+}
+
+.hide {
+    display: none;
+}
+
+.task-note-header {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-note-header a {
+    display: block;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+    font-size: 18px;
+    color: #faf8f6;
+    margin: 0px 10px 0px 10px;
+    padding: 10px;
+    background-color: #212c58;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+}
+
+.task-note-header a:hover {
+    background-color: #faf8f6;
+    color: #212c58;
+}
+
+.task-notes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.notes {
+    margin-top: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    width: 90%;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+}
+
+.note {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    border-bottom: 1px solid #212c58;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.note span {
+    text-align: center;
+    width: 23%;
+} 
+
+.note .name {
+    font-size: 90%;
+}
+
+.note .time-created {
+    font-size: 70%;
+}
+
+.note .category {
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.note .note-priority {
+    font-size: 90%;
+}
+
+.note:hover {
+    background-color: #212c58;
+}
+
+.note:hover span {
+    color: #faf8f6;
+}
+
+.note-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 40%;
+    min-width: 500px;
+    margin: auto;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+    padding: 20px;
+    margin-top: 20px
+}
+
+.note-container .note-header {
+    display: flex;
+    /* justify-content: top; */
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+
+}
+ 
+.note-container h3 {
+    margin-top: 10px;
+} 
+
+.note-container p {
+    margin-bottom: 10px;
+} 
+
+
+.note-container .note-description {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    height: 100%;
+}
+
+.note-container .note-description .description {
+    display: block;
+    width: 100%;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    height: 100%;
+    padding: 10px 5px 10px 5px;
+}
+
+.job-container {
+    width: 70vw;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+    padding: 20px 20px 40px 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.job-container .job-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 10px 20px 20px 20px;
+}
+
+.job-container .job-info-container h3 {
+    margin: 20px 0px 5px 0px;
+}
+
+.job-info-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.job-info-container form input[type='submit'] {
+    align-self: flex-end;
+    text-decoration: none;
+    font-size: 80%;
+    width: 100px;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    padding: 7px;
+    background-color: #212c58;
+    border-radius: 7px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.job-info-container form input[type='submit']:hover {
+    color: #212c58;
+    background-color: #faf8f6;
+}
+
+.no-margin {
+    margin-bottom: 0px;
+}
+
+@media (max-width: 1000px) {
+    .create-job-form {
+        flex-direction: column;
+    }
+
+    .create-job-form form {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .task-notes {
+        margin-top: 20px;
+        height: 300px;
+    }
+
+    .note span {
+        width: auto;
+    }
+
+    .remove-margin {
+        margin-bottom: 0px !important;
+    }
+
+    .job-container {
+        flex-direction: column;
+    }
+
+    .job-container .job-info-container {
+        margin: auto
+    }
+    
+}
+
 @media (min-width: 1000px) {
     h1 {
         width: 64%;
@@ -725,421 +1256,7 @@ h1 {
     #unauthorised-container {
         width: 64%;
     }
+
 }
 
 
-.headerContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 50vw;
-    margin: auto;
-    margin-top: 20px;
-}
-
-.headerContainer h1 {
-    width: 100%;
-}
-
-.headerLinks {
-    display: flex;
-    flex-direction: row;
-}
-
-.headerLinks a {
-    text-decoration: none;
-    width: 75px;
-    text-align: center;
-    font-size: 20px;
-    color: #faf8f6;
-    margin: 0px 10px 0px 10px;
-    padding: 10px;
-    background-color: #212c58;
-    border-radius: 7px;
-}
-
-.jobList {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 60vw;
-    margin: auto;
-    margin-top: 40px;
-}
-
-.job {
-    text-decoration: none;
-    font-size: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-    border: 1px solid #212c58;
-    border-radius: 7px;
-    width: 100%;
-    color: #212c58;
-    margin: 10px;
-}
-
-.complete {
-    background-color: rgb(195, 192, 192);
-}
-
-.jobID {
-    width: 10%;
-    height: 100%;
-    border-right: 1px solid #212c58;
-    border-radius: 7px;
-    text-align: center;
-    padding: 15px;
-}
-
-.jobInfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    padding: 0px 20px 0px 20px;
-    justify-content: space-between;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.priority {
-    border: 1px solid #212c58;
-    border-radius: 7px;
-    padding: 10px;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-}
-
-.job p {
-    margin: 10px;
-}
-
-.job:hover {
-    background-color: #212c58;
-}
-
-.job:hover p {
-    color: #faf8f6;
-}
-
-.job:hover .priority {
-    border: 1px solid #faf8f6;
-}
-
-.job:hover .jobID {
-    border-right: 1px solid #faf8f6;
-}
-
-.createJobForm {
-    width: 60vw;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    border: 2px solid #212c58;
-    border-radius: 50px;
-    padding: 20px 20px 40px 20px;
-    display: flex;
-    flex-direction: row;
-}
-
-.createJobForm form {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.innerJobForm {
-    width: 80%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.innerJobForm label {
-    margin: 0px 0px 5px 0px;
-}
-
-.innerJobForm textarea {
-    width: 100%;
-    min-height: 50px;
-    height: 80%;
-    margin-bottom: 20px;
-}
-
-.select-dropdown,
-.select-dropdown * {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-.select-dropdown {
-    position: relative;
-    background-color: #E6E6E6;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
-.select-dropdown select {
-    font-size: 1rem;
-    font-weight: normal;
-    width: 100%;
-    padding: 8px 24px 8px 10px;
-    border: none;
-    background-color: transparent;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    appearance: none;
-}
-.select-dropdown select:active, .select-dropdown select:focus {
-    outline: none;
-    box-shadow: none;
-}
-.select-dropdown:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 8px;
-    width: 0;
-    height: 0;
-    margin-top: -2px;
-    border-top: 5px solid #aaa;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-}
-
-.createJobForm form input[type='submit'] {
-    align-self: flex-end;
-    text-decoration: none;
-    width: 100px;
-    border: none;
-    text-align: center;
-    font-size: 20px;
-    color: #faf8f6;
-    padding: 10px;
-    background-color: #212c58;
-    border-radius: 7px;
-    cursor: pointer;
-}
-
-.handleJob {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    height: 40vh;
-    margin: auto;
-    margin-top: 20px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.handleJob .deleteButtons {
-    margin: 20px;
-    display: flex;
-    flex-direction: row;
-}
-
-.handleJob a {
-    display: block;
-    text-decoration: none;
-    width: 100px;
-    text-align: center;
-    font-size: 20px;
-    color: #faf8f6;
-    margin: 0px 10px 0px 10px;
-    padding: 10px;
-    border-radius: 7px;
-}
-
-.deleteButton {
-    margin: 30px;
-    background-color: red;
-}
-
-.cancelButton {
-    margin: 30px;
-    background-color: #212c58;
-}
-
-.restoreButton {
-    margin: 30px;
-    background-color: green;
-}
-
-.hide {
-    display: none;
-}
-
-.taskNoteHeader {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.taskNoteHeader a {
-    display: block;
-    text-decoration: none;
-    width: 80px;
-    text-align: center;
-    font-size: 18px;
-    color: #faf8f6;
-    margin: 0px 10px 0px 10px;
-    padding: 10px;
-    background-color: #212c58;
-    border-radius: 7px;
-}
-
-.taskNotes {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 10px;
-}
-
-.notes {
-    margin-top: 20px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 100%;
-    width: 90%;
-    border: 2px solid #212c58;
-    border-radius: 7px;
-}
-
-.note {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    cursor: pointer;
-    width: calc(100% - 40px);
-    border-bottom: 1px solid #212c58;
-    padding: 20px;
-    text-decoration: none;
-}
-
-.note .timeCreated {
-    font-size: 90%;
-}
-
-.note .category {
-    font-size: 110%;
-    font-weight: bold;
-}
-
-.note .notePriority {
-    font-size: 110%;
-}
-
-.noteContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 40%;
-    margin: auto;
-    border: 2px solid #212c58;
-    border-radius: 7px;
-    padding: 20px;
-    margin-top: 20px
-}
-
-.noteContainer .noteHeader {
-    display: flex;
-    width: 50%;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-}
- 
-.noteContainer .noteHeader h3 {
-    margin: 20px 0px 5px 0px;
-} 
-
-
-.noteContainer .noteDescription {
-    display: flex;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.noteContainer .noteDescription p {
-    display: block;
-    width: 80%;
-    border: 1px solid #212c58;
-    border-radius: 7px;
-    height: 100%;
-    margin-top: 20px;
-    padding: 20px;
-}
-
-.jobContainer {
-    max-height: 40vh;
-    width: 60vw;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    border: 2px solid #212c58;
-    border-radius: 50px;
-    padding: 20px 20px 40px 20px;
-    display: flex;
-    flex-direction: row;
-}
-
-.jobContainer .jobInfoContainer {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    padding: 10px 20px 20px 20px;
-}
-
-.jobContainer .jobInfoContainer h3 {
-    margin: 20px 0px 5px 0px;
-}
-
-.jobInfoContainer form {
-    display: flex;
-    flex-direction: column;
-}
-
-.formItems {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.jobInfoContainer form input[type='submit'] {
-    align-self: flex-end;
-    text-decoration: none;
-    font-size: 80%;
-    width: 100px;
-    border: none;
-    text-align: center;
-    font-size: 20px;
-    color: #faf8f6;
-    padding: 7px;
-    background-color: #212c58;
-    border-radius: 7px;
-    margin-left: 5px;
-    cursor: pointer;
-}
-
-.noMargin {
-    margin-bottom: 0px;
-}

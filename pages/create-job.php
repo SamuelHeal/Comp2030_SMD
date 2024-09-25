@@ -8,34 +8,30 @@
     <script src="../scripts/banner.js"></script>
 </head>
 <body>
-    <?php
-        require_once '../include/functions.php';
-        require_once '../include/database.php';
-        require_once '../include/check-authorisation.php';
-        checkMachineIdIsSet($conn);
-        require_once '../include/menu.php';
-        setBannerColour($conn);
+<?php
+        require_once '../include/page-defaults.php';
+        require_once '../scripts/jobs.php';
     ?>
     <div id=body-container>
     <?php 
-    echo "<div class='headerContainer'>";
+    echo "<div class='header-container'>";
     echo "<h1>Create Job</h1>";
-    echo "<div class='headerLinks'>";
+    echo "<div class='header-links'>";
     echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Cancel</a>";
     echo "</div>";
     echo "</div>";
-    echo "<div class='createJobForm'>";
+    echo "<div class='create-job-form'>";
     echo "<form action='../system/create-job.php?machineID=" . $_GET['machineID'] . "' method='POST'>";
-    echo "<div class='innerJobForm'>";
+    echo "<div class='inner-job-form'>";
     echo "<label for='machine'>Machine:</label> ";
     echo "<div class='select-dropdown'>";
     echo "<select id='machine' name='machine' required>";
     getMachinesForJob($conn);
     echo "</select>";
     echo "</div>";
-    echo "<label for='opeartor'>Operator:</label>";
+    echo "<label for='operator'>Operator:</label>";
     echo "<div class='select-dropdown'>";
-    echo "<select class='select-dropdown' id='operator' name='operator' required>";
+    echo "<select id='operator' name='operator' required>";
     getOperatorsForJob($conn);
     echo "</select>";
     echo "</div>";
@@ -48,7 +44,7 @@
     echo "</select>";
     echo "</div>";
     echo "</div>";
-    echo "<div class='innerJobForm'>";
+    echo "<div class='inner-job-form'>";
     echo "<label for='description'>Description:</label>";
     echo "<textarea id='description' name='description' required></textarea>";
     echo "<input name='submit' type='submit' value='Submit' />";

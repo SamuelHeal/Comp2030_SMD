@@ -10,29 +10,30 @@
 <body>
     <?php
         require_once '../include/page-defaults.php';
-        mysqli_close($conn);
+        require_once '../scripts/jobs.php';
     ?>
     <div id=body-container>
     <?php 
-    echo "<div class='headerContainer'>";
+    echo "<div class='header-container'>";
     echo "<h1>Current Jobs</h1>";
     if ($_SESSION['position'] == "Factory Manager") {
-        echo "<div class='headerLinks'>";
+        echo "<div class='header-links'>";
         echo "<a href='create-job.php?machineID=" . $_GET['machineID'] . "'>Create</a>";
         echo "<a href='job-history.php?machineID=" . $_GET['machineID'] . "'>History</a>";
         echo "</div>";
         echo "</div>";
-        echo "<div class='managerJobs'>";
+        echo "<div class='jobs-container'>";
         getJobsManager($conn);
+        echo "</div>";
     } else if ($_SESSION['position'] == "Production Operator") {
-        echo "<div class='headerLinks'>";
+        echo "<div class='header-links'>";
         echo "<a href='job-history.php?machineID=" . $_GET['machineID'] . "'>History</a>";
         echo "</div>";
         echo "</div>";
-        echo "<div class='operatorJobs'>";
+        echo "<div class='jobs-container'>";
         getJobsOperator($conn);
+        echo "</div>";
     }
-    echo "</div>";
     ?>
     </div>
 </body>

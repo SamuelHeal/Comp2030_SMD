@@ -8,28 +8,24 @@
     <script src="../scripts/banner.js"></script>
 </head>
 <body>
-    <?php
-        require_once '../include/functions.php';
-        require_once '../include/database.php';
-        require_once '../include/check-authorisation.php';
-        checkMachineIdIsSet($conn);
-        require_once '../include/menu.php';
-        setBannerColour($conn);
+<?php
+        require_once '../include/page-defaults.php';
+        require_once '../scripts/jobs.php';
     ?>
     <div id=body-container>
     <?php 
-    echo "<div class='headerContainer'>";
+    echo "<div class='header-container'>";
     echo "<h1>Job History</h1>";
-    echo "<div class='headerLinks'>";
+    echo "<div class='header-links'>";
     echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Back</a>";
     echo "</div>";
     echo "</div>";
     if ($_SESSION['position'] == "Factory Manager") {
-        echo "<div class='managerJobs'>";
+        echo "<div class='jobs-container'>";
         getJobHistoryManager($conn);
         echo "</div>";
     } else {
-        echo "<div class='operatorJobs'>";
+        echo "<div class='jobs-container'>";
         getJobHistoryOperator($conn);
         echo "</div>";
     }

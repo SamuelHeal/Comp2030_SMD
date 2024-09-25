@@ -2,10 +2,10 @@
     if (isset($_POST['submit'])) { 
 
         require_once '../include/database.php';
-        $sql = "INSERT INTO Job (description, machineID, OperatorID, priority, status, timeUpdated) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO Job (description, machineID, OperatorID, priority, timeUpdated) VALUES (?, ?, ?, ?, ?)";
         $statement = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($statement, $sql);
-        mysqli_stmt_bind_param($statement, "siiiss", $description, $machineID, $OperatorID, $priority, $status, $timeUpdated); 
+        mysqli_stmt_bind_param($statement, "siiis", $description, $machineID, $OperatorID, $priority, $timeUpdated); 
        
         // Get the form data 
         $description = htmlspecialchars($_POST['description']); 
@@ -15,7 +15,6 @@
         $OperatorID = htmlspecialchars($_POST['operator']);  
         // $OperatorID = 1;
         $priority = htmlspecialchars($_POST['priority']); 
-        $status = "In Progress";
         $timeUpdated = date("Y-m-d H:i:s");
 
         // Execute the SQL statement 
