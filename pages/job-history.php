@@ -18,16 +18,19 @@
     ?>
     <div id=body-container>
     <?php 
-    // session_start();
+    echo "<div class='headerContainer'>";
+    echo "<h1>Job History</h1>";
+    echo "<div class='headerLinks'>";
+    echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Back</a>";
+    echo "</div>";
+    echo "</div>";
     if ($_SESSION['position'] == "Factory Manager") {
-        echo "<div class='headerContainer'>";
-        echo "<h1>Job History</h1>";
-        echo "<div class='headerLinks'>";
-        echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Back</a>";
-        echo "</div>";
-        echo "</div>";
         echo "<div class='managerJobs'>";
         getJobHistoryManager($conn);
+        echo "</div>";
+    } else {
+        echo "<div class='operatorJobs'>";
+        getJobHistoryOperator($conn);
         echo "</div>";
     }
     ?>

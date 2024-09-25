@@ -19,10 +19,11 @@
     ?>
     <div id=body-container>
     <?php 
+    $jobID = $_GET['id'];
     if ($_SESSION['position'] == "Factory Manager") {
-        $jobID = $_GET['id'];
-        
         getJobManager($conn, $jobID);
+    } else if ($_SESSION['position'] == "Production Operator") {
+        getJobOperator($conn, $jobID);
     }
     ?>
     </div>

@@ -97,8 +97,11 @@ function getJobsManager($conn) {
         if ($rows = mysqli_num_rows($result)) {
             echo "<div class='jobList'>";
             while ($row = mysqli_fetch_assoc($result)) {
-                // echo "<div >";
-                echo "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $_GET['machineID']. "'>";
+                if ($row['status'] == 'Completed') {
+                    echo "<a class='job complete' href='job.php?id=" . $row['jobID'] . "&machineID=" . $_GET['machineID']. "'>";
+                } else {
+                    echo "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $_GET['machineID']. "'>";
+                }
                 echo "<div class='jobID'>";
                 echo "<p>" . $row['jobID'];
                 echo "</div>";
@@ -116,7 +119,41 @@ function getJobsManager($conn) {
                 }
                 echo "</div>";
                 echo "</a>";
-                // echo "</div>";
+            };
+            echo "</div>";
+            mysqli_free_result($result);
+        }
+    }
+    echo "</div>";
+}
+
+function getJobsOperator($conn) {
+    $sql = "SELECT Job.jobID, Job.priority, Job.status, Machine.name, Person.firstname, Person.lastname FROM Job INNER JOIN Machine ON Job.machineID=Machine.machineID INNER JOIN Person on Job.OperatorID=Person.personID WHERE Job.completed=0 AND Job.OperatorID=" . $_SESSION['id'];
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            echo "<div class='jobList'>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($row['status'] == 'Completed') {
+                    echo "<a class='job complete' href='job.php?id=" . $row['jobID'] . "&machineID=" . $_GET['machineID']. "'>";
+                } else {
+                    echo "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $_GET['machineID']. "'>";
+                }
+                echo "<div class='jobID'>";
+                echo "<p>" . $row['jobID'];
+                echo "</div>";
+                echo "<div class='jobInfo'>";
+                echo "<p class='bold'>" . $row['name'];
+                echo "<p>" . $row['status'];
+
+                if ($row['priority'] == 1) {
+                    echo "<p class='priority'>!</p>";
+                } else if ($row['priority'] == 2) {
+                    echo "<p class='priority'>!!</p>";
+                } else {
+                    echo "<p class='priority'>!!!</p>";
+                }
+                echo "</div>";
+                echo "</a>";
             };
             echo "</div>";
             mysqli_free_result($result);
@@ -151,6 +188,37 @@ function getJobHistoryManager($conn) {
                 echo "</div>";
                 echo "</a>";
                 // echo "</div>";
+            };
+            echo "</div>";
+            mysqli_free_result($result);
+        }
+    }
+    echo "</div>";
+}
+
+function getJobHistoryOperator($conn) {
+    $sql = "SELECT Job.jobID, Job.priority, Job.status, Machine.name, Person.firstname, Person.lastname FROM Job INNER JOIN Machine ON Job.machineID=Machine.machineID INNER JOIN Person on Job.OperatorID=Person.personID WHERE Job.completed=1 AND Job.OperatorID=" . $_SESSION['id'];
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            echo "<div class='jobList'>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $_GET['machineID'] . "'>";
+                echo "<div class='jobID'>";
+                echo "<p>" . $row['jobID'];
+                echo "</div>";
+                echo "<div class='jobInfo'>";
+                echo "<p class='bold'>" . $row['name'];
+                echo "<p>" . $row['status'];
+
+                if ($row['priority'] == 1) {
+                    echo "<p class='priority'>!</p>";
+                } else if ($row['priority'] == 2) {
+                    echo "<p class='priority'>!!</p>";
+                } else {
+                    echo "<p class='priority'>!!!</p>";
+                }
+                echo "</div>";
+                echo "</a>";
             };
             echo "</div>";
             mysqli_free_result($result);
@@ -228,7 +296,7 @@ function getStatusSelection($selectedStatus) {
         if ($options[$i] == $selectedStatus) {
             echo "<option selected='selected' value='" . $selectedStatus . "'>" . $options[$i] . "</option>";
         } else {
-            echo "<option value='" . $i . "'>" . $options[$i] . "</option>";
+            echo "<option value='" . $options[$i] . "'>" . $options[$i] . "</option>";
         }
     }
 }
@@ -292,7 +360,7 @@ function getJobManager($conn, $jobID) {
             getStatusSelection($job['status']);
             echo "</select>";
             echo "</div>";
-            echo "<input name='submit' type='submit' value='submit' />";
+            echo "<input name='submit' type='submit' value='Update' />";
             echo "</div>";
             echo "</form>";
             echo "<div class='taskNotes'>";
@@ -308,6 +376,62 @@ function getJobManager($conn, $jobID) {
         }
     }
 }
+
+function getJobOperator($conn, $jobID) {
+    $sql = 'SELECT Job.description, Job.jobID, Job.priority, Job.OperatorID, Job.machineID, Job.status, Job.completed, Person.firstname, Person.lastname, Machine.name FROM Job INNER JOIN Person ON Person.personID = Job.OperatorID INNER JOIN Machine ON Machine.machineID = Job.machineID WHERE Job.jobID = ' . $jobID;
+    if ($result = mysqli_query($conn, $sql) ) {
+        if ($rows = mysqli_num_rows($result)) {
+            $job = mysqli_fetch_assoc($result);
+            echo "<div class='headerContainer'>";
+                echo "<h1> Job: " . $job['jobID'] . "</h1>";
+                echo "<div class='headerLinks'>";
+                    echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Back</a>";
+                echo "</div>";
+            echo "</div>";
+            echo "<div class=jobContainer>";
+                echo "<div class=jobInfoContainer>";
+                    echo "<h3>Description:</h3>";
+                    echo "<p>" . $job['description'] . "</p>";
+                    echo "<h3>Machine:</h3>";
+                    echo "<p>" . $job['name'] . "</p>";
+                    echo "<h3>Priority:</h3>";
+                    echo "<p>";
+                    if ($job['priority'] == 1) {
+                        echo "Low";
+                    } else if ($job['priority'] == 2) {
+                        echo "Medium";
+                    } else {
+                        echo "High";
+                    }
+                    echo "</p>";
+                    echo "<form action='../system/update-job.php?jobID=" . $jobID . "&machineID=" . $_GET['machineID'] . "' method='POST'>";
+                    echo "<h3>Status:</h3>";
+                    echo "<div class='formItems'>";
+                    echo "<div class='select-dropdown noMargin'>";
+                    echo "<select id='status' name='status' required>";
+                    getStatusSelection($job['status']);
+                    echo "</select>";
+                    echo "</div>";
+                    echo "<input name='submit' type='submit' value='Update' />";
+                    echo "</div>";
+                    
+                    echo "</form>";
+                echo "</div>";
+                echo "<div class='taskNotes'>";
+                    echo "<div class='taskNoteHeader'>";
+                        echo "<h3>Task Notes</h3>";
+                        echo "<a href='create-note.php?jobID=" . $jobID . "&machineID=" . $_GET['machineID']. "'>Add Note</a>";
+                    echo "</div>";
+                    echo "<div class='notes'>";
+                        getTaskNotes($conn, $jobID);
+                    echo "</div>";
+                echo "</div>";
+            echo "</div>";
+        }
+    }
+}
+
+
 
 function getTaskNotes($conn, $jobID) {
     $sql = 'SELECT noteID, jobID, timeCreated, category, description, priority FROM Note WHERE jobID = ' . $jobID;

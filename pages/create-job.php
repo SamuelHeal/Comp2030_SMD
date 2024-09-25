@@ -51,7 +51,7 @@
     echo "<div class='innerJobForm'>";
     echo "<label for='description'>Description:</label>";
     echo "<textarea id='description' name='description' required></textarea>";
-    echo "<input name='submit' type='submit' value='submit' />";
+    echo "<input name='submit' type='submit' value='Submit' />";
     echo "</div>";
     echo "</form>";
     echo "</div>";

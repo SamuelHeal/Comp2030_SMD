@@ -18,10 +18,9 @@
     ?>
     <div id=body-container>
     <?php 
-    // session_start();
+    echo "<div class='headerContainer'>";
+    echo "<h1>Current Jobs</h1>";
     if ($_SESSION['position'] == "Factory Manager") {
-        echo "<div class='headerContainer'>";
-        echo "<h1>Current Jobs</h1>";
         echo "<div class='headerLinks'>";
         echo "<a href='create-job.php?machineID=" . $_GET['machineID'] . "'>Create</a>";
         echo "<a href='job-history.php?machineID=" . $_GET['machineID'] . "'>History</a>";
@@ -29,8 +28,15 @@
         echo "</div>";
         echo "<div class='managerJobs'>";
         getJobsManager($conn);
+    } else if ($_SESSION['position'] == "Production Operator") {
+        echo "<div class='headerLinks'>";
+        echo "<a href='job-history.php?machineID=" . $_GET['machineID'] . "'>History</a>";
         echo "</div>";
+        echo "</div>";
+        echo "<div class='operatorJobs'>";
+        getJobsOperator($conn);
     }
+    echo "</div>";
     ?>
     </div>
 </body>
