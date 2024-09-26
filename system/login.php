@@ -8,7 +8,7 @@ $home = array(
 
 if (isset($_POST['login'])) { 
     require_once '../include/database.php';
-    $sql = 'SELECT personid, firstname, lastname, position, pin FROM Person;';
+    $sql = 'SELECT personid, firstname, lastname, position, pin FROM Person WHERE NOT isArchived;'; // Do not get archived users
     $result = mysqli_query($conn, $sql);
     if ($result && $rows = mysqli_num_rows($result)) {
         while ($assoc = mysqli_fetch_assoc($result)) {

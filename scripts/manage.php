@@ -1,5 +1,8 @@
 <?php 
-function appendUserToList($assoc) {
+
+function appendUserToList($assoc, $machineID) {
+    $archivedOrActive = $assoc['isArchived'] ? 'archived-user' : 'active-user';
+    echo "<div class=\"$archivedOrActive user-container\" data-personid=\"{$assoc['personID']}\" data-machineid=\"{$machineID}\">";
     echo '<li>';
         echo "<div class=\"list-label\">{$assoc['firstName']} {$assoc['lastName']}</div>";
         echo '<table class="users-table">';
@@ -17,11 +20,13 @@ function appendUserToList($assoc) {
             echo '</tr>';
             echo '<tr>';
             if ($assoc['isArchived']) echo "<td>Archived At: {$assoc['archivedAt']}</td>"; // Only display archived date if user is archived
-            if ($assoc['lastActiveTime'] && $assoc['machineName']) 
-                echo "<td>Last Active: {$assoc['lastActiveTime']} At {$assoc['machineName']}</td>"; // Only display last active if set
             echo '</tr>';
         echo '</table>';
+        // Archive button (only if user is not archived)
+        if (!$assoc['isArchived']) echo "<button class=\"archive-button\" onclick=\"confirmArchive({$assoc['personID']}, '{$assoc['firstName']}', '{$assoc['lastName']}', {$machineID})\">Archive User</button>";
     echo '</li>';
+    echo '<div class="edit-overlay">Edit User?</div>';
+    echo '</div>';
 }
 
 ?>

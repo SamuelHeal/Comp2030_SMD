@@ -24,6 +24,11 @@ CREATE TABLE Person(
     phoneNumber VARCHAR(100) NOT NULL,
     position VARCHAR(100) NOT NULL,
     PIN VARCHAR(255) NOT NULL,
+    isArchived BOOLEAN DEFAULT FALSE,
+    archivedAt DATETIME DEFAULT NULL,
+    lastActiveTime DATETIME DEFAULT NULL,
+    lastActiveMachineID INTEGER DEFAULT NULL,
+    FOREIGN KEY(lastActiveMachineID) REFERENCES Machine(machineID),
     PRIMARY KEY (personID)
 );
 
