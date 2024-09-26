@@ -26,6 +26,7 @@
     <div class="form-container">
 
         <form class="user-details-form" action="../system/create-user.php" method="POST">
+        <input type="hidden" name="machineID" value="<?php echo htmlspecialchars($machineID); ?>" />
             <div id="firstname-input">
             <label class="user-details-form-label" for="firstname">First Name:</label> 
             <input class="user-details-form-input" id="firstname" name="firstname" type="text" required/>
