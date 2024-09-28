@@ -256,7 +256,7 @@ function getJobManager($conn, $jobID) {
                 echo "</div>";
             echo "</div>";
             echo "<div class='create-job-form'>";
-                echo "<form action='../system/update-job.php?jobID=" . $jobID . "' method='POST'>";
+                echo "<form action='../system/update-job.php?machineID={$_GET['machineID']}&jobID=" . $jobID . "' method='POST'>";
                 echo "<div class='inner-job-form'>";
                     echo "<label for='description'>Description:</label>";
                     echo "<textarea id='description' name='description' required>" . $job['description']. "</textarea>";

@@ -15,7 +15,7 @@
     <div id=body-container>
     <?php 
     
-    $jobID = $_GET['id'];
+    $jobID = $_GET['noteID'];
     
     getNote($conn);
     

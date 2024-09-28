@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Jobs | SMD</title>
+    <title>Create Note | SMD</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="../styles/style.css">
