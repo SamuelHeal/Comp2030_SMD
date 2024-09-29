@@ -80,9 +80,9 @@ function getJobHistoryManager($conn) {
         if ($rows = mysqli_num_rows($result)) {
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($row['status'] == 'Completed') {
-                    echo "<a class='job complete' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "'>";
+                    echo "<a class='job complete' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "&history=true'>";
                 } else {
-                    echo "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "'>";
+                    echo "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "&history=true'>";
                 }
                 
                 echo 

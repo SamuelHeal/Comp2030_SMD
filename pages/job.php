@@ -32,7 +32,7 @@
             <?php echo "<h1> Job: " . $job['jobID'] . "</h1>"; ?>
             <div class='header-links'>
                 <?php 
-                if ($_GET['history'] == 'true') {
+                if (isset($_GET['history']) && $_GET['history'] === 'true') {
                     echo "<a href='job-history.php?machineID=" . $machineID . "'>Back</a>";
                 } else {
                     echo "<a href='jobs.php?machineID=" . $machineID . "'>Back</a>";
