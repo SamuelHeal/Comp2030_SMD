@@ -6,6 +6,7 @@
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../scripts/banner.js"></script>
+    <script src="../scripts/job-utils.js"></script>
 </head>
 <body>
     <?php
@@ -17,7 +18,15 @@
         <div class='header-container'>
             <h1>Create Task Note</h1>
             <div class='header-links'>
-                <?php echo "<a href='job.php?id=" . $jobID . "&machineID=" . $machineID . "'>Cancel</a> ?>"; ?>
+                <a href='javascript:;' onClick='cancelCreate()'>Cancel</a>
+            </div>
+        </div>
+
+        <div id='cancel-create' class='handle-job hide'>
+            <h2>Are you sure you want to cancel?</h2>
+            <div class='delete-buttons'>
+                <a class='cancel-button' href='javascript:;' onclick='cancelCancel()'>No</a>
+                <?php echo "<a class='delete-button' href='../pages/job.php?id=" . $jobID . "&machineID=" . $machineID . "'>Yes</a>"; ?>
             </div>
         </div>
         

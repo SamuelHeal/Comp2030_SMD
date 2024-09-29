@@ -6,7 +6,7 @@
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../scripts/banner.js"></script>
-    <script src="../scripts/delete-job.js"></script>
+    <script src="../scripts/job-utils.js"></script>
 </head>
 <body>
     <?php
@@ -52,7 +52,7 @@
                 ?>
             </div>
         </div>
-        <div class='delete-job handle-job hide'>
+        <div id='delete-job' class='handle-job hide'>
             <?php
             if ($job['completed'] == 0) {
                 if ($job['status'] == 'Completed') {
@@ -67,7 +67,7 @@
                 <?php echo "<a class='delete-button' href='../system/delete-job.php?jobID=" . $jobID . "&machineID=" . $machineID . "&status=" . $job['status'] . "'>Yes</a>"; ?>
             </div>
         </div>
-        <div class='restore-job handle-job hide'>
+        <div id='restore-job' class='handle-job hide'>
             <h2>Are you sure you want to restore this job?</h2>
             <div class='delete-buttons'>
             <a class='cancel-button' href='javascript:;' onclick='cancelRestore()'>No</a>
