@@ -9,5 +9,7 @@ if (mysqli_stmt_execute($statement)) {
 } else {
     mysqli_error($conn);
 }
+mysqli_stmt_close($stmt);
 mysqli_close($conn);
+exit;
 

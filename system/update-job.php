@@ -22,7 +22,9 @@ if (isset($_POST['submit'])) {
         } else {
             mysqli_error($conn);
         }
+        mysqli_stmt_close($stmt);
         mysqli_close($conn);
+        exit;
     } else {
         $sql = "UPDATE Job SET status = ?, timeUpdated = ? WHERE jobID = " . $_GET['jobID'];
         $statement = mysqli_stmt_init($conn);
@@ -38,8 +40,8 @@ if (isset($_POST['submit'])) {
         } else {
             mysqli_error($conn);
         }
+        mysqli_stmt_close($stmt);
         mysqli_close($conn);
+        exit;
     }
-} else {
-    echo "failed to update";
 }
