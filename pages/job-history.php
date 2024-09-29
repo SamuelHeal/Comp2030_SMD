@@ -20,7 +20,7 @@
         <div class='header-container'>  
             <h1>Job History</h1>
             <div class='header-links'>
-                <?php echo "<a href='job-history.php?machineID=" . $_GET['machineID'] . "'>Back</a>"; ?>
+                <?php echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Back</a>"; ?>
             </div>
         </div>
         <div class='jobs-container'>
