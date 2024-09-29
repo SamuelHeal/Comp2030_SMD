@@ -20,10 +20,10 @@
         // Execute the SQL statement 
         if (mysqli_stmt_execute($statement)) {
                 header("location: ../pages/jobs.php?machineID={$_GET['machineID']}");
-            } else {
-                mysqli_error($conn);
-            }
-            mysqli_close($conn);
+        } else {
+            mysqli_error($conn);
+        }
+        mysqli_close($conn);
         
 } else {
     header("location: ../pages/create-job.php'");

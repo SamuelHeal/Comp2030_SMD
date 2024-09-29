@@ -96,12 +96,12 @@ function getJobHistoryManager($conn) {
                     " " . $row['lastname'] . "</p>";
                 
                     if ($row['priority'] == 1) {
-                    echo "<p class='priority'>!</p>";
-                } else if ($row['priority'] == 2) {
-                    echo "<p class='priority'>!!</p>";
-                } else {
-                    echo "<p class='priority'>!!!</p>";
-                }
+                        echo "<p class='priority'>!</p>";
+                    } else if ($row['priority'] == 2) {
+                        echo "<p class='priority'>!!</p>";
+                    } else {
+                        echo "<p class='priority'>!!!</p>";
+                    }
                 echo "</div>" . 
                 "</a>";
             };
