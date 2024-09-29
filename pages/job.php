@@ -58,7 +58,7 @@
             ?>
             <div class='delete-buttons'>
                 <a class='cancel-button' href='javascript:;' onclick='cancelDelete()'>No</a>
-                <?php echo "<a class='delete-button' href='../system/delete-job.php?jobID=" . $jobID . "&machineID=" . $machineID . "'>Yes</a>"; ?>
+                <?php echo "<a class='delete-button' href='../system/delete-job.php?jobID=" . $jobID . "&machineID=" . $machineID . "&status=" . $job['status'] . "'>Yes</a>"; ?>
             </div>
         </div>
         <div class='restore-job handle-job hide'>

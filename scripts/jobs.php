@@ -301,19 +301,26 @@ function jobDetailsOperator($jobID, $job) {
             echo "High";
         }
         echo 
-        "</p>" .
-        "<form action='../system/update-job.php?jobID=" . $jobID . "&machineID=" . $machineID . "' method='POST'>" .
-            "<h3>Status:</h3>" .
-            "<div class='form-items'>" .
-                "<div class='select-dropdown no-margin'>" .
-                    "<select id='status' name='status' required>";
-                    getStatusSelection($job['status']);
-                    echo "</select>" .
+        "</p>";
+        if ($job['completed'] == 0) {
+            echo 
+            "<form action='../system/update-job.php?jobID=" . $jobID . "&machineID=" . $machineID . "' method='POST'>" .
+                "<h3>Status:</h3>" .
+                "<div class='form-items'>" .
+                    "<div class='select-dropdown no-margin'>" .
+                        "<select id='status' name='status' required>";
+                        getStatusSelection($job['status']);
+                        echo "</select>" .
+                    "</div>" .
+                "<input name='submit' type='submit' value='Update' />" .
                 "</div>" .
-            "<input name='submit' type='submit' value='Update' />" .
-            "</div>" .
-        "</form>" .
-    "</div>";
+            "</form>";
+        } else {
+            echo 
+            "<h3>Status:</h3>" .
+            "<p>" . $job['status'] . "</p>";
+        }
+    echo "</div>";
 }
 
 function getTaskNotes($conn, $jobID) {
