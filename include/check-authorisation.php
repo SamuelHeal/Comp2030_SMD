@@ -20,7 +20,12 @@ $authorisation = array(
         'machines.php' => true,
         'message.php' => true,
         'messages.php' => true,
-        'new-message.php' => true
+        'new-message.php' => true,
+        'create-job.php' => true,
+        'job.php' => true,
+        'job-history.php' => true,
+        'create-note.php' => true,
+        'note.php' => true
     ),
     'Production Operator' => array(
         'factory.php' => true,
@@ -28,7 +33,11 @@ $authorisation = array(
         'machines.php' => true,
         'message.php' => true,
         'messages.php' => true,
-        'new-message.php' => true
+        'new-message.php' => true,
+        'job.php' => true,
+        'job-history.php' => true,
+        'create-note.php' => true,
+        'note.php' => true
     ),
 );
 
