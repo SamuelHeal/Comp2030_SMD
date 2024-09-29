@@ -13,45 +13,45 @@
         require_once '../scripts/jobs/jobs.php';
     ?>
     <div id=body-container>
-    <?php 
-    echo "<div class='header-container'>";
-    echo "<h1>Create Job</h1>";
-    echo "<div class='header-links'>";
-    echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Cancel</a>";
-    echo "</div>";
-    echo "</div>";
-    echo "<div class='create-job-form'>";
-    echo "<form action='../system/create-job.php?machineID=" . $_GET['machineID'] . "' method='POST'>";
-    echo "<div class='inner-job-form'>";
-    echo "<label for='machine'>Machine:</label> ";
-    echo "<div class='select-dropdown'>";
-    echo "<select id='machine' name='machine' required>";
-    getMachinesForJob($conn);
-    echo "</select>";
-    echo "</div>";
-    echo "<label for='operator'>Operator:</label>";
-    echo "<div class='select-dropdown'>";
-    echo "<select id='operator' name='operator' required>";
-    getOperatorsForJob($conn);
-    echo "</select>";
-    echo "</div>";
-    echo "<label for='priority'>Priority:</label>";
-    echo "<div class='select-dropdown'>";
-    echo "<select id='priority' name='priority' required>";
-    echo "<option value='1'>Low</option>";
-    echo "<option value='2'>Medium</option>";
-    echo "<option value='3'>High</option>";
-    echo "</select>";
-    echo "</div>";
-    echo "</div>";
-    echo "<div class='inner-job-form'>";
-    echo "<label for='description'>Description:</label>";
-    echo "<textarea id='description' name='description' required></textarea>";
-    echo "<input name='submit' type='submit' value='Submit' />";
-    echo "</div>";
-    echo "</form>";
-    echo "</div>";
-    ?>
+    
+        <div class='header-container'>
+            <h1>Create Job</h1>
+            <div class='header-links'>
+                <?php echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Cancel</a>"; ?>
+            </div>
+        </div>
+
+        <div class='create-job-form'>
+            <?php echo "<form action='../system/create-job.php?machineID=" . $_GET['machineID'] . "' method='POST'>"; ?>
+                <div class='inner-job-form'>
+                    <label for='machine'>Machine:</label> 
+                    <div class='select-dropdown'>
+                        <select id='machine' name='machine' required>
+                            <?php getMachinesForJob($conn); ?>
+                        </select>
+                    </div>
+                    <label for='operator'>Operator:</label>
+                    <div class='select-dropdown'>
+                        <select id='operator' name='operator' required>
+                            <?php getOperatorsForJob($conn); ?>
+                        </select>
+                    </div>
+                    <label for='priority'>Priority:</label>
+                    <div class='select-dropdown'>
+                        <select id='priority' name='priority' required>
+                            <option value='1'>Low</option>
+                            <option value='2'>Medium</option>
+                            <option value='3'>High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='inner-job-form'>
+                    <label for='description'>Description:</label>
+                    <textarea id='description' name='description' required></textarea>
+                    <input name='submit' type='submit' value='Submit' />
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
