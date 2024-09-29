@@ -10,50 +10,49 @@
 <body>
     <?php
         require_once '../include/page-defaults.php';
+        $jobID = $_GET['jobID'];
+        $machineID = $_GET['machineID'];
     ?>
-    <div id=body-container>
-    <?php 
+    <div id=body-container>    
+        <div class='header-container'>
+            <h1>Create Task Note</h1>
+            <div class='header-links'>
+                <?php echo "<a href='job.php?id=" . $jobID . "&machineID=" . $machineID . "'>Cancel</a> ?>"; ?>
+            </div>
+        </div>
+        
+        <div class='create-job-form'>
+            <?php echo "<form action='../system/create-note.php?jobID=" . $jobID . "&machineID=" . $machineID . "' method='POST'>"; ?>
+                <div class='inner-job-form'>
+                    <label for='category'>Category:</label> 
+                    <div class='select-dropdown'>
+                        <select id='category' name='category' required>
+                            <option value='Missing part'>Missing part</option>
+                            <option value='Awaiting part'>Awaiting part</option>
+                            <option value='Machine issue'>Machine issue</option>
+                            <option value='Quality concern'>Quality concern</option>
+                            <option value='Issue with job details'>Issue with job details</option>
+                            <option value='Safety concern'>Safety concern</option>
+                            <option value='Other'>Other</option>
+                        </select>
+                    </div>
+                    <label for='priority'>Priority:</label>
+                    <div class='select-dropdown note-priority'>
+                        <select id='priority' name='priority' required>
+                            <option value='1'>Low</option>
+                            <option value='2'>Medium</option>
+                            <option value='3'>High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='inner-job-form'>
+                    <label for='description'>Description:</label>
+                    <textarea id='description' name='description' required></textarea>
+                    <input name='submit' type='submit' value='Submit' />
+                </div>
+            </form>
+        </div>
     
-    $jobID = $_GET['jobID'];
-    
-    echo "<div class='header-container'>";
-    echo "<h1>Create Task Note</h1>";
-    echo "<div class='header-links'>";
-    echo "<a href='job.php?id=" . $jobID . "&machineID=" . $_GET['machineID']. "'>Cancel</a>";
-    echo "</div>";
-    echo "</div>";
-    echo "<div class='create-job-form'>";
-    echo "<form action='../system/create-note.php?jobID=" . $_GET['jobID'] . "&machineID=" . $_GET['machineID'] . "' method='POST'>";
-    echo "<div class='inner-job-form'>";
-    echo "<label for='category'>Category:</label> ";
-    echo "<div class='select-dropdown'>";
-    echo "<select id='category' name='category' required>";
-    echo "<option value='Missing part'>Missing part</option>";
-    echo "<option value='Awaiting part'>Awaiting part</option>";
-    echo "<option value='Machine issue'>Machine issue</option>";
-    echo "<option value='Quality concern'>Quality concern</option>";
-    echo "<option value='Issue with job details'>Issue with job details</option>";
-    echo "<option value='Safety concern'>Safety concern</option>";
-    echo "<option value='Other'>Other</option>";
-    echo "</select>";
-    echo "</div>";
-    echo "<label for='priority'>Priority:</label>";
-    echo "<div class='select-dropdown note-priority'>";
-    echo "<select id='priority' name='priority' required>";
-    echo "<option value='1'>Low</option>";
-    echo "<option value='2'>Medium</option>";
-    echo "<option value='3'>High</option>";
-    echo "</select>";
-    echo "</div>";
-    echo "</div>";
-    echo "<div class='inner-job-form'>";
-    echo "<label for='description'>Description:</label>";
-    echo "<textarea id='description' name='description' required></textarea>";
-    echo "<input name='submit' type='submit' value='Submit' />";
-    echo "</div>";
-    echo "</form>";
-    echo "</div>";
-    ?>
     </div>
 </body>
 </html>

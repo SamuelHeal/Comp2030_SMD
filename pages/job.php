@@ -11,7 +11,7 @@
 <body>
     <?php
         require_once '../include/page-defaults.php';
-        require_once '../scripts/jobs.php';
+        require_once '../scripts/jobs/jobs.php';
     ?>
     <div id=body-container>
     <?php 
@@ -25,3 +25,5 @@
     </div>
 </body>
 </html>
+
+

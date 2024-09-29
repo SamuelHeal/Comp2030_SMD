@@ -1,10 +1,12 @@
 <?php
 function getJobsManager($conn) {
     $sql = "SELECT Job.jobID, Job.priority, Job.status, Machine.name, Person.firstname, Person.lastname FROM Job INNER JOIN Machine ON Job.machineID=Machine.machineID INNER JOIN Person on Job.OperatorID=Person.personID WHERE Job.completed=0 ORDER BY Job.priority DESC";
+    $job = array();
     if ($result = mysqli_query($conn, $sql) ) {
         if ($rows = mysqli_num_rows($result)) {
             echo "<div class='job-list'>";
             while ($row = mysqli_fetch_assoc($result)) {
+                array_push($job, $row);
                 if ($row['status'] == 'Completed') {
                     echo "<a class='job complete' href='job.php?id=" . $row['jobID'] . "&machineID=" . $_GET['machineID']. "'>";
                 } else {
@@ -32,6 +34,7 @@ function getJobsManager($conn) {
             mysqli_free_result($result);
         }
     }
+    return $job;
     echo "</div>";
 }
 
@@ -64,8 +67,8 @@ function getJobsOperator($conn) {
                 echo "</a>";
             };
             echo "</div>";
-            mysqli_free_result($result);
         }
+        mysqli_free_result($result);
     }
     echo "</div>";
 }
@@ -100,8 +103,8 @@ function getJobHistoryManager($conn) {
                 echo "</a>";
             };
             echo "</div>";
-            mysqli_free_result($result);
         }
+        mysqli_free_result($result);
     }
     echo "</div>";
 }
@@ -135,8 +138,8 @@ function getJobHistoryOperator($conn) {
                 echo "</a>";
             };
             echo "</div>";
-            mysqli_free_result($result);
         }
+        mysqli_free_result($result);
     }
     echo "</div>";
 }
@@ -149,6 +152,7 @@ function getMachinesForJob($conn) {
                 echo "<option value='" . $row['machineID'] . "'>" . $row['name'] . "</option>";
             }
         }
+        mysqli_free_result($result);
     }
 }
 
@@ -164,6 +168,7 @@ function getMachinesForJobSelected($conn, $selectedID) {
                 }
             }
         }
+        mysqli_free_result($result);
     }
 }
 
@@ -175,6 +180,7 @@ function getOperatorsForJob($conn) {
                 echo "<option value='" . $row['personID'] . "'>" . $row['firstname'] . " " . $row['lastname'] . "</option>";
             }
         }
+        mysqli_free_result($result);
     }
 }
 
@@ -190,6 +196,7 @@ function getOperatorsForJobSelected($conn, $selectedID) {
                 }
             }
         }
+        mysqli_free_result($result);
     }
 }
 
@@ -296,6 +303,7 @@ function getJobManager($conn, $jobID) {
                 getTaskNotes($conn, $jobID);
             echo "</div>";
         }
+        mysqli_free_result($result);
     }
 }
 
@@ -349,6 +357,7 @@ function getJobOperator($conn, $jobID) {
                 echo "</div>";
             echo "</div>";
         }
+        mysqli_free_result($result);
     }
 }
 
@@ -373,6 +382,7 @@ function getTaskNotes($conn, $jobID) {
                 
             }
         }
+        mysqli_free_result($result);
     }
 }
 
@@ -411,5 +421,6 @@ function getNote($conn) {
                 echo "<p class='description'>" . $note['description'] . "</p>";
             echo "</div>";
         }
+        mysqli_free_result($result);
     }
 }
