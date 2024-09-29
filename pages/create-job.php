@@ -10,19 +10,20 @@
 <body>
 <?php
         require_once '../include/page-defaults.php';
-        require_once '../scripts/jobs/jobs.php';
+        require_once '../scripts/jobs.php';
+        $machineID = $_GET['machineID'];
     ?>
     <div id=body-container>
     
         <div class='header-container'>
             <h1>Create Job</h1>
             <div class='header-links'>
-                <?php echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Cancel</a>"; ?>
+                <?php echo "<a href='jobs.php?machineID=" . $machineID . "'>Cancel</a>"; ?>
             </div>
         </div>
 
         <div class='create-job-form'>
-            <?php echo "<form action='../system/create-job.php?machineID=" . $_GET['machineID'] . "' method='POST'>"; ?>
+            <?php echo "<form action='../system/create-job.php?machineID=" . $machineID . "' method='POST'>"; ?>
                 <div class='inner-job-form'>
                     <label for='machine'>Machine:</label> 
                     <div class='select-dropdown'>

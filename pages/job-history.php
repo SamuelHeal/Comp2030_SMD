@@ -10,7 +10,11 @@
 <body>
 <?php
         require_once '../include/page-defaults.php';
-        require_once '../scripts/jobs/jobs.php';
+        require_once '../scripts/jobs.php';
+        $isManager = false;
+        if ($_SESSION['position'] == "Factory Manager") {
+            $isManager = true;
+        }
     ?>
     <div id=body-container>
         <div class='header-container'>  
@@ -19,14 +23,16 @@
                 <?php echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Back</a>"; ?>
             </div>
         </div>
-        <div class='jobs-container'>"
-            <?php 
-            if ($_SESSION['position'] == "Factory Manager") {
-                getJobHistoryManager($conn);
-            } else {
-                getJobHistoryOperator($conn);
-            }
-            ?>
+        <div class='jobs-container'>
+            <div class='job-list'>
+                <?php 
+                if ($isManager) {
+                    getJobHistoryManager($conn);
+                } else {
+                    getJobHistoryOperator($conn);
+                }
+                ?>
+            </div>
         </div>
     </div>
 </body>

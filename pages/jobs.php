@@ -10,31 +10,36 @@
 <body>
     <?php
         require_once '../include/page-defaults.php';
-        require_once '../scripts/jobs/jobs.php';
+        require_once '../scripts/jobs.php';
+        $isManager = false;
+        if ($_SESSION['position'] == "Factory Manager") {
+            $isManager = true;
+        }
+        $machineID = $_GET['machineID'];
     ?>
     <div id=body-container>
-    <?php 
-    echo "<div class='header-container'>";
-    echo "<h1>Current Jobs</h1>";
-    if ($_SESSION['position'] == "Factory Manager") {
-        echo "<div class='header-links'>";
-        echo "<a href='create-job.php?machineID=" . $_GET['machineID'] . "'>Create</a>";
-        echo "<a href='job-history.php?machineID=" . $_GET['machineID'] . "'>History</a>";
-        echo "</div>";
-        echo "</div>";
-        echo "<div class='jobs-container'>";
-        getJobsManager($conn);
-        echo "</div>";
-    } else if ($_SESSION['position'] == "Production Operator") {
-        echo "<div class='header-links'>";
-        echo "<a href='job-history.php?machineID=" . $_GET['machineID'] . "'>History</a>";
-        echo "</div>";
-        echo "</div>";
-        echo "<div class='jobs-container'>";
-        getJobsOperator($conn);
-        echo "</div>";
-    }
-    ?>
+        <div class='header-container'>
+            <h1>Current Jobs</h1>
+            <div class='header-links'>
+                <?php 
+                if ($isManager) {
+                    echo "<a href='create-job.php?machineID=" . $machineID . "'>Create</a>";
+                }
+                echo "<a href='job-history.php?machineID=" . $machineID . "'>History</a>";
+                ?>
+            </div>
+        </div>
+        <div class='jobs-container'>
+            <div class='job-list'>
+                <?php 
+                if ($isManager) {
+                    getJobsManager($conn);
+                } else {
+                    getJobsOperator($conn);
+                }
+                ?>
+            </div>
+        </div>
     </div>
 </body>
 </html>

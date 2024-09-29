@@ -711,7 +711,7 @@ h1 {
 .bold {
     font-weight: bold;
     font-size: 80%;
-    width: 30% !important;
+    /* width: 30% !important; */
 }
 
 .priority {
