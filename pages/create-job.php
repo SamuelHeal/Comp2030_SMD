@@ -12,7 +12,6 @@
         require_once '../include/page-defaults.php';
         require_once '../scripts/jobs.php';
         $machineID = $_GET['machineID'];
-        
     ?>
     <div id=body-container>
     
