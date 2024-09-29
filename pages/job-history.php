@@ -13,23 +13,21 @@
         require_once '../scripts/jobs/jobs.php';
     ?>
     <div id=body-container>
-    <?php 
-    echo "<div class='header-container'>";
-    echo "<h1>Job History</h1>";
-    echo "<div class='header-links'>";
-    echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Back</a>";
-    echo "</div>";
-    echo "</div>";
-    if ($_SESSION['position'] == "Factory Manager") {
-        echo "<div class='jobs-container'>";
-        getJobHistoryManager($conn);
-        echo "</div>";
-    } else {
-        echo "<div class='jobs-container'>";
-        getJobHistoryOperator($conn);
-        echo "</div>";
-    }
-    ?>
+        <div class='header-container'>  
+            <h1>Job History</h1>
+            <div class='header-links'>
+                <?php echo "<a href='jobs.php?machineID=" . $_GET['machineID'] . "'>Back</a>"; ?>
+            </div>
+        </div>
+        <div class='jobs-container'>"
+            <?php 
+            if ($_SESSION['position'] == "Factory Manager") {
+                getJobHistoryManager($conn);
+            } else {
+                getJobHistoryOperator($conn);
+            }
+            ?>
+        </div>
     </div>
 </body>
 </html>
