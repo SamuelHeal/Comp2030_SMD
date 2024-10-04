@@ -8,7 +8,6 @@
         <?php
             $items = array(
                 'Administrator' => array(
-                    'Users' => 'users.php',
                     'Manage' => 'manage.php'
                 ),
                 'Auditor' => array(
