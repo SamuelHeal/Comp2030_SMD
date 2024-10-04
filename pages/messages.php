@@ -11,8 +11,7 @@
     <?php
         require_once '../include/page-defaults.php';
         require_once '../scripts/messages.php';
-        alertIfParameterPresent('sent');
-        alertIfParameterPresent('deleted');
+        alertIfParameterPresent();
         $users = getUsersAssoc($conn);
         ?>
     <div id=body-container>
