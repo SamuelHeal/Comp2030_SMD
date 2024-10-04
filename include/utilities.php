@@ -56,10 +56,14 @@ function setBannerColourAndMessage($conn) {
     mysqli_free_result($result);
 }
 
-function updateLastActive($conn, $personID, $machineID) {
-    $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ? WHERE personID = ?";
-    $stmt = mysqli_prepare($conn, $updateSql);
-    mysqli_stmt_bind_param($stmt, 'ii', $machineID, $personID);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+function updateLastActive($conn) {
+    if (isset($_SESSION['id'])) {
+        $machineID = $_GET['machineID'];
+        $personID = $_SESSION['id'];
+        $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ? WHERE personID = ?";
+        $stmt = mysqli_prepare($conn, $updateSql);
+        mysqli_stmt_bind_param($stmt, 'ii', $machineID, $personID);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
 }

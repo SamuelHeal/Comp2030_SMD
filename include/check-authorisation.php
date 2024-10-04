@@ -1,11 +1,9 @@
 <?php 
 $authorisation = array(
     'Administrator' => array(
-        'users.php' => true,
         'manage.php' => true,
         'message.php' => true,
         'messages.php' => true,
-        'user-archive.php' => true,
         'create-user.php' => true,
         'update-user.php' => true
     ),
@@ -13,8 +11,7 @@ $authorisation = array(
         'users.php' => true,
         'reports.php' => true,
         'message.php' => true,
-        'messages.php' => true,
-        'user-archive.php' => true
+        'messages.php' => true
     ),
     'Factory Manager' => array(
         'factory.php' => true,

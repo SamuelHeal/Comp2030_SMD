@@ -1,6 +1,6 @@
 <?php 
 $home = array(
-    'Administrator' => 'users.php',
+    'Administrator' => 'manage.php',
     'Auditor' => 'users.php',
     'Factory Manager' => 'factory.php',
     'Production Operator' => 'factory.php'

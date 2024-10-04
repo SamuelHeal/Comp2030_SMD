@@ -1,5 +1,7 @@
 <?php 
 function appendUserToList($assoc) {
+    $archivedOrActive = $assoc['isArchived'] ? 'archived-user' : 'active-user';
+    echo "<div class=\"$archivedOrActive \" data-personid=\"{$assoc['personID']}\">";
     echo '<li>';
         echo "<div class=\"list-label\">{$assoc['firstName']} {$assoc['lastName']}</div>";
         echo '<table class="users-table">';
@@ -16,12 +18,17 @@ function appendUserToList($assoc) {
                 echo "<td>Start Date: {$assoc['employmentDate']}</td>";
             echo '</tr>';
             echo '<tr>';
+            if ($assoc['lastActiveTime'] && $assoc['machineName']) { // Only display last active if set
+                echo "<td>Last Active: {$assoc['lastActiveTime']}</td>";
+                echo "<td>At : {$assoc['machineName']}</td>";
+            }
+            echo '</tr>';
+            echo '<tr>';
             if ($assoc['isArchived']) echo "<td>Archived At: {$assoc['archivedAt']}</td>"; // Only display archived date if user is archived
-            if ($assoc['lastActiveTime'] && $assoc['machineName']) 
-                echo "<td>Last Active: {$assoc['lastActiveTime']} At {$assoc['machineName']}</td>"; // Only display last active if set
             echo '</tr>';
         echo '</table>';
     echo '</li>';
+    echo '</div>';
 }
 
 ?>

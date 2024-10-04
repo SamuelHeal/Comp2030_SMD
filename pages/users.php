@@ -17,22 +17,30 @@
     ?>
     <div id="body-container">
     <div class="header-container">
-        <h1>Current Users</h1>
+        <h1>Users</h1>
         <?php 
 
             $sort_column = isset($_GET['sort']) ? $_GET['sort'] : 'lastName';
             $sort_direction = isset($_GET['direction']) && $_GET['direction'] == 'desc' ? 'DESC' : 'ASC';
+            $show_option = isset($_GET['show']) ? $_GET['show'] : 'currentUsers';
 
             $valid_columns = ['personID', 'lastName', 'firstName', 'position', 'lastActiveTime'];
             if (!in_array($sort_column, $valid_columns)) {
                 $sort_column = 'lastName';
             }
 
+            $show_condition = "p.isArchived = FALSE";
+            if ($show_option == 'archivedUsers') {
+                $show_condition = "p.isArchived = TRUE";
+            } elseif ($show_option == 'allUsers') {
+                $show_condition = "1=1"; // Always true: Show all users
+            }
+
             $sql = "SELECT p.*, m.name AS machineName
-                    FROM Person p
-                    LEFT JOIN Machine m ON p.lastActiveMachineID = m.machineID 
-                    WHERE p.isArchived = FALSE 
-                    ORDER BY $sort_column $sort_direction;";
+                FROM Person p
+                LEFT JOIN Machine m ON p.lastActiveMachineID = m.machineID 
+                WHERE $show_condition 
+                ORDER BY $sort_column $sort_direction;";       
     
             $result = mysqli_query($conn, $sql);
 
@@ -40,12 +48,12 @@
             while ($assoc = mysqli_fetch_assoc($result)) {
                 $users[] = $assoc;
             }
-
+            mysqli_free_result($result);
             mysqli_close($conn);
         ?>
         
         <div class="top-layer-buttons">
-            
+
             <div class="sort-button">
                 <label for="sort" class="sort-label">Sort by:</label>
                 <select name="sort" id="sort" class="sort-box" onchange="updateSort()">
@@ -56,20 +64,28 @@
                     <option value="lastActiveTime" <?php if($sort_column == 'lastActiveTime') echo 'selected'; ?>>Last Active</option>
                 </select>
             </div>
-            <button id="direction" class="arrow-button 
-            <?php echo $sort_direction == 'ASC' ? 'up' : 'down'; ?>
-            " onclick="toggleDirection()"></button>
-            
-            <?php $machineID = isset($_GET['machineID']) ? $_GET['machineID'] : ''; //keep the same machineID?>
-            <button class="top-button" onclick="window.location.href='create-user.php?machineID=<?php echo htmlspecialchars($machineID); ?>'">Add User</button>
-            <button class="top-button" onclick="window.location.href='user-archive.php?machineID=<?php echo htmlspecialchars($machineID); ?>'">User Archive</button>
 
+            <div class="sort-button">
+                <button id="direction" class="direction-button <?php echo $sort_direction == 'ASC' ? 'asc' : 'desc'; ?>" onclick="toggleDirection()">
+                    <?php echo $sort_direction == 'ASC' ? 'Ascending' : 'Descending'; ?>
+                </button>
+            </div>
+
+            <div class="sort-button">
+                <label for="show" class="sort-label">Show:</label>
+                <select name="show" id="show" class="sort-box" onchange="updateSort()">
+                    <option value="currentUsers" <?php if ($show_option == 'currentUsers') echo 'selected'; ?>>Current Users</option>
+                    <option value="archivedUsers" <?php if ($show_option == 'archivedUsers') echo 'selected'; ?>>Archived Users</option>
+                    <option value="allUsers" <?php if ($show_option == 'allUsers') echo 'selected'; ?>>All Users</option>
+                </select>
+            </div>
+          
         </div>
     </div>
         <ul class="list">
-            <?php foreach ($users as $user): ?>
-                <?php appendUserToList($user); ?>
-            <?php endforeach; ?>
+            <?php foreach ($users as $user):
+                appendUserToList($user);
+            endforeach; ?>
         </ul>
     </div>
 </body>

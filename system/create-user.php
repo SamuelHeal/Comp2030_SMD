@@ -23,12 +23,13 @@
 
         // Execute the SQL statement 
         if (mysqli_stmt_execute($statement)) {
-                header("location: ../pages/users.php?machineID={$machineID}"); 
-            } else {
-                mysqli_error($conn);
-            }
-            mysqli_close($conn);
+            header("location: ../pages/manage.php?machineID={$machineID}"); 
+        } else {
+            mysqli_error($conn);
+        }
+        mysqli_stmt_close($statement);
+        mysqli_close($conn);
         
 } else {
-        header("location: ../pages/users.php?machineID={$machineID}");
+        header("location: ../pages/manage.php?machineID={$machineID}");
 }

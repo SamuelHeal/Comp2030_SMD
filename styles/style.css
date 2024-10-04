@@ -556,6 +556,11 @@ h1 {
     position: relative;
     display: inline-block;
 }
+
+.sort-box:hover {
+    border: 1px solid;
+    border-radius: 3px;
+}
 .sort-button select {
     appearance: none;
     border: none;
@@ -563,19 +568,16 @@ h1 {
     font-size: 20px;
     cursor: pointer;
 }
-.arrow-button {
-    border: none;
+.direction-button {
+    font-size: 20px;
+    margin-left: 2px;
+    margin-right: 10px;
     background: none;
+    border: none;
+    width: 110px;
     cursor: pointer;
-    font-size: 24px;
-    margin-left: 10px;
 }
-.arrow-button.up::before {
-    content: '▲';
-}
-.arrow-button.down::before {
-    content: '▼';
-}
+
 .user-container {
     position: relative;
 }
@@ -600,13 +602,36 @@ h1 {
     justify-content: center ;
     z-index: 2; /* Makes sure the overlay is above the user container */
 }
+
+.archive-button {
+    display: none;
+    z-index: 3; /* Makes sure the button stays above the edit overlay */
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 120px;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        background-color: #212c58;
+        color: #fffafa;
+        border: none;
+    
+}
+
 .user-container:hover .edit-overlay {
     display: block;
 }
-.archive-button {
-    position: relative;
-    z-index: 3; /* Makes sure the button stays above the edit overlay */
+
+.user-container:hover .archive-button {
+    display: flex;
 }
+
+.archive-button:hover {
+    background-color: #31364b;
+}
+
 .top-button {
     display: flex;
     margin-right: 20px;
@@ -628,25 +653,16 @@ h1 {
     align-items: center;
     margin-bottom: 10px;
 }
-.archive-button {
-    position: absolute;
-    display: flex;
-    right: 0;
-    height: 100%;
-    width: 120px;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    background-color: #31364b;
-    color: #fffafa;
-    border: none;
-}
+
 .archived-user {
     background-color: #D3D3D3;
 }
 .sort-box {
     width: 110px;
+}
+
+#show {
+    width: 140px;
 }
 
 .user-details-form-label {

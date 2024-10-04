@@ -20,7 +20,7 @@
 
         <div class="top-layer-buttons">
             <?php $machineID = isset($_GET['machineID']) ? $_GET['machineID'] : ''; //keep the same machineID?>
-            <button class="top-button" onclick="window.location.href='users.php?machineID=<?php echo htmlspecialchars($machineID); ?>'">Cancel</button>
+            <button class="top-button" onclick="window.location.href='manage.php?machineID=<?php echo htmlspecialchars($machineID); ?>'">Cancel</button>
         </div>
     </div>
     <div class="form-container">

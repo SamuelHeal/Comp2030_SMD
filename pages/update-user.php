@@ -22,6 +22,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
+        $result->free();
         $stmt->close();
     ?>
 
@@ -31,6 +32,7 @@
          echo htmlspecialchars("User {$user['firstName']} {$user['lastName']} ({$user['personID']})") ?></h1>
 
         <div class="top-layer-buttons">
+            <button class="top-button" onclick="confirmArchive('<?php echo htmlspecialchars($user['personID']); ?>', '<?php echo htmlspecialchars($user['firstName']); ?>', '<?php echo htmlspecialchars($user['lastName']); ?>')">Archive User</button>
             <?php $machineID = isset($_GET['machineID']) ? $_GET['machineID'] : ''; //keep the same machineID?>
             <button class="top-button" onclick="window.location.href='manage.php?machineID=<?php echo htmlspecialchars($machineID); ?>'">Cancel</button>
         </div>
