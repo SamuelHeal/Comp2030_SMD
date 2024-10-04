@@ -1,11 +1,16 @@
 function changeButtons() {
     QUERY_STRING = window.location.toString();
     const BACK_BUTTON = document.getElementById("machine-button-back");
-    // const EDIT_BUTTON = document.getElementById("machine-button-edit");
+    const EDIT_BUTTON = document.getElementById("machine-button-edit");
     BACK_BUTTON.innerText = "Cancel";
-    BACK_BUTTON.href = QUERY_STRING.replace("&active=1&e=1", "");
+    BACK_BUTTON.href = QUERY_STRING.replace("&active=1&edit=1", "");
     BACK_BUTTON.onclick = ()=> {return confirm("Are you sure you want to cancel changes?")};
-
+    EDIT_BUTTON.innerText = "✓";
+    EDIT_BUTTON.classList.add("green-hover");
+    EDIT_BUTTON.addEventListener("click", (event)=> {
+        event.preventDefault();  // This prevents the anchor tag from redirecting
+        document.getElementById("machine-container").submit();
+    })
 }
 
 function makeNameLocationOperatorEditable() {

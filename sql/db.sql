@@ -11,7 +11,9 @@ CREATE TABLE Machine(
     name VARCHAR(100) NOT NULL,
     location VARCHAR(4) NOT NULL,
     status INTEGER NOT NULL,
-    PRIMARY KEY (machineID)
+    operatorID INTEGER,
+    PRIMARY KEY (machineID),
+    FOREIGN KEY (operatorID) REFERENCES Person(personID)
 );
 
 CREATE TABLE Person(
@@ -31,14 +33,14 @@ CREATE TABLE Job(
     jobID INTEGER NOT NULL AUTO_INCREMENT,
     description VARCHAR(1000),
     machineID INTEGER NOT NULL,
-    OperatorID INTEGER NOT NULL,
+    operatorID INTEGER NOT NULL,
     priority INTEGER NOT NULL,
     status VARCHAR(100) NOT NULL DEFAULT "Awaiting Confirmation",
     timeUpdated DATETIME NOT NULL,
     completed INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (jobID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID),
-    FOREIGN KEY (OperatorID) REFERENCES Person(personID)
+    FOREIGN KEY (operatorID) REFERENCES Person(personID)
 );
 
 CREATE TABLE Log(

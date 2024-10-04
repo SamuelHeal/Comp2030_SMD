@@ -11,6 +11,7 @@
     <?php
         require_once '../include/page-defaults.php';
         require_once '../scripts/machines.php';
+        alertIfParameterPresent();
     ?>
     <div id=body-container>
         <h1>Machines</h1>

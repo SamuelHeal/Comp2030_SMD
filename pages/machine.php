@@ -15,7 +15,7 @@
     ?>
     <div id=body-container>
         <h1 id="machine-heading">Machine</h1>
-        <div id="machine-container">
+        <form action="../system/machine.php?<?php echo "machineID={$_GET['machineID']}&update_id={$_GET['update_id']}"; ?>" id="machine-container" method="POST" name="machine-form">
             <div class="machine-input-group">
                 <label for="name">Name:</label><br>
                 <input class="machine-input" disabled="true" id="machine-input-name" name="name" type="text">
@@ -38,11 +38,11 @@
                     <?php appendOperatorsToSelect($conn); ?>
                 </select>
             </div>
-        </div>
+        </form>
         <div id="machines-button-container">
             <a class="machines-button" href="machines.php?machineID=<?php echo $_GET['machineID']; ?>" id="machine-button-back">Back</a>    
             <a class="machines-button red-hover" href="messages.php?machineID=<?php $_GET['machineID']; ?>">Delete</a>
-            <a class="machines-button" href="machine.php?<?php echo "machineID={$_GET['machineID']}&m={$_GET['m']}&active=1&e=1"; ?>" id="machine-button-edit">Edit</a>
+            <a class="machines-button" href="machine.php?<?php echo "machineID={$_GET['machineID']}&update_id={$_GET['update_id']}&active=1&edit=1"; ?>" id="machine-button-edit">Edit</a>
         </div>
         <?php
             makeEditableIfParameterPresent();
