@@ -1,4 +1,5 @@
 * {
+    box-sizing: border-box;
     color: #212c58;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
@@ -32,9 +33,16 @@ h1 {
     background-color: #ededed;
 }
 
+.date {
+    color: #708090;
+    font-size: 12px;
+    margin-left: 24px;
+    white-space: nowrap;
+}
+
 .list {
     height: fit-content;
-    margin: 24px auto;
+    margin: 0px auto 24px auto;
     width: 60%;
 }
 
@@ -46,7 +54,7 @@ h1 {
     display: flex;
     height: 160px;
     list-style-type: none;
-    margin: 24px 0px;
+    margin-bottom: 24px;
     overflow: hidden;
     text-align: left;
     text-decoration: none;
@@ -69,7 +77,7 @@ h1 {
     font-weight: bold;
     font-size: 16px;
     padding: 0px 12px;
-    width: 20%;
+    width: 25%;
 }
 
 .menu-item {
@@ -97,15 +105,20 @@ h1 {
 }
 
 .message-button {
+    align-items: center;
     background-color: #ededed;
     border: 3px solid #212c58;
     border-radius: 6px;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
     font-size: 16px;
     font-weight: bold;
+    justify-content: center;
+    margin-bottom: 24px;
     min-height: 80px;
-    padding: 0px 40px;
+    text-decoration: none;
     user-select: none;
+    width: 100%;
 }
 
 .message-button:hover {
@@ -114,28 +127,38 @@ h1 {
     cursor: pointer;
 }
 
+.message-button:hover option {
+    background-color: #212c58;
+    color: #fffafa;
+    cursor: pointer;
+}
 
 .messages-content {
+    border-left: 3px solid #212c58;
     height: 100%;
-    padding-right: 24px;
+    font-size: 14px;
+    padding: 0px 24px 0px 6px;
     position: relative;
     width: 100%;
 }
 
-.messages-date {
-    color: #708090;
-    font-size: 14px;
-}
-
 .messages-subject {
+    font-size: 16px;
     font-style: italic;
+    white-space: nowrap;
 }
 
 .messages-subject-date-group {
     align-items: baseline;
     display: flex;
     justify-content: space-between;
-    padding: 24px 0px;
+    padding: 12px 0px;
+}
+
+.red-hover:hover {
+    border: 3px solid #ff0000 !important;
+    background-color: #ff0000 !important;
+    color: #fffafa;
 }
 
 .reports-button {
@@ -178,7 +201,16 @@ h1 {
     z-index: 2;
 }
 
+.unread {
+    background-color: #ffff00;
+}
+
+.unread:hover {
+    background-color: #fffacd !important;
+}
+
 .users-table {
+    border-left: 3px solid #212c58;
     height: 100%;
     width: 80%;
     table-layout: fixed;
@@ -279,11 +311,6 @@ h1 {
     grid-row: 5/6;
 }
 
-#keypad-clear:hover {
-    border: 3px solid #ff0000;
-    background-color: #ff0000 !important;
-}
-
 #keypad-submit {
     background-color: #ededed;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
@@ -342,6 +369,35 @@ h1 {
     text-align: left;
 }
 
+#new-message-button-container {
+    display: flex;
+    flex-direction: column;
+    margin: 24px auto 0px auto;
+    width: 60%;
+}
+
+#new-message-container {
+    background-color: #fffafa;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    height: fit-content;
+    margin: 0px auto;
+    min-height: 20vh;
+    padding: 24px;
+    width: 60%;
+}
+
+#new-message-input {
+    resize: none;
+    height: 25vh;
+    padding: 6px;
+    width: 100%;
+}
+
+#new-message-subject {
+    font-style: italic;
+}
+
 #menu-items {
     align-items: center;
     display: flex;
@@ -370,29 +426,19 @@ h1 {
     align-items: baseline;
     display: flex;
     justify-content: space-between;
-    padding: 24px;
-}
-
-#message-body {
-    padding: 0px 24px 24px 24px;
+    padding-bottom: 24px;
 }
 
 #message-button-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin: 24px auto;
+    margin: 24px auto 0px auto;
     width: 60%;
 }
 
-#message-button-container button{
-    margin-bottom: 24px;
-}
-
-#message-button-delete:hover {
-    border: 3px solid #ff0000;
-    background-color: #ff0000;
-    color: #fffafa;
+#message-button-mark-unread:hover {
+    border: 3px solid #ffff00;
+    background-color: #ffff00;
 }
 
 #message-container {
@@ -402,16 +448,34 @@ h1 {
     height: fit-content;
     margin: 0px auto;
     min-height: 20vh;
-    width: 59.6%;
-}
-
-#message-date {
-    color: #708090;
-    font-size: 14px;
+    padding: 24px;
+    width: 60%;
 }
 
 #message-subject {
     font-style: italic;
+}
+
+#message-button-new {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+    justify-content: center;
+    min-height: 80px;
+    text-decoration: none;
+    user-select: none;
+    width: 100%;
+}
+
+#message-button-new:hover {
+    background-color: #212c58;
+    color: #fffafa;
+    cursor: pointer;
 }
 
 #reports-button-container {
@@ -453,6 +517,7 @@ h1 {
     min-height: 80px;
     padding: 0px 24px;
     user-select: none;
+    width: 100%;
 }
 
 #reports-button-select-machine:hover {
@@ -832,13 +897,549 @@ h1 {
 }
 
 
-@media (min-width: 1200px) {
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70vw;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.header-container h1 {
+    width: 100%;
+}
+
+.header-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.header-links a {
+    text-decoration: none;
+    width: 120px;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    margin: 0px 10px 0px 10px;
+    padding: 10px;
+    background-color: #212c58;
+    border-radius: 7px;
+    border: 1px solid #212c58;
+}
+
+.header-links a:hover {
+    background-color: #faf8f6;
+    color: #212c58;
+}
+
+.jobs-container {
+    margin: auto;
+    margin-top: 40px;
+    height: 55vh;
+    width: 75vw;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.job-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    margin: auto;
+}
+
+.job {
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    width: 100%;
+    color: #212c58;
+    margin: 10px;
+}
+
+.complete {
+    background-color: rgb(195, 192, 192);
+}
+
+.job-id {
+    width: 10%;
+    height: 100%;
+    border-right: 1px solid #212c58;
+    border-radius: 7px;
+    text-align: center;
+    padding: 15px;
+}
+
+.job-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 0px 20px 0px 20px;
+    justify-content: space-between;
+}
+
+.job-info p {
+    width: 20%;
+    font-size: 80%;
+
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 80%;
+    /* width: 30% !important; */
+}
+
+.priority {
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    padding: 10px;
+    width: 40px !important;
+    height: 40px;
+    text-align: center;
+}
+
+.job p {
+    margin: 10px;
+}
+
+.job:hover {
+    background-color: #212c58;
+}
+
+.job:hover p {
+    color: #faf8f6;
+}
+
+.job:hover .priority {
+    border: 1px solid #faf8f6;
+}
+
+.job:hover .jobID {
+    border-right: 1px solid #faf8f6;
+}
+
+.create-job-form {
+    width: 70vw;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.create-job-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.create-job-form form input[type='submit']:hover {
+    color: #212c58;
+    background-color: #faf8f6;
+}
+
+
+.inner-job-form {
+    width: 80%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-job-form label {
+    margin: 0px 0px 5px 0px;
+}
+
+.inner-job-form textarea {
+    width: 100%;
+    min-height: 50px;
+    height: 80%;
+    margin-bottom: 20px;
+}
+
+.select-dropdown,
+.select-dropdown * {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.select-dropdown {
+    position: relative;
+    background-color: #E6E6E6;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.select-dropdown select {
+    font-size: 1rem;
+    font-weight: normal;
+    width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    appearance: none;
+}
+.select-dropdown select:active, .select-dropdown select:focus {
+    outline: none;
+    box-shadow: none;
+}
+.select-dropdown:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #aaa;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.create-job-form form input[type='submit'] {
+    align-self: flex-end;
+    text-decoration: none;
+    width: 100px;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    padding: 10px;
+    background-color: #212c58;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.handle-job {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 40vh;
+    margin: auto;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.handle-job .delete-buttons {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.handle-job a {
+    display: block;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    margin: 0px 10px 0px 10px;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.delete-button {
+    margin: 30px;
+    background-color: red;
+    border: 1px solid red;
+}
+
+.delete-button:hover {
+    background-color: rgb(181, 6, 6);
+    border: 1px solid rgb(181, 6, 6);
+}
+
+.cancel-button {
+    margin: 30px;
+    background-color: #212c58;
+    border: 1px solid #212c58;
+}
+
+.cancel-button:hover {
+    background-color: #faf8f6;
+    color: #212c58;
+}
+
+.restore-button {
+    margin: 30px;
+    background-color: green;
+    border: 1px solid green;
+}
+
+.restore-button:hover {
+    background-color: rgb(6, 86, 6);
+    border: 1px solid rgb(6, 86, 6);
+}
+
+.hide {
+    display: none;
+}
+
+.task-note-header {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-note-header a {
+    display: block;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+    font-size: 18px;
+    color: #faf8f6;
+    margin: 0px 10px 0px 10px;
+    padding: 10px;
+    background-color: #212c58;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+}
+
+.task-note-header a:hover {
+    background-color: #faf8f6;
+    color: #212c58;
+}
+
+.task-notes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.notes {
+    margin-top: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 250px;
+    width: 90%;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+}
+
+.note {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    border-bottom: 1px solid #212c58;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.note span {
+    text-align: center;
+    width: 23%;
+} 
+
+.note .name {
+    font-size: 90%;
+}
+
+.note .time-created {
+    font-size: 70%;
+}
+
+.note .category {
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.note .note-priority {
+    font-size: 90%;
+}
+
+.note:hover {
+    background-color: #212c58;
+}
+
+.note:hover span {
+    color: #faf8f6;
+}
+
+.note-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 40%;
+    min-width: 500px;
+    margin: auto;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+    padding: 20px;
+    margin-top: 20px
+}
+
+.note-container .note-header {
+    display: flex;
+    /* justify-content: top; */
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+
+}
+ 
+.note-container h3 {
+    margin-top: 10px;
+} 
+
+.note-container p {
+    margin-bottom: 10px;
+} 
+
+
+.note-container .note-description {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    height: 100%;
+}
+
+.note-container .note-description .description {
+    display: block;
+    width: 100%;
+    border: 1px solid #212c58;
+    border-radius: 7px;
+    height: 100%;
+    padding: 10px 5px 10px 5px;
+}
+
+.job-container {
+    width: 70vw;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 2px solid #212c58;
+    border-radius: 7px;
+    padding: 20px 20px 40px 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.job-container .job-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 10px 20px 20px 20px;
+}
+
+.job-container .job-info-container h3 {
+    margin: 20px 0px 5px 0px;
+}
+
+.job-info-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.job-info-container form input[type='submit'] {
+    align-self: flex-end;
+    text-decoration: none;
+    font-size: 80%;
+    width: 100px;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    color: #faf8f6;
+    padding: 7px;
+    background-color: #212c58;
+    border-radius: 7px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.job-info-container form input[type='submit']:hover {
+    color: #212c58;
+    background-color: #faf8f6;
+}
+
+.no-margin {
+    margin-bottom: 0px;
+}
+
+@media (max-width: 1000px) {
+    .create-job-form {
+        flex-direction: column;
+    }
+
+    .create-job-form form {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .task-notes {
+        margin-top: 20px;
+        height: 300px;
+    }
+
+    .note span {
+        width: auto;
+    }
+
+    .remove-margin {
+        margin-bottom: 0px !important;
+    }
+
+    .job-container {
+        flex-direction: column;
+    }
+
+    .job-container .job-info-container {
+        margin: auto
+    }
+    
+}
+
+@media (min-width: 1000px) {
     h1 {
-        width: 60%;
+        width: 64%;
+    }
+
+    .date {
+        font-size: 14px;
     }
 
     .list {
-        width: 60%;
+        margin-top: 24px;
+        width: 64%;
     }
 
     .list-label {
@@ -846,18 +1447,41 @@ h1 {
         padding-left: 24px;
     }
 
+    .message-button {
+        margin-bottom: 0px;
+    }
+
+    .messages-body {
+        font-size: 16px;
+    }
+
+    .messages-content {
+        padding-left: 12px;
+    }
+
+    .messages-subject {
+        font-size: 18px;
+    }
+
+    .messages-subject-date-group {
+        padding: 24px 0px;
+    }
+
     .reports-button {
         margin: 0px;
     }
 
+    .users-table {
+        padding-left: 12px;
+    }
+    
     .users-table td {
         font-size: 16px;
         padding: 0px;
     }
     
-    
     #login-container {
-        width: 61%;
+        width: 64%;
     }
 
     #login-message {
@@ -869,21 +1493,43 @@ h1 {
     }
     
     #menu-username {
-        width: 60%;
+        width: 64%;
     }
     
     #menu-username p {
         display: unset;
     }
 
+    #message-container {
+        width: 64%;
+    }
+
     #message-button-container {
         flex-direction: row;
-        width: 60%;
+        gap: 24px;
+        width: 64%;
+    }
+
+    #new-message-button-container {
+        flex-direction: row;
+        gap: 24px;
+        width: 64%;
+    }
+
+    #new-message-container {
+        min-height: 40vh;
+        width: 64%;
+    }
+
+    #message-container {
+        min-height: 40vh;
+        width: 64%;
     }
 
     #reports-button-container {
         flex-direction: row;
-        width: 60%;
+        gap: 24px;
+        width: 64%;
     }
 
     #reports-button-select-machine {
@@ -892,10 +1538,13 @@ h1 {
     }
 
     #reports-table-wrapper {
-        width: 60%;
+        width: 64%;
     }
 
     #unauthorised-container {
-        width: 60%;
+        width: 64%;
     }
+
 }
+
+

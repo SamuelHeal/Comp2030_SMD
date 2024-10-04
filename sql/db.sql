@@ -38,7 +38,9 @@ CREATE TABLE Job(
     machineID INTEGER NOT NULL,
     OperatorID INTEGER NOT NULL,
     priority INTEGER NOT NULL,
+    status VARCHAR(100) NOT NULL DEFAULT "Awaiting Confirmation",
     timeUpdated DATETIME NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (jobID),
     FOREIGN KEY (machineID) REFERENCES Machine(machineID),
     FOREIGN KEY (OperatorID) REFERENCES Person(personID)
@@ -78,24 +80,15 @@ CREATE TABLE Note(
     noteID INTEGER NOT NULL AUTO_INCREMENT,
     jobID INTEGER NOT NULL,
     category VARCHAR(100) NOT NULL,
-    issue VARCHAR(1000) NOT NULL,
-    partName VARCHAR(100) NOT NULL,
-    managerID INTEGER NOT NULL,
     priority INTEGER NOT NULL,
-    details VARCHAR(1000),
+    timeCreated DATETIME NOT NULL,
+    personID INTEGER NOT NULL,
+    description VARCHAR(1000),
     PRIMARY KEY (noteID),
-    FOREIGN KEY (jobID) REFERENCES Job(jobID),
-    FOREIGN KEY (managerID) REFERENCES Person(personID)
+    FOREIGN KEY (personID) REFERENCES Person(personID),
+    FOREIGN KEY (jobID) REFERENCES Job(jobID)
 );
 
-CREATE TABLE Part(
-    partID INTEGER NOT NULL AUTO_INCREMENT,
-    machineID INTEGER NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    description VARCHAR(1000),
-    PRIMARY KEY (partID),
-    FOREIGN KEY (machineID) REFERENCES Machine(machineID)
-);
 
 /* Create User Statement */
 DROP USER IF EXISTS dbadmin@localhost;
@@ -106,4 +99,3 @@ GRANT ALL PRIVILEGES ON Group18_SMD.Job TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Log TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Message TO dbadmin@localhost;
 GRANT ALL PRIVILEGES ON Group18_SMD.Note TO dbadmin@localhost;
-GRANT ALL PRIVILEGES ON Group18_SMD.Part TO dbadmin@localhost;
