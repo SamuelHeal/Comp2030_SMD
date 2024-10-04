@@ -26,6 +26,7 @@ function showPinFields() {
     document.getElementById('pin-input').style.display = 'block';
     document.getElementById('generate-button-input').style.display = 'block';
     document.getElementById('reset-button-input').style.display = 'none';
+    document.getElementById('pin').required = true;
 }
 
 function confirmArchive(personID, firstName, lastName) {

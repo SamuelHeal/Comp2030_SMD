@@ -64,7 +64,7 @@
             <div id="pin-buttons-input">
             <div id="pin-input">
             <label class="user-details-form-label" for="pin">User PIN:</label>
-            <input class="user-details-form-input" id="pin" name="pin" type="text" title="Please enter a 4-digit PIN" required/>
+            <input class="user-details-form-input" id="pin" name="pin" type="text" pattern="\d{4}" title="Please enter a 4-digit PIN" required/>
             </div>
             <div id="generate-button-input">
             <button id="generate-pin-button" type="button" onclick="generatePin()">Generate PIN</button>
