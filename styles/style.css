@@ -80,6 +80,55 @@ h1 {
     width: 25%;
 }
 
+.listSmall {
+    height: fit-content;
+    margin: 0px auto 24px auto;
+    width: 80%;
+}
+
+.listSmall a {
+    align-items: center;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    /* box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226); */
+    display: flex;
+    height: 160px;
+    list-style-type: none;
+    margin-bottom: 24px;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+    width: 50;
+}
+
+.listSmall li {
+    align-items: center;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    /* box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226); */
+    display: flex;
+    height: 120px;
+    list-style-type: none;
+    margin: 24px 0px;
+    overflow: hidden;
+    text-align: left;
+}
+    
+.listSmall-label { 
+    font-weight: bold;
+    font-size: 20px;
+    padding: 0px 12px;
+    width: 55%;
+    text-align: center;
+}
+
+#list-boxes {
+    width: 30%;
+    display: inline-flex;
+    vertical-align: top;
+    margin-right: 2.5em;
+}
+
 .menu-item {
     align-items: center;
     background-color: #ededed;
@@ -221,12 +270,33 @@ h1 {
     height: 100/3%;
 }
 
+.machine-table {
+    border-left: 3px solid #212c58;
+    height: 100%;
+    width: 80%;
+}
+
+.machine-table td {
+    padding-left: 6px;
+    height: 100/3%;
+}
+
 #body-container {
     height: fit-content;
     min-height: 60%;
     position: absolute;
     top: 20vh;
     width: 100%;
+}
+
+#body-container-small {
+    height: fit-content;
+    min-height: 60%;
+    position: absolute;
+    top: 20vh;
+    /* width: 80%; */
+    width: fit-content;
+    min-width: 100%;
 }
 
 #header-container {
@@ -658,6 +728,14 @@ h1 {
     
     .users-table td {
         font-size: 16px;
+        padding: 0px;
+    }
+
+    .machine-table {
+        padding-left: 12px;
+    }
+
+    .machine-table td {
         padding: 0px;
     }
     
