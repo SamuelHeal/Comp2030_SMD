@@ -611,15 +611,25 @@ h1 {
     color: #fffafa;
 }
 
-.top-layer-buttons {
+/* .top-layer-buttons {
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: flex;
+} */
+.top-layer-buttons {
+    margin-bottom: 20px;
+    width: 100%;
+    min-width: 750px;
+    max-width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .sort-button {
     position: relative;
-    display: inline-block;
+    display: flex;
+
 }
 
 .sort-box:hover {
@@ -671,17 +681,17 @@ h1 {
 .archive-button {
     display: none;
     z-index: 3; /* Makes sure the button stays above the edit overlay */
-        position: absolute;
-        right: 0;
-        height: 100%;
-        width: 120px;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        font-weight: bold;
-        background-color: #212c58;
-        color: #fffafa;
-        border: none;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 120px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #212c58;
+    color: #fffafa;
+    border: none;
     
 }
 
@@ -699,6 +709,7 @@ h1 {
 
 .top-button {
     display: flex;
+    flex-wrap: wrap;
     margin-right: 20px;
     margin-left: 20px;
     font-size: 20px;
@@ -711,10 +722,12 @@ h1 {
 .sort-label {
     font-size: 20px;
     font-weight: bold;
+    display: flex;
+    margin-right: 3px;
 }
+
 .header-container{
-    display: grid;
-    grid-template-columns: 60% auto;
+    display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
@@ -724,6 +737,7 @@ h1 {
 }
 .sort-box {
     width: 110px;
+    display: flex;
 }
 
 #show {

@@ -96,7 +96,7 @@
             <button class="top-button" onclick="window.location.href='create-user.php?machineID=<?php echo htmlspecialchars($machineID); ?>&active=1'">Add User</button>
 
             </div>
-            </div>
+        </div>
             <ul class="list">
             <?php foreach ($users as $user): ?>
                 <?php appendUserToList($user); ?>
