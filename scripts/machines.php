@@ -40,7 +40,7 @@ function displayListOfMachines($conn) {
     if ($result && mysqli_num_rows($result)) {
         echo '<ul class=list>';
         while ($assoc = mysqli_fetch_assoc($result)) {
-            $assoc['operator'] = isset($operators[$assoc['operatorID']]) ? $operators[$assoc['operatorID']] : "Vacant";
+            $assoc['operator'] = isset($operators[$assoc['assignedOperator']]) ? $operators[$assoc['assignedOperator']] : "Vacant";
             appendMachineToList($assoc);
         }
         echo '</ul>';

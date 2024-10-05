@@ -1,6 +1,6 @@
 <?php
 function createNewMachine($conn) {
-    $sql = 'INSERT INTO Machine (name, location, status, operatorID) VALUES (?, ?, ?, ?);';
+    $sql = 'INSERT INTO Machine (name, location, status, assignedOperator) VALUES (?, ?, ?, ?);';
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, 'ssii', $name, $location, $status, $operator_id);
@@ -15,7 +15,7 @@ function createNewMachine($conn) {
 }
 
 function updateMachineAll($conn) {
-    $sql = 'UPDATE Machine SET name = ?, location = ?, status = ?, operatorID = ? WHERE machineID = ?';
+    $sql = 'UPDATE Machine SET name = ?, location = ?, status = ?, assignedOperator = ? WHERE machineID = ?';
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, 'ssiii', $name, $location, $status, $operator_id, $update_id);

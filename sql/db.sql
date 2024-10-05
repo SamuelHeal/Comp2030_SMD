@@ -6,6 +6,16 @@ CREATE DATABASE Group18_SMD;
 USE Group18_SMD;
 
 /* Table Declarations */
+CREATE TABLE Machine(
+    machineID INTEGER NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(4) NOT NULL,
+    status INTEGER NOT NULL,
+    assignedOperator INTEGER DEFAULT NULL,
+    isArchived BOOLEAN DEFAULT 0 NOT NULL,
+    PRIMARY KEY (machineID)
+);
+
 CREATE TABLE Person(
     personID INTEGER NOT NULL AUTO_INCREMENT,
     firstName VARCHAR(100) NOT NULL,
@@ -16,18 +26,15 @@ CREATE TABLE Person(
     phoneNumber VARCHAR(100) NOT NULL,
     position VARCHAR(100) NOT NULL,
     PIN VARCHAR(255) NOT NULL,
+    isArchived BOOLEAN DEFAULT FALSE,
+    archivedAt DATETIME DEFAULT NULL,
+    lastActiveTime DATETIME DEFAULT NULL,
+    lastActiveMachineID INTEGER DEFAULT NULL,
+    FOREIGN KEY(lastActiveMachineID) REFERENCES Machine(machineID),
     PRIMARY KEY (personID)
 );
 
-CREATE TABLE Machine(
-    machineID INTEGER NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    location VARCHAR(4) NOT NULL,
-    status INTEGER NOT NULL,
-    operatorID INTEGER,
-    isArchived BOOLEAN NOT NULL,
-    PRIMARY KEY (machineID)
-);
+ALTER TABLE Machine ADD CONSTRAINT FK_Machine_Person FOREIGN KEY (assignedOperator) REFERENCES Person(PersonID);
 
 CREATE TABLE Job(
     jobID INTEGER NOT NULL AUTO_INCREMENT,

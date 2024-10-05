@@ -27,7 +27,7 @@ function getMachine($conn) {
     } else {
         $output = array(
             'name' => '',
-            'operatorID' => "",
+            'assignedOperator' => "",
             'location' => '',
             'status' => 2
         );
@@ -52,7 +52,7 @@ function setPageValues($machine) {
         echo "document.getElementById(\"machine-input-name\").value = \"{$machine['name']}\";";
         echo "document.getElementById(\"machine-select-status\").selectedIndex = \"{$machine['status']}\";";
         echo "document.getElementById(\"machine-input-location\").value = \"{$machine['location']}\";";
-        echo "const OPERATOR_OPTION = [...SELECT_OPERATOR.options].filter((option)=> option.value === \"{$machine['operatorID']}\");";
+        echo "const OPERATOR_OPTION = [...SELECT_OPERATOR.options].filter((option)=> option.value === \"{$machine['assignedOperator']}\");";
         echo "SELECT_OPERATOR.selectedIndex = OPERATOR_OPTION.length ? OPERATOR_OPTION[0].index : 0;";
     echo '</script>';
 }
