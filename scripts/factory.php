@@ -4,6 +4,7 @@ function getStatus($result) {
         case 0: return "<text style='color: #7b68ee;'> Idle </text>";
         case 1: return "<text style='color: #228b22;'> Active </text>";
         case 2: return "<text style='color: #dc143c;'> Maintenance </text>";
+        default: return "#faf8f6";  // Something is wrong.
     }
 }
 
