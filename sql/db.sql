@@ -12,8 +12,7 @@ CREATE TABLE Machine(
     location VARCHAR(4) NOT NULL,
     status INTEGER NOT NULL,
     operatorID INTEGER,
-    PRIMARY KEY (machineID),
-    FOREIGN KEY (operatorID) REFERENCES Person(personID)
+    PRIMARY KEY (machineID)
 );
 
 CREATE TABLE Person(
@@ -33,6 +32,8 @@ CREATE TABLE Person(
     FOREIGN KEY(lastActiveMachineID) REFERENCES Machine(machineID),
     PRIMARY KEY (personID)
 );
+
+ALTER TABLE Machine ADD CONSTRAINT FOREIGN KEY (operatorID) REFERENCES Person(personID);
 
 CREATE TABLE Job(
     jobID INTEGER NOT NULL AUTO_INCREMENT,
