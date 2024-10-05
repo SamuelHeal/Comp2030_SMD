@@ -3,12 +3,12 @@ function appendOperatorsToSelect($conn) {
     $sql = "SELECT personID, firstName, lastName FROM Person WHERE position = \"Production Operator\" AND isArchived = 0 ORDER BY lastname;";
     $result = mysqli_query($conn, $sql);
     if ($result && mysqli_num_rows($result)) {
-        echo '<option value="">Vacant</option>';
+        echo '<option value="0">Vacant</option>';
         while ($assoc = mysqli_fetch_assoc($result)) {
             echo "<option value={$assoc['personID']}>{$assoc['firstName']} {$assoc['lastName']}</option>";
         }
     } else {
-        echo '<option value="">No operators found</option>';
+        echo '<option value="0">No operators found</option>';
     }
     mysqli_free_result($result);
 }
@@ -27,7 +27,7 @@ function getMachine($conn) {
     } else {
         $output = array(
             'name' => '',
-            'assignedOperator' => "",
+            'assignedOperator' => 0,
             'location' => '',
             'status' => 2
         );

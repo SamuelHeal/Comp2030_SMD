@@ -34,7 +34,7 @@ CREATE TABLE Person(
     PRIMARY KEY (personID)
 );
 
-ALTER TABLE Machine ADD CONSTRAINT FK_Machine_Person FOREIGN KEY (assignedOperator) REFERENCES Person(PersonID);
+ALTER TABLE Machine ADD CONSTRAINT FK_Machine_Person FOREIGN KEY (assignedOperator) REFERENCES Person(personID);
 
 CREATE TABLE Job(
     jobID INTEGER NOT NULL AUTO_INCREMENT,

@@ -8,6 +8,7 @@ function createNewMachine($conn) {
     $location = htmlspecialchars($_POST['location']);
     $status = htmlspecialchars($_POST['status']);
     $operator_id = htmlspecialchars($_POST['operator']);
+    $operator_id = $operator_id ? $operator_id : NULL;
     if (!mysqli_stmt_execute($stmt)) {
         echo "Unable to create machine.";
     }
@@ -23,6 +24,7 @@ function updateMachineAll($conn) {
     $location = htmlspecialchars($_POST['location']);
     $status = htmlspecialchars($_POST['status']);
     $operator_id = htmlspecialchars($_POST['operator']);
+    $operator_id = $operator_id ? $operator_id : NULL;
     $update_id = htmlspecialchars($_GET['update_id']);
     if (!mysqli_stmt_execute($stmt)) {
         echo "Unable to update machine.";
