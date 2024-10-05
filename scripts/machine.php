@@ -53,6 +53,6 @@ function setPageValues($machine) {
         echo "document.getElementById(\"machine-select-status\").selectedIndex = \"{$machine['status']}\";";
         echo "document.getElementById(\"machine-input-location\").value = \"{$machine['location']}\";";
         echo "const OPERATOR_OPTION = [...SELECT_OPERATOR.options].filter((option)=> option.value === \"{$machine['operatorID']}\");";
-        echo "SELECT_OPERATOR.selectedIndex = OPERATOR_OPTION.length ? OPERATOR_OPERATOR[0].index : 0;";
+        echo "SELECT_OPERATOR.selectedIndex = OPERATOR_OPTION.length ? OPERATOR_OPTION[0].index : 0;";
     echo '</script>';
 }
