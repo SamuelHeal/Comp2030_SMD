@@ -6,16 +6,6 @@ CREATE DATABASE Group18_SMD;
 USE Group18_SMD;
 
 /* Table Declarations */
-CREATE TABLE Machine(
-    machineID INTEGER NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    location VARCHAR(4) NOT NULL,
-    status INTEGER NOT NULL,
-    operatorID INTEGER,
-    PRIMARY KEY (machineID),
-    FOREIGN KEY (operatorID) REFERENCES Person(personID)
-);
-
 CREATE TABLE Person(
     personID INTEGER NOT NULL AUTO_INCREMENT,
     firstName VARCHAR(100) NOT NULL,
@@ -27,6 +17,17 @@ CREATE TABLE Person(
     position VARCHAR(100) NOT NULL,
     PIN VARCHAR(255) NOT NULL,
     PRIMARY KEY (personID)
+);
+
+CREATE TABLE Machine(
+    machineID INTEGER NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(4) NOT NULL,
+    status INTEGER NOT NULL,
+    operatorID INTEGER,
+    isArchived BOOLEAN NOT NULL,
+    PRIMARY KEY (machineID),
+    FOREIGN KEY (operatorID) REFERENCES Person(personID)
 );
 
 CREATE TABLE Job(

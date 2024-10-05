@@ -16,21 +16,12 @@
     <div id=body-container>
         <h1>Machines</h1>
         <div id="machines-button-container">
-            <a class="machines-button red-hover" href="messages.php?machineID=<?php $_GET['machineID'] ?>">Delete All Machines</a>
-            <a class="machines-button" href="messages.php?machineID=<?php $_GET['machineID'] ?>">Create New Machine</a>
+            <a class="machines-button red-hover" href="../system/archive-all-machines.php?<?php echo "machineID={$_GET['machineID']}&archive_all=1"; ?>" onclick="return confirm('Are you sure you want to archive all machines?');">Archive All Machines</a>
+            <a class="machines-button" href="machine.php?<?php echo "machineID={$_GET['machineID']}&active=1&update_id=0"; ?>">Create New Machine</a>
         </div>
         <?php 
             hideButtonsIfOperator();
-            $sql = "SELECT * FROM Machine ORDER BY name;";
-            $result = mysqli_query($conn, $sql);
-            if ($result && mysqli_num_rows($result)) {
-                echo '<ul class=list>';
-                while ($assoc = mysqli_fetch_assoc($result)) {
-                    appendMachineToList($assoc);
-                }
-                echo '</ul>';
-                mysqli_free_result($result);
-            }
+            displayListOfMachines($conn);
             mysqli_close($conn);
         ?>
     </div>

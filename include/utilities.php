@@ -16,15 +16,15 @@ function checkMachineIdIsSet($conn) {
         $sql = "SELECT * FROM Machine WHERE machineID = {$_GET['machineID']};";
         $result = mysqli_query($conn, $sql);
         if (!$result || !mysqli_num_rows($result)) {
-            $_GET['machineID'] = 1;
+            $_GET['machineID'] = 0;
         }
         mysqli_free_result($result);
     } else {
-        $_GET['machineID'] = 1;
+        $_GET['machineID'] = 0;
     }
 }
 
-function console($string) {  // For debugging, delete for submission.
+function consolelog($string) {  // For debugging, delete for submission.
     echo '<script>';
         echo "console.log(\"$string\");";
     echo '</script>';

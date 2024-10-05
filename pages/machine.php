@@ -12,27 +12,26 @@
     <?php
         require_once '../include/page-defaults.php';
         require_once '../scripts/machine.php';  
-        $machine_id = htmlspecialchars($_GET['machineID']);
         $update_id = htmlspecialchars($_GET['update_id']);
     ?>
     <div id=body-container>
         <h1 id="machine-heading">Machine</h1>
-        <form action="../system/machine.php?<?php echo "machineID=$machine_id&update_id=$update_id"; ?>" id="machine-container" method="POST" name="machine-form">
+        <form action="../system/machine.php?<?php echo "machineID={$_GET['machineID']}&update_id=$update_id"; ?>" id="machine-form" method="POST" name="machine-form">
             <div class="machine-input-group">
                 <label for="name">Name:</label><br>
-                <input class="machine-input clickable" id="machine-input-name" name="name" type="text">
+                <input class="machine-input clickable" id="machine-input-name" name="name" placeholder="New Machine" required type="text">
             </div>
             <div class="machine-input-group">
                 <label for="status">Staus:</label><br>
-                <select class="machine-input clickable" id=machine-select-status name="status">
-                    <option id=0>Idle</option>
-                    <option id=1>Active</option>
-                    <option id=2>Maintenance</option>
+                <select class="machine-input clickable" id=machine-select-status required name="status">
+                    <option value=0>Idle</option>
+                    <option value=1>Active</option>
+                    <option value=2>Maintenance</option>
                 </select>
             </div>
             <div class="machine-input-group">
                 <label for="location">Location:</label><br>
-                <input class="machine-input clickable" id="machine-input-location" name="location" type="text">
+                <input class="machine-input clickable" id="machine-input-location" name="location" placeholder="New Location" required type="text">
             </div>
             <div class="machine-input-group">
                 <label for="operator">Assigned Operator:</label><br>
@@ -42,12 +41,13 @@
             </div>
         </form>
         <div id="machines-button-container">
-            <a class="machines-button" href="machines.php?<?php echo "machineID=$machine_id"; ?>" id="machine-button-back">Back</a>    
-            <a class="machines-button red-hover" href="messages.php?<?php echo "machineID=$machine_id&update_id=$update_id"; ?>">Delete</a>
-            <a class="machines-button" href="../system/machine.php?<?php echo "machineID=$machine_id&update_id=$update_id"; ?>">✓</a>
+            <a class="machines-button" href="machines.php?<?php echo "machineID={$_GET['machineID']}"; ?>" id="machine-button-back" onclick="return confirm('Are you sure you want to leave this page?')">Back</a>    
+            <a class="machines-button red-hover" href="../system/delete-machine.php?<?php echo "machineID={$_GET['machineID']}&delete_id=$update_id"; ?>" id="machine-button-delete" onclick="return confirm('Are you sure you want to delete this machine?')">Delete</a>
+            <button class="machines-button green-hover" id="machine-button-submit" onclick="submitForm();">✓</button>
         </div>
         <?php
             $machine = getMachine($conn);
+            hideDeleteIfCreatingMachine();
             setPageValues($machine);
             mysqli_close($conn);
         ?>

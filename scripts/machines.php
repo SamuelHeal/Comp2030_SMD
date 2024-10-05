@@ -1,17 +1,16 @@
 <?php 
 function alertIfParameterPresent() {
     $alert_message = array(
-        'all_deleted' => 'All machines were deleted!',
+        'all_archived' => 'All machines were archived!',
         'created' => 'Machine was created!',
-        'deleted' => 'Machine was deleted!',
+        'archived' => 'Machine was archived!',
         'updated' => 'Machine updated!'
     );
     foreach($alert_message as $parameter => $message) {
         if (isset($_GET[$parameter])) {
             echo '<script>';
                 echo "alert(\"{$message}\");";
-                $machine_id = htmlspecialchars($_GET['machineID']);
-                echo "window.location = \"machines.php?machineID=$machine_id\";";
+                echo "window.location = \"machines.php?machineID={$_GET['machineID']}\";";
             echo '</script>';
         }
     }
@@ -19,7 +18,7 @@ function alertIfParameterPresent() {
 
 function appendMachineToList($assoc) {
     $status = getStatusName($assoc['status']);
-    echo "<a href=\"machine.php?machineID={$_GET['machineID']}&update_id={$assoc['machineID']}\">";
+    echo "<a href=\"machine.php?machineID={$_GET['machineID']}&active=1&update_id={$assoc['machineID']}\">";
         echo "<div class=\"list-label\">{$assoc['name']}</div>";
         echo '<table class="users-table">';
             echo '<tr>';
@@ -28,10 +27,25 @@ function appendMachineToList($assoc) {
             echo '</tr>';
             echo '<tr>';
                 echo "<td>ID: {$assoc['machineID']}</td>";
-                echo "<td>Operator Assigned: {$assoc['operatorID']}</td>";
+                echo "<td>Operator Assigned: {$assoc['operator']}</td>";
             echo '</tr>';
         echo '</table>';
     echo '</a>';
+}
+
+function displayListOfMachines($conn) {
+    $operators = getOperatorsAssoc($conn);
+    $sql = "SELECT * FROM Machine ORDER BY name;";
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        echo '<ul class=list>';
+        while ($assoc = mysqli_fetch_assoc($result)) {
+            $assoc['operator'] = isset($operators[$assoc['operatorID']]) ? $operators[$assoc['operatorID']] : "Vacant";
+            appendMachineToList($assoc);
+        }
+        echo '</ul>';
+        mysqli_free_result($result);
+    }
 }
 
 function getStatusName($code) {
@@ -41,6 +55,23 @@ function getStatusName($code) {
         case 2: return "Maintenance";
     }
 }
+
+function getOperatorsAssoc($conn) {
+    $users = array();
+    $sql = 'SELECT * FROM Person WHERE position = "Production Operator"';
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        while ($assoc = mysqli_fetch_assoc($result)) {
+            $users[$assoc['personID']] = "{$assoc['firstName']} {$assoc['lastName']}";
+        }
+    } 
+    else {
+        echo 'No operators in the database.';
+    }
+    mysqli_free_result($result);
+    return $users;
+}
+
 
 function hideButtonsIfOperator() {
     if ($_SESSION['position'] === 'Production Operator') {
