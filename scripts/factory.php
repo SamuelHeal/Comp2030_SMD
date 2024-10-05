@@ -1,13 +1,9 @@
 <?php 
 function getStatus($result) {
-    if ($result == 0) {
-        return "<text style='color: #0ADD08;'> Active </text>"; //did not like default 'green' or 'greenyellow', was not visible enough
-    }
-    if ($result == 1) {
-        return "<text style='color: blue;'> Idle </text>"; //echo vs return?
-    }
-    if ($result == 2) {
-        return "<text style='color: red;'> Maintenance </text>";
+    switch ($result) {
+        case 0: return "<text style='color: #7b68ee;'> Idle </text>";
+        case 1: return "<text style='color: #228b22;'> Active </text>";
+        case 2: return "<text style='color: #dc143c;'> Maintenance </text>";
     }
 }
 
