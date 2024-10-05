@@ -12,15 +12,15 @@ function checkForMessages($conn) {
 }
 
 function checkMachineIdIsSet($conn) {
-    if (!isset($_GET['machineID']) || !is_numeric($_GET['machineID'])) {
+    if (isset($_GET['machineID']) && is_numeric($_GET['machineID'])) {
+        $sql = "SELECT * FROM Machine WHERE machineID = {$_GET['machineID']};";
+        $result = mysqli_query($conn, $sql);
+        if (!$result || !mysqli_num_rows($result)) {
+            $_GET['machineID'] = 0;
+        }
+        mysqli_free_result($result);
+    } else {
         $_GET['machineID'] = 0;
-        return;
-    }
-    $sql = "SELECT * FROM Machine WHERE machineID = {$_GET['machineID']};";
-    $result = mysqli_query($conn, $sql);
-    if (!$result || !mysqli_num_rows($result)) {
-        $_GET['machineID'] = 0;
-        return;
     }
 }
 
@@ -100,3 +100,15 @@ function warnIfActive() {
 }
 
 
+
+function updateLastActive($conn) {
+    if (isset($_SESSION['id'])) {
+        $machineID = $_GET['machineID'];
+        $personID = $_SESSION['id'];
+        $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ? WHERE personID = ?";
+        $stmt = mysqli_prepare($conn, $updateSql);
+        mysqli_stmt_bind_param($stmt, 'ii', $machineID, $personID);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+}

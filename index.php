@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Practical 3: Current tasks</title>
+    <title>SMD</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Group 18" />
     <script src="scripts/index.js"></script>
