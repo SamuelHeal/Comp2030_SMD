@@ -20,7 +20,12 @@ function getMessageFromStatus(status) {
 
 function setBannerColour(status) {
     const HEADER_CONTAINER = document.getElementById("header-container");
-    HEADER_CONTAINER.style.backgroundColor = getColourFromStatus(status);
+    const USERNAME = document.getElementById("username");
+    if (status == 'desktop') {
+        USERNAME.style.color = '#212c58';
+    } else {    
+        HEADER_CONTAINER.style.backgroundColor = getColourFromStatus(status);
+    }
 }
 
 function setBannerMessage(status) {

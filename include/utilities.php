@@ -13,13 +13,13 @@ function checkForMessages($conn) {
 
 function checkMachineIdIsSet($conn) {
     if (!isset($_GET['machineID']) || !is_numeric($_GET['machineID'])) {
-        $_GET['machineID'] = 1;
+        $_GET['machineID'] = 0;
         return;
     }
     $sql = "SELECT * FROM Machine WHERE machineID = {$_GET['machineID']};";
     $result = mysqli_query($conn, $sql);
     if (!$result || !mysqli_num_rows($result)) {
-        $_GET['machineID'] = 1;
+        $_GET['machineID'] = 0;
         return;
     }
 }
@@ -48,16 +48,34 @@ function redirectToDashboardIfLoggedIn() {
     }
 }
 
-function setBannerColour($conn) {
-    $sql = "SELECT status FROM Machine WHERE machineID = {$_GET['machineID']};";
-    $result = mysqli_query($conn, $sql);
-    if ($result && mysqli_num_rows($result)) {
-        $assoc = mysqli_fetch_assoc($result);
-        echo '<script>';
-            echo "setBannerColour({$assoc['status']});";
-        echo '</script>';
+function redirectToOffice() {
+    if ($_GET['machineID'] == 0) {
+        header("location: login-desktop.php?machineID={$_GET['machineID']}");
     }
-    mysqli_free_result($result);
+}
+
+function redirectToMachine() {
+    if ($_GET['machineID'] != 0) {
+        header("location: login.php?machineID={$_GET['machineID']}");
+    }
+}
+
+function setBannerColour($conn) {
+    if ($_GET['machineID'] == '0') {
+        echo '<script>';
+            echo "setBannerColour('desktop');";
+        echo '</script>';
+    } else {
+        $sql = "SELECT status FROM Machine WHERE machineID = {$_GET['machineID']};";
+        $result = mysqli_query($conn, $sql);
+        if ($result && mysqli_num_rows($result)) {
+            $assoc = mysqli_fetch_assoc($result);
+            echo '<script>';
+                echo "setBannerColour({$assoc['status']});";
+            echo '</script>';
+        }
+        mysqli_free_result($result);
+    }
 }
 
 function setBannerColourAndMessage($conn) {
