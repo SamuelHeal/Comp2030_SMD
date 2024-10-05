@@ -26,8 +26,7 @@ CREATE TABLE Machine(
     status INTEGER NOT NULL,
     operatorID INTEGER,
     isArchived BOOLEAN NOT NULL,
-    PRIMARY KEY (machineID),
-    FOREIGN KEY (operatorID) REFERENCES Person(personID)
+    PRIMARY KEY (machineID)
 );
 
 CREATE TABLE Job(

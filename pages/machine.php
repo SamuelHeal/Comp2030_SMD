@@ -42,12 +42,12 @@
         </form>
         <div id="machines-button-container">
             <a class="machines-button" href="machines.php?<?php echo "machineID={$_GET['machineID']}"; ?>" id="machine-button-back" onclick="return confirm('Are you sure you want to leave this page?')">Back</a>    
-            <a class="machines-button red-hover" href="../system/delete-machine.php?<?php echo "machineID={$_GET['machineID']}&delete_id=$update_id"; ?>" id="machine-button-delete" onclick="return confirm('Are you sure you want to delete this machine?')">Delete</a>
+            <a class="machines-button red-hover" href="../system/archive-machine.php?<?php echo "machineID={$_GET['machineID']}&archive_id=$update_id"; ?>" id="machine-button-archive" onclick="return confirm('Are you sure you want to archive this machine?')">Archive</a>
             <button class="machines-button green-hover" id="machine-button-submit" onclick="submitForm();">✓</button>
         </div>
         <?php
             $machine = getMachine($conn);
-            hideDeleteIfCreatingMachine();
+            hideArchiveIfCreatingMachine();
             setPageValues($machine);
             mysqli_close($conn);
         ?>

@@ -35,7 +35,7 @@ function appendMachineToList($assoc) {
 
 function displayListOfMachines($conn) {
     $operators = getOperatorsAssoc($conn);
-    $sql = "SELECT * FROM Machine ORDER BY name;";
+    $sql = "SELECT * FROM Machine WHERE isArchived = 0 ORDER BY name;";
     $result = mysqli_query($conn, $sql);
     if ($result && mysqli_num_rows($result)) {
         echo '<ul class=list>';

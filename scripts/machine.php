@@ -36,10 +36,10 @@ function getMachine($conn) {
     return $output;
 }
 
-function hideDeleteIfCreatingMachine() {
+function hideArchiveIfCreatingMachine() {
     if (!$_GET['update_id']) {
         echo '<script>';
-            echo 'document.getElementById("machine-button-delete").style.display = "none";';
+            echo 'document.getElementById("machine-button-archive").style.display = "none";';
         echo '</script>';
     }
 }

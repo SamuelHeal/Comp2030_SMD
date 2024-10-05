@@ -1,6 +1,6 @@
 <?php 
 function archiveAllMachines($conn) {
-    $sql = "DELETE FROM Machine;";
+    $sql = "UPDATE Machine SET isArchived = 1;";
     if (!mysqli_query($conn, $sql)) {
         echo 'Unable to archive all machines';
     }
