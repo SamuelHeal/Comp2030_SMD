@@ -4,6 +4,7 @@ function getStatus($result) {
         case 0: return "<text style='color: #7b68ee;'> Idle </text>";
         case 1: return "<text style='color: #228b22;'> Active </text>";
         case 2: return "<text style='color: #dc143c;'> Maintenance </text>";
+        default: return "<text style='color: #faf8f6;> ERROR </text>";  // Something is wrong.
     }
 }
 
@@ -14,7 +15,7 @@ function appendMachineToList($assoc) {
             echo '<tr>';
                 echo "<td>Location: {$assoc['location']}</td>";
             echo '<tr>';
-                echo "<td>Status: ", getStatus($assoc['status']), "</td>"; //make a coloured text indicator instead?
+                echo "<td>Status: ", getStatus($assoc['status']), "</td>";
             echo '<tr>';
                 echo "<td>Assigned PO: {$assoc['status']}</td>"; //need to see merged changes to db for assigned PO, join table statement?
         echo '</table>';
