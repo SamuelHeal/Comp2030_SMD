@@ -105,9 +105,13 @@ function updateLastActive($conn) {
     if (isset($_SESSION['id'])) {
         $machineID = $_GET['machineID'];
         $personID = $_SESSION['id'];
-        $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ? WHERE personID = ?";
+        if ($machineID == 0) {
+            $updateSql = "UPDATE Person SET lastActiveTime = NOW() WHERE personID = ?";
+        } else {
+            $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ? WHERE personID = ?";
+        }
         $stmt = mysqli_prepare($conn, $updateSql);
-        mysqli_stmt_bind_param($stmt, 'ii', $machineID, $personID);
+        mysqli_stmt_bind_param($stmt, 'i', $personID);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
