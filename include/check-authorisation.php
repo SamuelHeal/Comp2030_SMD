@@ -1,11 +1,12 @@
 <?php 
 $authorisation = array(
     'Administrator' => array(
-        'users.php' => true,
         'manage.php' => true,
         'message.php' => true,
         'messages.php' => true,
-        'new-message.php' => true
+        'new-message.php' => true,
+        'create-user.php' => true,
+        'update-user.php' => true
     ),
     'Auditor' => array(
         'users.php' => true,
