@@ -375,10 +375,17 @@ h1 {
     text-align: center;
 }
 
+.desktop-login-container h1 {
+    font-size: 2.5em;
+}
+
 .login-form-container {
     padding: 20px;
     border: 1px solid #212c58;
     border-radius: 7px;
+    /* width: 30vw; */
+    justify-content: center;
+    align-items: center;
 }
 
 .login-form-container form {
@@ -386,20 +393,23 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .login-form-container h2 {
     margin-bottom: 20px;
+    font-size: 2em;
 }
 
 .login-form-container p {
     margin-bottom: 20px;
+    font-size: 1.5em;
 }
 
 .login-form-container form input[type='password'] {
     margin-bottom: 20px;
-    height: 50px;
-    width: 50px;
+    height: 5vw;
+    width: 5vw;
     text-align: center;
     font-size: 40px;
 }
@@ -412,9 +422,9 @@ h1 {
 .login-desktop-button {
     display: block;
     text-decoration: none;
-    width: 100px;
+    /* width: 7vw; */
     text-align: center;
-    font-size: 20px;
+    font-size: 1.5em;
     color: #faf8f6;
     padding: 10px;
     margin: 5px;
@@ -427,6 +437,10 @@ h1 {
 .login-desktop-button:hover {
     color: #212c58;
     background-color: #faf8f6;
+}
+
+.incorrect-pin {
+    color: red;
 }
 
 #new-message-button-container {

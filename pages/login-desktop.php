@@ -25,14 +25,19 @@
                 <p>Please enter your staff PIN:</p>
                 <form action="../system/login.php?machineID=<?php echo $_GET['machineID']?>" method="POST">
                     <div>
-                        <input class='pin-input-field' name='pin-1' type="password" maxlength=1 id="1" onkeyup="moveToNext(this,'2')" />
-                        <input class='pin-input-field' name='pin-2' type="password" maxlength=1 id="2" onkeyup="moveToNext(this,'3')" />
-                        <input class='pin-input-field' name='pin-3' type="password" maxlength=1 id="3" onkeyup="moveToNext(this,'4')" />
-                        <input class='pin-input-field' name='pin-4' type="password" maxlength=1 id="4" />
+                        <input class='pin-input-field' name='pin-1' type="password" maxlength=1 id="1" onkeyup="moveToNext(this,1)" />
+                        <input class='pin-input-field' name='pin-2' type="password" maxlength=1 id="2" onkeyup="moveToNext(this,2)" />
+                        <input class='pin-input-field' name='pin-3' type="password" maxlength=1 id="3" onkeyup="moveToNext(this,3)" />
+                        <input class='pin-input-field' name='pin-4' type="password" maxlength=1 id="4" onkeyup="moveToNext(this,4)" />
                     </div>
+                    <?php 
+                    if ($_GET['bad_pin']) {
+                        echo "<p class='incorrect-pin'>Incorrect PIN code</p>";
+                    }
+                    ?>
                     <div class="login-button-container">
                         <button class="login-desktop-button" onclick="clearPin()">Clear</button>
-                        <input class="login-desktop-button" name="login" type="submit" value="Login" />
+                        <input id='login-btn' class="login-desktop-button" name="login" type="submit" value="Login" />
                     </div>
                 </form>
             </div>
