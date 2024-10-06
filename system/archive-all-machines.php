@@ -10,6 +10,6 @@ if (isset($_GET['archive_all'])) {
     require_once '../include/database.php';
     archiveAllMachines($conn);
     mysqli_close($conn);
-    header("location: ../pages/machines.php?machineID={$_GET['machineID']}&all_archived=1");
+    header("location: ../pages/machines.php?machineID={$_GET['machineID']}&show_current=1&all_archived=1");
     exit;
 }

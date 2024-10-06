@@ -13,6 +13,7 @@ function createNewMachine($conn) {
         echo "Unable to create machine.";
     }
     mysqli_stmt_close($stmt);
+    return 'created=1';
 }
 
 function updateMachineAll($conn) {
@@ -30,17 +31,17 @@ function updateMachineAll($conn) {
         echo "Unable to update machine.";
     }
     mysqli_stmt_close($stmt);
+    return 'updated=1';
 }
 
 if (isset($_POST['name'], $_GET['update_id'])) {
     require_once '../include/database.php';
     if (!$_GET['update_id']) {
-        createNewMachine($conn);
-        header("location: ../pages/machines.php?machineID={$_GET['machineID']}&created=1");
+        $action_parameter = createNewMachine($conn);
     } else {
-        updateMachineAll($conn);
-        header("location: ../pages/machines.php?machineID={$_GET['machineID']}&updated=1");
+        $action_parameter = updateMachineAll($conn);
     }
     mysqli_close($conn);
+    header("location: ../pages/machines.php?machineID={$_GET['machineID']}&show_current=1&$action_parameter");
     exit;
 }

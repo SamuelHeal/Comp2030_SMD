@@ -11,12 +11,11 @@
 <body>
     <?php
         require_once '../include/page-defaults.php';
-        require_once '../scripts/machine.php';  
-        $update_id = htmlspecialchars($_GET['update_id']);
+        require_once '../scripts/machine.php';
     ?>
     <div id=body-container>
         <h1 id="machine-heading">Machine</h1>
-        <form action="../system/machine.php?<?php echo "machineID={$_GET['machineID']}&update_id=$update_id"; ?>" id="machine-form" method="POST" name="machine-form">
+            <?php echoFormTag(); ?>
             <div class="machine-input-group">
                 <label for="name">Name:</label><br>
                 <input class="machine-input clickable" id="machine-input-name" name="name" placeholder="New Machine" required type="text">
@@ -41,12 +40,15 @@
             </div>
         </form>
         <div id="machines-button-container">
-            <a class="machines-button" href="machines.php?<?php echo "machineID={$_GET['machineID']}"; ?>" id="machine-button-back" onclick="return confirm('Are you sure you want to leave this page?')">Back</a>    
-            <a class="machines-button red-hover" href="../system/archive-machine.php?<?php echo "machineID={$_GET['machineID']}&archive_id=$update_id"; ?>" id="machine-button-archive" onclick="return confirm('Are you sure you want to archive this machine?')">Archive</a>
+            <?php
+                echoBackButton(); 
+                echoArchiveButton(); 
+            ?>
             <button class="machines-button green-hover" id="machine-button-submit" onclick="submitForm();">✓</button>
         </div>
         <?php
             $machine = getMachine($conn);
+            disableEdittingIfArchived();
             hideArchiveIfCreatingMachine();
             setPageValues($machine);
             mysqli_close($conn);
