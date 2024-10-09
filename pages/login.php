@@ -13,6 +13,7 @@
         require_once '../include/database.php';
         require_once '../scripts/login.php';
         redirectToDashboardIfLoggedIn();
+        redirectToOffice();
         checkMachineIdIsSet($conn);
         ?>
     <nav id="header-container">
@@ -36,6 +37,7 @@
             <input id="keypad-submit" name="login" type="submit" value="✓"/>
         </form>
     </div>
+
     <script src="../scripts/login.js"></script>
     <?php
         setBannerColourAndMessage($conn);

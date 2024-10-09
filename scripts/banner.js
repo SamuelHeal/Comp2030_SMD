@@ -5,7 +5,7 @@ function getColourFromStatus(status) {
         case IDLE: return "#7b68ee";
         case ACTIVE: return "#228b22";
         case MAINTENANCE: return "#dc143c";
-        default: return "#faf8f6";  // Something is wrong.
+        default: return "#aaa";  // Something is wrong.
     }
 }
 
@@ -20,7 +20,12 @@ function getMessageFromStatus(status) {
 
 function setBannerColour(status) {
     const HEADER_CONTAINER = document.getElementById("header-container");
-    HEADER_CONTAINER.style.backgroundColor = getColourFromStatus(status);
+    const USERNAME = document.getElementById("username");
+    if (status == 'desktop') {
+        USERNAME.style.color = '#212c58';
+    } else {    
+        HEADER_CONTAINER.style.backgroundColor = getColourFromStatus(status);
+    }
 }
 
 function setBannerMessage(status) {

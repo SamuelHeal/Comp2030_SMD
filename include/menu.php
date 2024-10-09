@@ -1,7 +1,7 @@
 <nav id="header-container">
     <div id=menu-username>
         <?php
-            echo "<p>{$_SESSION['username']}</p>";
+            echo "<p id='username'>{$_SESSION['username']}</p>";
         ?>
     </div>
     <div id="menu-items">
