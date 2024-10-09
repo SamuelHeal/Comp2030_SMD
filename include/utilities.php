@@ -87,6 +87,8 @@ function setBannerColourAndMessage($conn) {
             echo "setBannerColour({$assoc['status']});";
             echo "setBannerMessage({$assoc['status']});";
         echo '</script>';
+    } else {
+        header('location: login-desktop.php?machineID=0');
     }
     mysqli_free_result($result);
 }
@@ -99,19 +101,13 @@ function warnIfActive() {
     }
 }
 
-
-
 function updateLastActive($conn) {
     if (isset($_SESSION['id'])) {
-        $machineID = $_GET['machineID'];
+        $machineID = $_GET['machineID'] ? $_GET['machineID'] : NULL;
         $personID = $_SESSION['id'];
-        if ($machineID == 0) {
-            $updateSql = "UPDATE Person SET lastActiveTime = NOW() WHERE personID = ?";
-        } else {
-            $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ? WHERE personID = ?";
-        }
+        $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ? WHERE personID = ?";
         $stmt = mysqli_prepare($conn, $updateSql);
-        mysqli_stmt_bind_param($stmt, 'i', $personID);
+        mysqli_stmt_bind_param($stmt, 'ii', $machineID, $personID);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }

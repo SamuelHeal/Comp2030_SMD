@@ -34,7 +34,7 @@ if (isset($_POST['login'])) {
     mysqli_free_result($result);
 }
 if ($_GET['machineID'] == 0) {
-    header("location: ../pages/login-desktop.php?machineID={$_GET['machineID']}&bad_pin=1");
+    header('location: ../pages/login-desktop.php?machineID=0&bad_pin=1');
 } else {
     header("location: ../pages/login.php?machineID={$_GET['machineID']}&bad_pin=1");
 }

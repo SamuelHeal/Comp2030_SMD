@@ -5,5 +5,5 @@ require_once '../include/check-authorisation.php';
 checkMachineIdIsSet($conn);
 require_once '../include/menu.php';
 setBannerColour($conn);
-// updateLastActive($conn);
+updateLastActive($conn);
 ?>

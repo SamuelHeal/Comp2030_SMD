@@ -1,8 +1,9 @@
 function clearPin() {
-    buttons = querySelector('.pin-input-field');
-    buttons.value='';
+    const PIN_INPUTS = document.getElementsByClassName("pin-input-field");
+    [...PIN_INPUTS].forEach((input) => {
+        input.value = "";
+    });
 }
-
 
 function moveToNext(input, nextInput) {
     if (input.value.length == 1) {
@@ -21,5 +22,4 @@ addEventListener("keypress", (event) => {
         event.preventDefault();
         document.getElementById("login-btn").click();
     }
-})
-
+});
