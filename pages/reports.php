@@ -15,7 +15,7 @@
     ?>
     <div id="body-container">
         <h1>Reports</h1>
-        <div id="reports-table-wrapper">
+        <div id="reports-table-wrapper" title="Click to expand">
             <table>
                 <tr id="reports-labels">
                     <th>

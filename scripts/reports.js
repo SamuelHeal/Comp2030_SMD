@@ -5,7 +5,6 @@ let table_expanded = false;
 
 function displayFormInputs() {
     const QUERY_STRING = window.location.search;
-    console.log(QUERY_STRING);
     const QUERY_PARAMETERS = new URLSearchParams(QUERY_STRING);
     if (QUERY_PARAMETERS.has("start")) {
         SELECT_END.value = QUERY_PARAMETERS.get("end");
@@ -17,12 +16,13 @@ function displayFormInputs() {
 function expandTableOnClick() {
     const REPORTS_TABLE_WRAPPER = document.getElementById("reports-table-wrapper");
     REPORTS_TABLE_WRAPPER.addEventListener("click", ()=> {
-        console.log(table_expanded);
         if (table_expanded) {
             REPORTS_TABLE_WRAPPER.classList.remove("reports-table-expanded");
+            REPORTS_TABLE_WRAPPER.title = "Click to expand";
         }
         else {
             REPORTS_TABLE_WRAPPER.classList.add("reports-table-expanded");
+            REPORTS_TABLE_WRAPPER.title = "";
         }
         table_expanded = !table_expanded;
     });

@@ -28,7 +28,8 @@
             );
             
             foreach ($items[$_SESSION['position']] as $title => $address) {
-                echo "<a class=\"menu-item\" href=\"$address?machineID={$_GET['machineID']}\">$title</a>";
+                $page_id = substr($address, 0, strlen($address)-4);
+                echo "<a class=\"menu-item\" href=\"$address?machineID={$_GET['machineID']}\" id=\"menu-$page_id\">$title</a>";
             }
         ?>
         <a class="menu-item" href="messages.php?machineID=<?php echo $_GET['machineID'] ?>" id="menu-messages">Messages</a>
@@ -36,6 +37,7 @@
     </div>
 </nav>
 <?php
+    checkForMachinesWithStatusMaintenance($conn);
     checkForMessages($conn);
     warnIfActive();
 ?>

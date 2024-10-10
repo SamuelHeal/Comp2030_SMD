@@ -5,7 +5,7 @@ function getColourFromStatus(status) {
         case IDLE: return "#7b68ee";
         case ACTIVE: return "#228b22";
         case MAINTENANCE: return "#dc143c";
-        default: return "#666";  // Office context
+        default: return "#dcdcdc"; // Error
     }
 }
 

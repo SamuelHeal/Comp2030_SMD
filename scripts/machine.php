@@ -24,15 +24,17 @@ function disableEdittingIfArchived() {
 function echoArchiveButton() {
     $update_id = htmlspecialchars($_GET['update_id']);
     if (isset($_GET['show_archived'])) {
+        $class = 'machines-button';
         $href = "../system/unarchive-machine.php?machineID={$_GET['machineID']}&unarchive_id=$update_id";;
         $label = 'Unarchive';
         $onclick = "return confirm('Are you sure you want to unarchive this machine?');";    
     } else {
+        $class = 'machines-button red-hover';
         $href = "../system/archive-machine.php?machineID={$_GET['machineID']}&archive_id=$update_id";
         $label = 'Archive';
         $onclick = "return confirm('Are you sure you want to archive this machine?');";    
     }
-    echo "<a class=\"machines-button red-hover\" href=\"$href\" id=\"machine-button-archive\" onclick=\"$onclick\">$label</a>";
+    echo "<a class=\"$class\" href=\"$href\" id=\"machine-button-archive\" onclick=\"$onclick\">$label</a>";
 }
 
 function echoBackButton() {

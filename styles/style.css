@@ -9,8 +9,7 @@
 
 body {
     background-color: #fffafa;
-    overflow-x: hidden;
-    overflow-y: scroll; /* This makes the vertical scroll bar always present, so page element are always in the same place regardless of overflow. */
+    overflow: hidden;
     width: 100%;
 }
 
@@ -96,7 +95,6 @@ h1 {
     align-items: center;
     border: 3px solid #212c58;
     border-radius: 6px;
-    /* box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226); */
     display: flex;
     height: 160px;
     list-style-type: none;
@@ -150,12 +148,27 @@ h1 {
     cursor: pointer;
 }
 
-
-#machines-button-container {
+.machines-list-label {
+    align-items: center;
+    color: #faf8f6;
     display: flex;
-    flex-direction: column;
-    margin: 24px auto 0px auto;
-    width: 60%;
+    font-weight: bold;
+    font-size: 24px;
+    height: 100%;
+    padding: 0px 24px;
+    width: 50%;
+}
+
+.machines-list-table {
+    border-left: 3px solid #212c58;
+    height: 100%;
+    width: 50%;
+}
+
+.machines-list-table td {
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 24px;
 }
 
 .menu-item {
@@ -178,7 +191,7 @@ h1 {
 }
 
 .menu-item:hover {
-    background-color: #212c58;
+    background-color: #212c58 !important;
     color: #fffafa;
 }
 
@@ -218,6 +231,13 @@ h1 {
     padding: 0px 24px 0px 6px;
     position: relative;
     width: 100%;
+}
+
+.messages-list-label { 
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0px 12px;
+    width: 25%;
 }
 
 .messages-subject {
@@ -274,17 +294,13 @@ h1 {
     height: 100vh !important;
     margin-bottom: 0px !important;
     position: absolute;
-    top: 0px;
+    top: -227px;
     width: 100% !important;
-    z-index: 2;
+    z-index: 9;
 }
 
 .unread {
     background-color: #ffff00;
-}
-
-.unread:hover {
-    background-color: #fffacd !important;
 }
 
 .users-table {
@@ -316,6 +332,7 @@ h1 {
     justify-content: space-between;
     position: fixed;
     top: 0px;
+    transition: 0s;
     width: 100%;
     z-index: 1;
 }
@@ -407,7 +424,7 @@ h1 {
     grid-template-columns: 100/3% 100/3% 100/3%;
     margin: 0px auto;
     margin-bottom: 24px;
-    min-height: 65vh;
+    min-height: 64vh;
     width: 62%;
 }
 
@@ -457,6 +474,59 @@ h1 {
     width: 60%;
 }
 
+
+#machines-button-container {
+    display: flex;
+    flex-direction: column;
+    margin: 24px auto 0px auto;
+    width: 60%;
+}
+
+#machines-list a {
+    align-items: center;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    height: 160px;
+    list-style-type: none;
+    margin-bottom: 24px;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+}
+
+#machines-list a:hover {
+    background-color: #212c58;
+}
+
+#machines-list a:hover td {
+    color: #faf8f6;
+}
+
+#machines-list a:hover div {
+    background-color: #212c58 !important;
+}
+
+#machines-list :nth-last-child(1) {
+    margin-bottom: 0px;
+}
+
+
+#machines-list-container {
+    height: 50vh;
+    margin: 0px auto;
+    overflow-y: scroll;
+    width: 64%;
+}
+
+#messages-list-container {
+    height: 50vh;
+    margin: 0px auto;
+    overflow-y: scroll;
+    width: 64%;
+}
+
 #new-message-button-container {
     display: flex;
     flex-direction: column;
@@ -503,7 +573,7 @@ h1 {
 }
 
 #menu-username p {
-    color: #fffafa;
+    color: #faf8f6;
     display: none;
     font-size: 48px;
     font-weight: bold;
@@ -564,6 +634,44 @@ h1 {
     background-color: #212c58;
     color: #fffafa;
     cursor: pointer;
+}
+
+#messages-list a {
+    align-items: center;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    height: 160px;
+    list-style-type: none;
+    margin-bottom: 24px;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+}
+
+#messages-list a:hover {
+    background-color: #212c58;
+}
+
+#messages-list a:hover .date {
+    color: #faf8f6;
+}
+
+#messages-list a:hover .messages-body {
+    color: #faf8f6;
+}
+
+#messages-list a:hover .messages-list-label {
+    color: #faf8f6;
+}
+
+#messages-list a:hover .messages-subject {
+    color: #faf8f6;
+}
+
+#messages-list :nth-last-child(1) {
+    margin-bottom: 0px;
 }
 
 #reports-button-container {
@@ -635,11 +743,16 @@ h1 {
     color: #fffafa;
 }
 
+#reports-summary {
+    background-color: #ffff00 !important;
+}
+
 #reports-table-wrapper {
     border: 3px solid #212c58;
     border-collapse: collapse;
     border-radius: 6px;
-    height: 60vh;
+    cursor: pointer;
+    height: 50vh;
     margin: 24px auto;
     overflow: scroll;
     position: relative;
@@ -1253,6 +1366,17 @@ h1 {
         margin-bottom: 0px;
     }
 
+    .machines-list-label {
+        font-weight: bold;
+        font-size: 30px;
+        padding: 0px 24px;
+    }
+
+    .machines-list-table td {
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
     .message-button {
         margin-bottom: 0px;
     }
@@ -1263,6 +1387,11 @@ h1 {
 
     .messages-content {
         padding-left: 12px;
+    }
+
+    .messages-list-label { 
+        font-size: 24px;
+        padding-left: 24px;
     }
 
     .messages-subject {

@@ -16,20 +16,16 @@
 
     ?>
     <div id=body-container>
-        <?php echoHeading(); ?>
+        <?php 
+            echoHeading(); 
+            displayListOfMachines($conn);
+        ?>
         <div id="machines-button-container">
             <?php 
-                echoShowButton(); 
-                echoArchiveAllButton();
-                echoCreateButton();
+                displayButtons();
+                mysqli_close($conn);
             ?>
-            
         </div>
-        <?php 
-            hideButtonsIfOperator();
-            displayListOfMachines($conn);
-            mysqli_close($conn);
-        ?>
     </div>
 </body>
 </html>

@@ -1,11 +1,29 @@
 <?php
+function checkForMachinesWithStatusMaintenance($conn) {
+    if (in_array($_SESSION['position'], array('Factory Manager', 'Production Operator'))) {
+        $sql = "SELECT * FROM Machine WHERE status = 2;";
+        $result = mysqli_query($conn, $sql);
+        if ($result && mysqli_num_rows($result)) {
+            $count = mysqli_num_rows($result);
+            echo '<script>';
+                echo 'const MACHINES_BUTTON = document.getElementById("menu-machines");';
+                echo 'MACHINES_BUTTON.style.backgroundColor = "#ffff00";';
+                echo "MACHINES_BUTTON.innerText += \" ($count)\";";
+            echo '</script>';
+        }
+        mysqli_free_result($result);
+    }
+}
+
 function checkForMessages($conn) {
     $sql = "SELECT * FROM Message WHERE recipientID = {$_SESSION['id']} AND isRead = 0;";
     $result = mysqli_query($conn, $sql);
     if ($result && mysqli_num_rows($result)) {
+        $count = mysqli_num_rows($result);
         echo '<script>';
             echo 'const MESSAGES_BUTTON = document.getElementById("menu-messages");';
             echo 'MESSAGES_BUTTON.style.backgroundColor = "#ffff00";';
+            echo "MESSAGES_BUTTON.innerText += \" ($count)\";";
         echo '</script>';
     }
     mysqli_free_result($result);
