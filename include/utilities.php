@@ -104,10 +104,11 @@ function warnIfActive() {
 function updateLastActive($conn) {
     if (isset($_SESSION['id'])) {
         $machineID = $_GET['machineID'] ? $_GET['machineID'] : NULL;
+        $isAtMachine = $_GET['machineID'] ? 1 : 0; // Sets TRUE/FALSE if logged into a machine or desktop
         $personID = $_SESSION['id'];
-        $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ? WHERE personID = ?";
+        $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ?, lastActiveAtMachine = ? WHERE personID = ?";
         $stmt = mysqli_prepare($conn, $updateSql);
-        mysqli_stmt_bind_param($stmt, 'ii', $machineID, $personID);
+        mysqli_stmt_bind_param($stmt, 'iii', $machineID, $isAtMachine, $personID);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }

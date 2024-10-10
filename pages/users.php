@@ -36,11 +36,16 @@
                 $show_condition = "1=1"; // Always true: Show all users
             }
 
-            $sql = "SELECT p.*, m.name AS machineName
+            $sql = "SELECT p.*, 
+                CASE 
+                    WHEN p.lastActiveAtMachine THEN m.name 
+                    ELSE 'Desktop PC' 
+                END 
+                AS machineName
                 FROM Person p
                 LEFT JOIN Machine m ON p.lastActiveMachineID = m.machineID 
                 WHERE $show_condition 
-                ORDER BY $sort_column $sort_direction;";       
+                ORDER BY $sort_column $sort_direction;";
     
             $result = mysqli_query($conn, $sql);
 
