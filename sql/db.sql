@@ -28,6 +28,7 @@ CREATE TABLE Person(
     PIN VARCHAR(255) NOT NULL,
     isArchived BOOLEAN DEFAULT FALSE,
     archivedAt DATETIME DEFAULT NULL,
+    lastActiveAtMachine BOOLEAN DEFAULT TRUE,
     lastActiveTime DATETIME DEFAULT NULL,
     lastActiveMachineID INTEGER DEFAULT NULL,
     FOREIGN KEY(lastActiveMachineID) REFERENCES Machine(machineID),
