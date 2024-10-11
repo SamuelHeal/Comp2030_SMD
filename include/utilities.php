@@ -66,16 +66,34 @@ function redirectToDashboardIfLoggedIn() {
     }
 }
 
-function setBannerColour($conn) {
-    $sql = "SELECT status FROM Machine WHERE machineID = {$_GET['machineID']};";
-    $result = mysqli_query($conn, $sql);
-    if ($result && mysqli_num_rows($result)) {
-        $assoc = mysqli_fetch_assoc($result);
-        echo '<script>';
-            echo "setBannerColour({$assoc['status']});";
-        echo '</script>';
+function redirectToOffice() {
+    if ($_GET['machineID'] == 0) {
+        header("location: login-desktop.php?machineID={$_GET['machineID']}");
     }
-    mysqli_free_result($result);
+}
+
+function redirectToMachine() {
+    if ($_GET['machineID'] != 0) {
+        header("location: login.php?machineID={$_GET['machineID']}");
+    }
+}
+
+function setBannerColour($conn) {
+    if ($_GET['machineID'] == '0') {
+        echo '<script>';
+            echo "setBannerColour('desktop');";
+        echo '</script>';
+    } else {
+        $sql = "SELECT status FROM Machine WHERE machineID = {$_GET['machineID']};";
+        $result = mysqli_query($conn, $sql);
+        if ($result && mysqli_num_rows($result)) {
+            $assoc = mysqli_fetch_assoc($result);
+            echo '<script>';
+                echo "setBannerColour({$assoc['status']});";
+            echo '</script>';
+        }
+        mysqli_free_result($result);
+    }
 }
 
 function setBannerColourAndMessage($conn) {
@@ -87,6 +105,8 @@ function setBannerColourAndMessage($conn) {
             echo "setBannerColour({$assoc['status']});";
             echo "setBannerMessage({$assoc['status']});";
         echo '</script>';
+    } else {
+        header('location: login-desktop.php?machineID=0');
     }
     mysqli_free_result($result);
 }
@@ -99,4 +119,15 @@ function warnIfActive() {
     }
 }
 
-
+function updateLastActive($conn) {
+    if (isset($_SESSION['id'])) {
+        $machineID = $_GET['machineID'] ? $_GET['machineID'] : NULL;
+        $isAtMachine = $_GET['machineID'] ? 1 : 0; // Sets TRUE/FALSE if logged into a machine or desktop
+        $personID = $_SESSION['id'];
+        $updateSql = "UPDATE Person SET lastActiveTime = NOW(), lastActiveMachineID = ?, lastActiveAtMachine = ? WHERE personID = ?";
+        $stmt = mysqli_prepare($conn, $updateSql);
+        mysqli_stmt_bind_param($stmt, 'iii', $machineID, $isAtMachine, $personID);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+}

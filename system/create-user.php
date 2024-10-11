@@ -16,18 +16,20 @@
         $email = htmlspecialchars($_POST['email']); 
         $employmentdate = htmlspecialchars($_POST['employmentdate']); 
         $pin = htmlspecialchars($_POST['pin']);
+        $machineID = htmlspecialchars($_POST['machineID']);
 
         // Hash the password 
         $pin = password_hash($pin, PASSWORD_DEFAULT); 
 
         // Execute the SQL statement 
         if (mysqli_stmt_execute($statement)) {
-                header("location: ../pages/factory.php?machineID={$_GET['machineID']}"); 
+            header("location: ../pages/manage.php?machineID={$machineID}"); 
         } else {
             mysqli_error($conn);
         }
+        mysqli_stmt_close($statement);
         mysqli_close($conn);
         
 } else {
-        header("location: ../pages/jobs.php?machineID={$_GET['machineID']}");
+        header("location: ../pages/manage.php?machineID={$machineID}");
 }

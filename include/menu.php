@@ -1,14 +1,13 @@
 <nav id="header-container">
     <div id=menu-username>
         <?php
-            echo "<p>{$_SESSION['username']}</p>";
+            echo "<p id='username'>{$_SESSION['username']}</p>";
         ?>
     </div>
     <div id="menu-items">
         <?php
             $items = array(
                 'Administrator' => array(
-                    'Users' => 'users.php',
                     'Manage' => 'manage.php'
                 ),
                 'Auditor' => array(
