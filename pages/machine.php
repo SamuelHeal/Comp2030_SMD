@@ -22,7 +22,7 @@
             </div>
             <div class="machine-input-group">
                 <label for="status">Staus:</label><br>
-                <select class="machine-input clickable" id=machine-select-status required name="status">
+                <select class="machine-input clickable" id="machine-select-status" required name="status">
                     <option value=0>Idle</option>
                     <option value=1>Active</option>
                     <option value=2>Maintenance</option>
@@ -34,7 +34,7 @@
             </div>
             <div class="machine-input-group">
                 <label for="operator">Assigned Operator:</label><br>
-                <select class="machine-input clickable" id=machine-select-operator name="operator">
+                <select class="machine-input clickable" id="machine-select-operator" name="operator">
                     <?php appendOperatorsToSelect($conn); ?>
                 </select>
             </div>
@@ -48,6 +48,7 @@
         </div>
         <?php
             $machine = getMachine($conn);
+            disableAllButStatusIfOperator();
             disableEdittingIfArchived();
             hideArchiveIfCreatingMachine();
             setPageValues($machine);

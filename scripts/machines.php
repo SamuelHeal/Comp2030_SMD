@@ -48,6 +48,8 @@ function displayButtons() {
         echoShowButton();
         echoArchiveAllButton();
         echoCreateButton();
+    } else {
+        expandMachinesContainerToFillSpace();
     }
 }
 
@@ -106,6 +108,12 @@ function echoShowButton() {
         $show_label = 'Show Archived Machines';
     }
     echo "<a class=\"machines-button\" href=\"machines.php?machineID={$_GET['machineID']}&$show_parameter\">$show_label</a>";
+}
+
+function expandMachinesContainerToFillSpace() {
+    echo '<script>';
+        echo 'document.getElementById("machines-list-container").style.height = "66vh";';
+    echo '</script>';
 }
 
 function getStatusColour($code) {

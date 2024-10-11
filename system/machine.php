@@ -34,12 +34,28 @@ function updateMachineAll($conn) {
     return 'updated=1';
 }
 
-if (isset($_POST['name'], $_GET['update_id'])) {
+function updateMachineStatus($conn) {
+    $sql = 'UPDATE Machine SET status = ? WHERE machineID = ?';
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, 'ii', $status, $update_id);
+    $status = htmlspecialchars($_POST['status']);
+    $update_id = htmlspecialchars($_GET['update_id']);
+    if (!mysqli_stmt_execute($stmt)) {
+        echo "Unable to update machine.";
+    }
+    mysqli_stmt_close($stmt);
+    return 'updated=1';
+}
+
+if (isset($_POST['status'], $_GET['update_id'])) {
     require_once '../include/database.php';
     if (!$_GET['update_id']) {
         $action_parameter = createNewMachine($conn);
-    } else {
+    } elseif (isset($_POST['name'])) {
         $action_parameter = updateMachineAll($conn);
+    } else {
+        $action_parameter = updateMachineStatus($conn);
     }
     mysqli_close($conn);
     header("location: ../pages/machines.php?machineID={$_GET['machineID']}&show_current=1&$action_parameter");

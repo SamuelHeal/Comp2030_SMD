@@ -13,6 +13,14 @@ function appendOperatorsToSelect($conn) {
     mysqli_free_result($result);
 }
 
+function disableAllButStatusIfOperator() {
+    if ($_SESSION['position'] === 'Production Operator') {
+        echo '<script>';
+            echo 'disableEditingOperator();';
+        echo '</script>';
+    }
+}
+
 function disableEdittingIfArchived() {
     if (isset($_GET['show_archived'])) {
         echo '<script>';
@@ -22,19 +30,21 @@ function disableEdittingIfArchived() {
 }
 
 function echoArchiveButton() {
-    $update_id = htmlspecialchars($_GET['update_id']);
-    if (isset($_GET['show_archived'])) {
-        $class = 'machines-button';
-        $href = "../system/restore-machine.php?machineID={$_GET['machineID']}&restore_id=$update_id";;
-        $label = 'Restore';
-        $onclick = "return confirm('Are you sure you want to restore this machine?');";    
-    } else {
-        $class = 'machines-button red-hover';
-        $href = "../system/archive-machine.php?machineID={$_GET['machineID']}&archive_id=$update_id";
-        $label = 'Archive';
-        $onclick = "return confirm('Are you sure you want to archive this machine?');";    
+    if ($_SESSION['position'] === 'Factory Manager') {
+        $update_id = htmlspecialchars($_GET['update_id']);
+        if (isset($_GET['show_archived'])) {
+            $class = 'machines-button';
+            $href = "../system/restore-machine.php?machineID={$_GET['machineID']}&restore_id=$update_id";;
+            $label = 'Restore';
+            $onclick = "return confirm('Are you sure you want to restore this machine?');";    
+        } else {
+            $class = 'machines-button red-hover';
+            $href = "../system/archive-machine.php?machineID={$_GET['machineID']}&archive_id=$update_id";
+            $label = 'Archive';
+            $onclick = "return confirm('Are you sure you want to archive this machine?');";    
+        }
+        echo "<a class=\"$class\" href=\"$href\" id=\"machine-button-archive\" onclick=\"$onclick\">$label</a>";
     }
-    echo "<a class=\"$class\" href=\"$href\" id=\"machine-button-archive\" onclick=\"$onclick\">$label</a>";
 }
 
 function echoBackButton() {
