@@ -535,6 +535,7 @@ h1 {
 }
 
 #machine-form {
+    align-items: center;
     background-color: #fffafa;
     border: 3px solid #212c58;
     border-radius: 6px;
@@ -1880,7 +1881,7 @@ h1 {
     }
 
     #machine-form {
-        /* min-height: 50vh; */
+        min-height: 50vh;
         width: 64%;
     }
 
