@@ -2,11 +2,11 @@
 function alertIfParameterPresent() {
     $alert_message = array(
         'all_archived' => 'All machines were archived!',
-        'all_unarchived' => 'All machines were unarchived!',
+        'all_restored' => 'All machines were restored!',
         'created' => 'Machine was created!',
         'archived' => 'Machine was archived!',
         'updated' => 'Machine updated!',
-        'unarchived' => 'Machine was unarchived!',
+        'restored' => 'Machine was restored!',
     );
     $show_parameter = isset($_GET['show_archived']) ? 'show_archived=1' : 'show_current=1';
     foreach($alert_message as $parameter => $message) {
@@ -74,10 +74,10 @@ function displayListOfMachines($conn) {
 function echoArchiveAllButton() {
     if (isset($_GET['show_archived'])) {
         $class = 'machines-button';
-        $label = 'Unarchive All Machines';
-        $onclick = "return confirm('Are you sure you want to unarchive all machines?');";
+        $label = 'Restore All Machines';
+        $onclick = "return confirm('Are you sure you want to restore all machines?');";
         $show_parameter = 'show_current=1';
-        $href = "../system/unarchive-all-machines.php?machineID={$_GET['machineID']}&$show_parameter&unarchive_all=1";
+        $href = "../system/restore-all-machines.php?machineID={$_GET['machineID']}&$show_parameter&restore_all=1";
     } else {
         $class = 'machines-button red-hover';
         $label = 'Archive All Machines';
