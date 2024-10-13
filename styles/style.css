@@ -115,11 +115,14 @@ h1 {
 }
     
 .listSmall-label { 
+    display: flex;
+    text-align: center !important; /* first element is not applying properly, issue with tables?? */
     font-weight: bold;
     font-size: 20px;
     padding: 0px 12px;
     width: 55%;
-    text-align: center;
+    align-items: center;
+    height: 100%;
 }
 
 #list-boxes {
