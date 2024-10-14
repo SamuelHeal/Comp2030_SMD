@@ -32,10 +32,23 @@ function showPinFields() {
 function confirmArchive(personID, firstName, lastName) {
     const QUERY_STRING = window.location.search;
     const QUERY_PARAMETERS = new URLSearchParams(QUERY_STRING);
-    const confirmation = confirm(`Are you sure you want to archive user ${firstName} ${lastName}? This will revoke all access to the system. This cannot be undone.`);
+    const confirmation = confirm(`Are you sure you want to archive user ${firstName} ${lastName}? This will revoke all access to the system.`);
     if (confirmation) {
         window.location.href = `../system/archive-user.php?machineID=${QUERY_PARAMETERS.get("machineID")}&personID=${personID}`;
     }
+}
+
+function confirmRestore(personID, firstName, lastName) {
+    const pinInput = document.getElementById('pin').value;
+    const QUERY_STRING = window.location.search;
+    const QUERY_PARAMETERS = new URLSearchParams(QUERY_STRING);
+    if (pinInput) {
+        const confirmation = confirm(`Are you sure you want to restore user ${firstName} ${lastName}?`);
+        if (confirmation) {
+            window.location.href = `../system/restore-user.php?machineID=${QUERY_PARAMETERS.get("machineID")}&personID=${personID}`;
+        }
+    }
+    else alert('Please supply a valid PIN before restoring a user.');
 }
 
 function makeUsersClickable() {
