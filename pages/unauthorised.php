@@ -14,7 +14,7 @@
         require_once '../scripts/unauthorised.php';
     ?>
     <nav id=header-container>
-        <p id=header-message>Smart Manafacturing Dashboard</p>
+        <p id=header-message>Smart Manufacturing Dashboard</p>
     </nav>
     <div id=body-container>
         <h1>Unauthorised</h1>

@@ -1,11 +1,33 @@
 <?php
+function checkForMachinesWithStatusMaintenance($conn) {
+    if ($_SESSION['position'] === 'Factory Manager') { 
+        $sql = "SELECT * FROM Machine WHERE status = 2";
+    } elseif ($_SESSION['position'] === 'Production Operator') {
+        $sql = "SELECT * FROM Machine WHERE status = 2 AND assignedOperator = {$_SESSION['id']};";
+    } else {
+        return;
+    }
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        $count = mysqli_num_rows($result);
+        echo '<script>';
+            echo 'const MACHINES_BUTTON = document.getElementById("menu-machines");';
+            echo 'MACHINES_BUTTON.style.backgroundColor = "#ffff00";';
+            echo "MACHINES_BUTTON.innerText += \" ($count)\";";
+        echo '</script>';
+    }
+    mysqli_free_result($result);
+}
+
 function checkForMessages($conn) {
     $sql = "SELECT * FROM Message WHERE recipientID = {$_SESSION['id']} AND isRead = 0;";
     $result = mysqli_query($conn, $sql);
     if ($result && mysqli_num_rows($result)) {
+        $count = mysqli_num_rows($result);
         echo '<script>';
             echo 'const MESSAGES_BUTTON = document.getElementById("menu-messages");';
             echo 'MESSAGES_BUTTON.style.backgroundColor = "#ffff00";';
+            echo "MESSAGES_BUTTON.innerText += \" ($count)\";";
         echo '</script>';
     }
     mysqli_free_result($result);
@@ -24,7 +46,7 @@ function checkMachineIdIsSet($conn) {
     }
 }
 
-function console($string) {  // For debugging, delete for submission.
+function consolelog($string) {  // For debugging, delete for submission.
     echo '<script>';
         echo "console.log(\"$string\");";
     echo '</script>';

@@ -6,34 +6,25 @@
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../scripts/banner.js"></script>
+    <script src="../scripts/messages.js" defer></script>
 </head>
 <body>
     <?php
         require_once '../include/page-defaults.php';
         require_once '../scripts/messages.php';
         alertIfParameterPresent();
-        $users = getUsersAssoc($conn);
         ?>
     <div id=body-container>
         <h1>Messages</h1>
-        <div id="message-button-container">
-            <a class="message-button red-hover" href="../system/delete-all-messages.php?machineID=<?php echo $_GET['machineID']; ?>&delete_all=1" onclick="return confirm('Are you sure you want to delete all your messages?')">Delete All Messages</a>
-            <a class="message-button" href="../system/mark-all-read-messages.php?machineID=<?php echo $_GET['machineID']; ?>&read_all=1">Mark All Read</a>
-            <a class="message-button" href="new-message.php?machineID=<?php echo $_GET['machineID']; ?>&active=1">New Message</a>
-        </div>
         <?php 
-            $sql = "SELECT * FROM Message WHERE recipientID = {$_SESSION['id']} ORDER BY timestamp DESC;";
-            $result = mysqli_query($conn, $sql);
-            if ($result && mysqli_num_rows($result)) {
-                echo '<ul class=list>';
-                while ($assoc = mysqli_fetch_assoc($result)) {
-                    appendMessageToList($assoc, $users);
-                }
-                echo '</ul>';
-                mysqli_free_result($result);
-            }
+            displayMessages($conn);
             mysqli_close($conn);
         ?>
+        <div id="message-button-container">
+            <a class="message-button red-hover" href="../system/delete-all-messages.php?machineID=<?php echo $_GET['machineID']; ?>&delete_all=1" id="messages-delete-all" onclick="return confirm('Are you sure you want to delete all your messages?')">Delete All Messages</a>
+            <a class="message-button" href="../system/mark-all-read-messages.php?machineID=<?php echo $_GET['machineID']; ?>&read_all=1" id="messages-mark-all-read" >Mark All Read</a>
+            <a class="message-button" href="new-message.php?machineID=<?php echo $_GET['machineID']; ?>&active=1">New Message</a>
+        </div>
     </div>
 </body>
 </html>
