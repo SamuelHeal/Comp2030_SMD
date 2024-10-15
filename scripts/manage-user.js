@@ -6,7 +6,6 @@ function generatePin() {
         } else generatePin(); // Call recursively to generate another pin if not unique
     });
 
-    generateAndCheckPin();
 }
 
 function isUniquePin(pin, callback) {
@@ -38,15 +37,10 @@ function confirmArchive(personID, firstName, lastName) {
     }
 }
 
-function confirmRestore(personID, firstName, lastName) {
+function confirmRestore(name) {
     const pinInput = document.getElementById('pin').value;
-    const QUERY_STRING = window.location.search;
-    const QUERY_PARAMETERS = new URLSearchParams(QUERY_STRING);
     if (pinInput) {
-        const confirmation = confirm(`Are you sure you want to restore user ${firstName} ${lastName}?`);
-        if (confirmation) {
-            window.location.href = `../system/restore-user.php?machineID=${QUERY_PARAMETERS.get("machineID")}&personID=${personID}`;
-        }
+        return confirm(`Are you sure you want to restore user ${name}?`);
     }
     else alert('Please supply a valid PIN before restoring a user.');
 }
