@@ -13,6 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $employmentDate = $_POST['employmentdate'];
     $pin = $_POST['pin'];
     $machineID = $_POST['machineID'];
+    $isArchived = $_POST['isArchived'];
+
+    // If restoring a user
+    function restoreUser($conn, $personID) {
+        $sql = "UPDATE Person SET isArchived = FALSE, archivedAt = NULL WHERE personID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $personID);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    if ($isArchived) restoreUser($conn, $personID);
 
     // Prepare the SQL statement
     $sql = "UPDATE Person SET firstName = ?, lastName = ?, DOB = ?, position = ?, phoneNumber = ?, email = ?, employmentDate = ?";

@@ -32,7 +32,8 @@
 
     <div id="body-container">
     <div class="header-container">
-        <h1>Update <?php if($user['isArchived']) echo 'Archived ';
+        <h1> <?php if($user['isArchived']) echo 'Restore Archived ';
+        else echo 'Update ';
          echo htmlspecialchars("User $firstName $lastName ($pID)") ?></h1>
 
         <div class="top-layer-buttons">
@@ -40,10 +41,6 @@
             // Only show archive button for current users
             if(!$user['isArchived']) {
             echo "<button class=\"top-button\" onclick=\"confirmArchive('$pID', '$firstName', '$lastName')\">Archive User</button>"; 
-            } 
-            // Show restore button for archived users
-            else {
-                echo "<button class=\"top-button\" onclick=\"confirmRestore('$pID', '$firstName', '$lastName')\">Restore User</button>"; 
             } 
             ?> 
             <?php $machineID = isset($_GET['machineID']) ? $_GET['machineID'] : ''; // Keep the same machineID?>
@@ -53,9 +50,10 @@
 
     <div class="form-container">
 
-        <form class="user-details-form" action="../system/update-user.php" method="POST">
+        <form class="user-details-form" action="../system/update-user.php" method="POST" onsubmit="return confirmRestore('<?php echo $firstName . ' ' . $lastName; ?>')">
             <input type="hidden" name="personID" value="<?php echo htmlspecialchars($user['personID']); ?>" />
             <input type="hidden" name="machineID" value="<?php echo htmlspecialchars($machineID); ?>" />
+            <input type="hidden" name="isArchived" value="<?php echo htmlspecialchars($user['isArchived']); ?>" />
             <div id="firstname-input">
             <label class="user-details-form-label" for="firstname">First Name:</label> 
             <input class="user-details-form-input" id="firstname" name="firstname" type="text" value="<?php echo htmlspecialchars($user['firstName']); ?>" required/>
@@ -93,6 +91,7 @@
 
             <div id="pin-buttons-input">
             
+            <?php if (!$user['isArchived']): ?>
             <div id="reset-button-input" style="display: flex;">
             <button type="button" id="resetPinButton" onclick="showPinFields()">Reset PIN</button> 
             </div>
@@ -103,11 +102,26 @@
                 </div>
                 <div id="generate-button-input" style="display: none;">
                 <button id="generate-pin-button" type="button" onclick="generatePin()">Generate New PIN</button>
-                </div>           
+                </div> 
+                
+            <?php else: ?>
+                <div id="pin-input">
+                <label class="user-details-form-label" for="pin">User PIN:</label>
+                <input class="user-details-form-input" id="pin" name="pin" type="text" pattern="\d{4}" title="Please enter a 4-digit PIN" required/>
+                </div>
+                <div id="generate-button-input">
+                <button id="generate-pin-button" type="button" onclick="generatePin()">Generate PIN</button>
+                </div>
+            <?php endif ?>
 
             <div id="register-button-input">
-            <input id="register-button" name="update" type="submit" value="Update" />
+            <?php if(!$user['isArchived']): ?>
+                <input id="register-button" name="update" type="submit" value="Update" />
+            <?php else: ?>
+                <input id="register-button" name="update" type="submit" value="Restore" />
+            <?php endif ?>
             </div>
+
             </div>
             
         </form>
