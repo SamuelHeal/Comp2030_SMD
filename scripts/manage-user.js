@@ -38,11 +38,7 @@ function confirmArchive(personID, firstName, lastName) {
 }
 
 function confirmRestore(name) {
-    const pinInput = document.getElementById('pin').value;
-    if (pinInput) {
-        return confirm(`Are you sure you want to restore user ${name}?`);
-    }
-    else alert('Please supply a valid PIN before restoring a user.');
+    return confirm(`Are you sure you want to restore user ${name}?`);
 }
 
 function makeUsersClickable() {
