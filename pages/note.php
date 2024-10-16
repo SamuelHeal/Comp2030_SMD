@@ -46,5 +46,6 @@
                 <?php echo "<p class='description'>" . $note['description'] . "</p>"; ?>
             </div>
         </div>
+    </div>
 </body>
 </html>
