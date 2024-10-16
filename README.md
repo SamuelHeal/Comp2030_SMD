@@ -34,7 +34,7 @@ A dashboard system for monitoring the operation of machines and jobs on the fact
 ## Database Setup
 
 1. **Open phpMyAdmin:**
-    - In a web browser (i.e. [Google Chrome](https://www.google.com/chrome/)) enter `http://localhost/phpmyadmin` to access the phpMyAdmin dashboard.
+    - In a web browser (i.e. [Google Chrome](https://www.google.com/chrome/)), enter `http://localhost/phpmyadmin` to access the phpMyAdmin dashboard.
 
 2. **Build the database:**
     - Navigate to the `SQL` tab .
@@ -43,13 +43,13 @@ A dashboard system for monitoring the operation of machines and jobs on the fact
 
 3. **Populate the database:**
     - Make sure the correct database `group18_SMD` is selected and then return to the `SQL` tab.
-    - Drag and drop the file `\sql\inserts.sql`, which will insert the SQL script into the window, or copy and paste the contents. As there is a large number of inserts for the factory log data, this may take some time. Attempting to drag and drop the file directly (outside of the `SQL` tab) may cause issues.
+    - Drag and drop the file `\sql\inserts.sql`, which will insert the SQL script into the window, or copy and paste the contents. As there is a large number of lines for the factory log data insert statements, this may take some time. Attempting to drag and drop the file directly (outside of the `SQL` tab) may cause issues.
     - Click `Go` in the bottom right to run the SQL script.
 
 ## Usage
 
 1. **Start the server:**
-    - If not already, Start the XAMPP control panel and start both the Apache and MySQL modules.
+    - If not already, start the XAMPP control panel and start both the Apache and MySQL modules.
 
 2. **Open the dashboard:**
     - In a web browser, go to `http://localhost/www/Comp2030_SMD/index.php`.
