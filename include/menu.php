@@ -38,5 +38,6 @@
 <?php
     checkForMachinesWithStatusMaintenance($conn);
     checkForMessages($conn);
+    checkForNewJob($conn);
     warnIfActive();
 ?>

@@ -39,11 +39,12 @@
                 ?>
                 </p>
             </div>
-        <div class='note-description'>
-            <h3>Created by:</h3>
-            <?php echo "<p>" . $note['firstname'] . " " . $note['lastname'] . "</p>"; ?>
-            <h3>Description:</h3>
-            <?php echo "<p class='description'>" . $note['description'] . "</p>"; ?>
+            <div class='note-description'>
+                <h3>Created by:</h3>
+                <?php echo "<p>" . $note['firstname'] . " " . $note['lastname'] . "</p>"; ?>
+                <h3>Description:</h3>
+                <?php echo "<p class='description'>" . $note['description'] . "</p>"; ?>
+            </div>
         </div>
     </div>
 </body>
