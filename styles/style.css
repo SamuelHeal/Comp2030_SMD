@@ -9,7 +9,8 @@
 
 body {
     background-color: #fffafa;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto; /* scroll bar appears when page overflows off the bottom */
     width: 100%;
 }
 
