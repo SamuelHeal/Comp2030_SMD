@@ -14,9 +14,9 @@
         // mysqli_close($conn);
     ?>
     <div id=body-container-small>
-        <h1>Factory Performance</h1>
+        <h1>Factory Performance</h1> 
         <?php 
-            $sql = "SELECT * FROM Machine ORDER BY machineID;";
+            $sql = "SELECT * FROM Log WHERE timestamp = '2024-07-01 00:00' ORDER BY machineID;"; //Change query to be less cheaty, should be showing current timestamp no matter what
             $result = mysqli_query($conn, $sql);
             if ($result && mysqli_num_rows($result)) {
                 echo '<ul class=listSmall>';
@@ -26,6 +26,9 @@
                 echo '</ul>';
                 mysqli_free_result($result);
             }
+            echo '<div id="machines-button-container">';
+                timeButtons();
+            echo '</div>';
             mysqli_close($conn);
         ?>
     </div>
