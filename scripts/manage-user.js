@@ -37,8 +37,12 @@ function confirmArchive(personID, firstName, lastName) {
     }
 }
 
-function confirmRestore(name) {
-    return confirm(`Are you sure you want to restore user ${name}?`);
+function confirmUpdateRestore(name, isArchived) {
+        if (isArchived ==1) {
+            return confirm(`Are you sure you want to restore user ${name}?`);
+        } else {
+            return confirm(`Are you sure you want to update user ${name}?`);
+        }
 }
 
 function makeUsersClickable() {

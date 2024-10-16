@@ -50,7 +50,7 @@
 
     <div class="form-container">
 
-        <form class="user-details-form" action="../system/update-user.php" method="POST" onsubmit="return confirmRestore('<?php echo $firstName . ' ' . $lastName; ?>')">
+        <form class="user-details-form" action="../system/update-user.php" method="POST" onsubmit="return confirmUpdateRestore('<?php echo $firstName . ' ' . $lastName; ?>', '<?php echo $user['isArchived']; ?>')">
             <input type="hidden" name="personID" value="<?php echo htmlspecialchars($user['personID']); ?>" />
             <input type="hidden" name="machineID" value="<?php echo htmlspecialchars($machineID); ?>" />
             <input type="hidden" name="isArchived" value="<?php echo htmlspecialchars($user['isArchived']); ?>" />
