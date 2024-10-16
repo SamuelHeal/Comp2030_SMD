@@ -16,7 +16,15 @@
     <div id=body-container-small>
         <h1>Factory Performance</h1> 
         <?php 
-            $sql = "SELECT * FROM Log WHERE timestamp = '2024-07-01 00:00' ORDER BY machineID;"; //Change query to be less cheaty, should be showing current timestamp no matter what
+            $sql = "SELECT l.*, m.name AS machineName
+                    FROM log l
+                    INNER JOIN (
+                        SELECT machineID, MAX(timestamp) as mostRecentTimestamp
+                        FROM log
+                        -- WHERE timestamp <= '2024-07-01 00:00'
+                        GROUP BY machineID
+                    ) r ON l.machineID = r.machineID AND l.timestamp = r.mostRecentTimestamp
+                    INNER JOIN Machine m ON l.machineID = m.machineID;"; 
             $result = mysqli_query($conn, $sql);
             if ($result && mysqli_num_rows($result)) {
                 echo '<ul class=listSmall>';
