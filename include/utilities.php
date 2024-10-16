@@ -19,6 +19,26 @@ function checkForMachinesWithStatusMaintenance($conn) {
     mysqli_free_result($result);
 }
 
+function checkForNewJob($conn) {
+    if ($_SESSION['position'] === 'Factory Manager') { 
+        $sql = "SELECT * FROM Job WHERE status = 'completed' AND completed = 0";
+    } else if ($_SESSION['position'] === 'Production Operator') {
+        $sql = "SELECT * FROM Job WHERE status = 'awaiting confirmation' AND completed = 0 AND operatorID = {$_SESSION['id']}";
+    } else {
+        return;
+    }
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result)) {
+        $count = mysqli_num_rows($result);
+        echo '<script>';
+            echo 'const JOB_BUTTON = document.getElementById("menu-jobs");';
+            echo 'JOB_BUTTON.style.backgroundColor = "#ffff00";';
+            echo "JOB_BUTTON.innerText += \" ($count)\";";
+        echo '</script>';
+    }
+    mysqli_free_result($result);
+}
+
 function checkForMessages($conn) {
     $sql = "SELECT * FROM Message WHERE recipientID = {$_SESSION['id']} AND isRead = 0;";
     $result = mysqli_query($conn, $sql);
