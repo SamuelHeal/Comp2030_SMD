@@ -10,7 +10,7 @@
 body {
     background-color: #fffafa;
     overflow-x: hidden;
-    overflow-y: scroll; /* This makes the vertical scroll bar always present, so page element are always in the same place regardless of overflow. */
+    overflow-y: auto; /* scroll bar appears when page overflows off the bottom */
     width: 100%;
 }
 
@@ -25,12 +25,20 @@ h1 {
 }
 
 .clickable {
+    background-color: #ededed;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
     cursor: pointer;
 }
 
 .clickable:hover {
-    background-color: #ededed;
+    background-color: #212c58;
+    color: #fffafa;
+}
+
+.clickable:hover option {
+    background-color: #212c58;
+    color: #fffafa;
+    cursor: pointer;
 }
 
 .date {
@@ -38,6 +46,12 @@ h1 {
     font-size: 12px;
     margin-left: 24px;
     white-space: nowrap;
+}
+
+.green-hover:hover {
+    background-color: #00ff00 !important;
+    border: 3px solid #00ff00;
+    color: #fffafa;
 }
 
 .list {
@@ -60,15 +74,32 @@ h1 {
     text-decoration: none;
 }
 
+.list a:hover {
+    background-color: #212c58;
+    color: #fffafa;
+    cursor: pointer;
+}
+
+.list a:hover div{
+    color: #fffafa;
+}
+
+.list a:hover td{
+    color: #fffafa;
+}
+
+.list a:hover table{
+    border-left: 3px solid #fffafa;
+}
+
 .list li {
     align-items: center;
     border: 3px solid #212c58;
     border-radius: 6px;
-    /* box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226); */
     display: flex;
-    height: 120px;
+    height: 160px;
     list-style-type: none;
-    margin: 24px 0px;
+    margin: 0px auto 24px auto;
     overflow: hidden;
     text-align: left;
 }
@@ -78,6 +109,67 @@ h1 {
     font-size: 16px;
     padding: 0px 12px;
     width: 25%;
+}
+
+.machine-input {
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 80px;
+    margin-top: 6px;
+    padding: 24px;
+    width: 100%;
+}
+
+.machine-input-group label {
+    font-weight: bold;
+}
+
+.machines-button {
+    align-items: center;
+    background-color: #ededed;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 24px;
+    min-height: 80px;
+    text-decoration: none;
+    user-select: none;
+    width: 100%;
+}
+
+.machines-button:hover {
+    background-color: #212c58;
+    color: #fffafa;
+    cursor: pointer;
+}
+
+.machines-list-label {
+    align-items: center;
+    color: #faf8f6;
+    display: flex;
+    font-weight: bold;
+    font-size: 24px;
+    height: 100%;
+    padding: 0px 24px;
+    width: 50%;
+}
+
+.machines-list-table {
+    border-left: 3px solid #212c58;
+    height: 100%;
+    width: 50%;
+}
+
+.machines-list-table td {
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 24px;
 }
 
 .listSmall {
@@ -115,11 +207,14 @@ h1 {
 }
     
 .listSmall-label { 
+    display: flex;
+    text-align: center !important; /* first element is not applying properly, issue with tables?? */
     font-weight: bold;
     font-size: 20px;
     padding: 0px 12px;
     width: 55%;
-    text-align: center;
+    align-items: center;
+    height: 100%;
 }
 
 #list-boxes {
@@ -148,7 +243,7 @@ h1 {
 }
 
 .menu-item:hover {
-    background-color: #212c58;
+    background-color: #212c58 !important;
     color: #fffafa;
 }
 
@@ -188,6 +283,13 @@ h1 {
     padding: 0px 24px 0px 6px;
     position: relative;
     width: 100%;
+}
+
+.messages-list-label { 
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0px 12px;
+    width: 25%;
 }
 
 .messages-subject {
@@ -244,17 +346,13 @@ h1 {
     height: 100vh !important;
     margin-bottom: 0px !important;
     position: absolute;
-    top: 0px;
+    top: -204px;
     width: 100% !important;
-    z-index: 2;
+    z-index: 9;
 }
 
 .unread {
     background-color: #ffff00;
-}
-
-.unread:hover {
-    background-color: #fffacd !important;
 }
 
 .users-table {
@@ -310,6 +408,7 @@ h1 {
     padding: 24px;
     position: fixed;
     top: 0px;
+    transition: 0s;
     width: 100%;
     z-index: 4;
 }
@@ -401,7 +500,7 @@ h1 {
     grid-template-columns: 100/3% 100/3% 100/3%;
     margin: 0px auto;
     margin-bottom: 24px;
-    min-height: 65vh;
+    min-height: 64vh;
     width: 62%;
 }
 
@@ -439,6 +538,72 @@ h1 {
     text-align: left;
 }
 
+#machine-form {
+    align-items: center;
+    background-color: #fffafa;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 50% 50%;
+    margin: 0px auto;
+    padding: 24px 48px 24px 24px;
+    width: 60%;
+}
+
+
+#machines-button-container {
+    display: flex;
+    flex-direction: column;
+    margin: 24px auto 0px auto;
+    width: 60%;
+}
+
+#machines-list a {
+    align-items: center;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    height: 160px;
+    list-style-type: none;
+    margin-bottom: 24px;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+}
+
+#machines-list a:hover {
+    background-color: #212c58;
+}
+
+#machines-list a:hover td {
+    color: #faf8f6;
+}
+
+#machines-list a:hover div {
+    background-color: #212c58 !important;
+}
+
+#machines-list :nth-last-child(1) {
+    margin-bottom: 0px;
+}
+
+
+#machines-list-container {
+    height: 50vh;
+    margin: 0px auto;
+    overflow-y: scroll;
+    width: 64%;
+}
+
+#messages-list-container {
+    height: 50vh;
+    margin: 0px auto;
+    overflow-y: scroll;
+    width: 64%;
+}
+
 .desktop-login-container {
     display: flex;
     flex-direction: column;
@@ -455,7 +620,6 @@ h1 {
     padding: 20px;
     border: 1px solid #212c58;
     border-radius: 7px;
-    /* width: 30vw; */
     justify-content: center;
     align-items: center;
 }
@@ -494,7 +658,6 @@ h1 {
 .login-desktop-button {
     display: block;
     text-decoration: none;
-    /* width: 7vw; */
     text-align: center;
     font-size: 1.5em;
     color: #faf8f6;
@@ -535,7 +698,7 @@ h1 {
 
 #new-message-input {
     resize: none;
-    height: 25vh;
+    height: 35vh;
     padding: 6px;
     width: 100%;
 }
@@ -561,7 +724,7 @@ h1 {
 }
 
 #menu-username p {
-    color: #fffafa;
+    color: #faf8f6;
     display: none;
     font-size: 48px;
     font-weight: bold;
@@ -621,6 +784,44 @@ h1 {
     background-color: #212c58;
     color: #fffafa;
     cursor: pointer;
+}
+
+#messages-list a {
+    align-items: center;
+    border: 3px solid #212c58;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226);
+    display: flex;
+    height: 160px;
+    list-style-type: none;
+    margin-bottom: 24px;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+}
+
+#messages-list a:hover {
+    background-color: #212c58;
+}
+
+#messages-list a:hover .date {
+    color: #faf8f6;
+}
+
+#messages-list a:hover .messages-body {
+    color: #faf8f6;
+}
+
+#messages-list a:hover .messages-list-label {
+    color: #faf8f6;
+}
+
+#messages-list a:hover .messages-subject {
+    color: #faf8f6;
+}
+
+#messages-list :nth-last-child(1) {
+    margin-bottom: 0px;
 }
 
 #reports-button-container {
@@ -692,11 +893,16 @@ h1 {
     color: #fffafa;
 }
 
+#reports-summary {
+    background-color: #ffff00 !important;
+}
+
 #reports-table-wrapper {
     border: 3px solid #212c58;
     border-collapse: collapse;
     border-radius: 6px;
-    height: 60vh;
+    cursor: pointer;
+    height: 50vh;
     margin: 24px auto;
     overflow: scroll;
     position: relative;
@@ -776,6 +982,7 @@ h1 {
     justify-content: flex-end;
     margin-left: -120px;
 }
+
 .sort-button {
     position: relative;
     display: flex;
@@ -786,6 +993,7 @@ h1 {
     border: 1px solid;
     border-radius: 3px;
 }
+
 .sort-button select {
     appearance: none;
     border: none;
@@ -793,6 +1001,7 @@ h1 {
     font-size: 20px;
     cursor: pointer;
 }
+
 .direction-button {
     font-size: 20px;
     margin-left: 2px;
@@ -806,11 +1015,13 @@ h1 {
 .user-container {
     position: relative;
 }
+
 .user-container:hover {
     background-color: rgba(0, 0, 0, 0.1);
     opacity: 0.8;
     cursor: pointer;
 }
+
 .edit-overlay {
     display: none;
     position: absolute;
@@ -885,6 +1096,7 @@ h1 {
 .archived-user {
     background-color: #D3D3D3;
 }
+
 .sort-box {
     width: 110px;
     display: flex;
@@ -1227,7 +1439,6 @@ h1 {
     background-color: #faf8f6;
 }
 
-
 .inner-job-form {
     width: 80%;
     padding: 10px;
@@ -1273,10 +1484,12 @@ h1 {
         -moz-appearance: none;
     appearance: none;
 }
+
 .select-dropdown select:active, .select-dropdown select:focus {
     outline: none;
     box-shadow: none;
 }
+
 .select-dropdown:after {
     content: "";
     position: absolute;
@@ -1619,6 +1832,21 @@ h1 {
         padding-left: 24px;
     }
 
+    .machines-button {
+        margin-bottom: 0px;
+    }
+
+    .machines-list-label {
+        font-weight: bold;
+        font-size: 30px;
+        padding: 0px 24px;
+    }
+
+    .machines-list-table td {
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
     .message-button {
         margin-bottom: 0px;
     }
@@ -1629,6 +1857,11 @@ h1 {
 
     .messages-content {
         padding-left: 12px;
+    }
+
+    .messages-list-label { 
+        font-size: 24px;
+        padding-left: 24px;
     }
 
     .messages-subject {
@@ -1667,6 +1900,17 @@ h1 {
     #login-message {
         font-size: 48px;
     }
+
+    #machine-form {
+        min-height: 50vh;
+        width: 64%;
+    }
+
+    #machines-button-container {
+        flex-direction: row;
+        gap: 24px;
+        width: 64%;
+    }
     
     #menu-items a {
         font-size: 24px;
@@ -1682,10 +1926,6 @@ h1 {
         display: unset;
     }
 
-    #message-container {
-        width: 64%;
-    }
-
     #message-button-container {
         flex-direction: row;
         gap: 24px;
@@ -1699,12 +1939,12 @@ h1 {
     }
 
     #new-message-container {
-        min-height: 40vh;
+        min-height: 50vh;
         width: 64%;
     }
 
     #message-container {
-        min-height: 40vh;
+        min-height: 50vh;
         width: 64%;
     }
 
@@ -1728,5 +1968,3 @@ h1 {
     }
 
 }
-
-

@@ -6,7 +6,6 @@ function generatePin() {
         } else generatePin(); // Call recursively to generate another pin if not unique
     });
 
-    generateAndCheckPin();
 }
 
 function isUniquePin(pin, callback) {
@@ -32,10 +31,18 @@ function showPinFields() {
 function confirmArchive(personID, firstName, lastName) {
     const QUERY_STRING = window.location.search;
     const QUERY_PARAMETERS = new URLSearchParams(QUERY_STRING);
-    const confirmation = confirm(`Are you sure you want to archive user ${firstName} ${lastName}? This will revoke all access to the system. This cannot be undone.`);
+    const confirmation = confirm(`Are you sure you want to archive user ${firstName} ${lastName}? This will revoke all access to the system.`);
     if (confirmation) {
         window.location.href = `../system/archive-user.php?machineID=${QUERY_PARAMETERS.get("machineID")}&personID=${personID}`;
     }
+}
+
+function confirmUpdateRestore(name, isArchived) {
+        if (isArchived ==1) {
+            return confirm(`Are you sure you want to restore user ${name}?`);
+        } else {
+            return confirm(`Are you sure you want to update user ${name}?`);
+        }
 }
 
 function makeUsersClickable() {

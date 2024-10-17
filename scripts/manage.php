@@ -32,7 +32,8 @@ function appendUserToList($assoc) {
         // Archive button (only if user is not archived)
         if (!$assoc['isArchived']) echo "<button class=\"archive-button\" onclick=\"confirmArchive({$assoc['personID']}, '{$assoc['firstName']}', '{$assoc['lastName']}')\">Archive User</button>";
     echo '</li>';
-    echo '<div class="edit-overlay">Edit User?</div>';
+    if(!$assoc['isArchived']) echo '<div class="edit-overlay">Edit User?</div>';
+    else echo '<div class="edit-overlay">Restore User?</div>';
     echo '</div>';
 }
 
