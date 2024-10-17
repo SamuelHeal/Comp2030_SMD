@@ -15,7 +15,7 @@
     ?>
 
     <div id="body-container">
-    <div class="header-container">
+    <div class="header-form">
         <h1>Create User</h1>
 
         <div class="top-layer-buttons">

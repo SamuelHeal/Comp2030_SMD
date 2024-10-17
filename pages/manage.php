@@ -16,7 +16,7 @@
         require_once '../scripts/manage.php';
     ?>
     <div id=body-container>
-        <div class="header-container">
+        <div>
         <h1>Manage Users</h1>
 
         <?php 

@@ -27,7 +27,7 @@
     ?>
 
     <div id="body-container">
-    <div class="header-container">
+    <div class="header-form">
         <h1>Update <?php if($user['isArchived']) echo 'Archived ';
          echo htmlspecialchars("User {$user['firstName']} {$user['lastName']} ({$user['personID']})") ?></h1>
 
