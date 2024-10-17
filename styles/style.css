@@ -173,9 +173,11 @@ h1 {
 }
 
 .listSmall {
-    height: fit-content;
-    margin: 0px auto 24px auto;
-    width: 80%;
+    /* height: fit-content; */
+    height: 52vh;
+    margin: -18px auto 24px auto;
+    width: 64%; /* 80% */
+    overflow-y: scroll;
 }
 
 .listSmall a {
@@ -199,16 +201,18 @@ h1 {
     border-radius: 6px;
     /* box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.226); */
     display: flex;
-    height: 120px;
+    height: 180px;
     list-style-type: none;
     margin: 24px 0px;
     overflow: hidden;
     text-align: left;
+    margin-inline-start: 1.5%;
+    margin-bottom: 0.5%;
 }
     
 .listSmall-label { 
     display: flex;
-    text-align: center !important; /* first element is not applying properly, issue with tables?? */
+    text-align: center !important; /* not applying properly unless text goes over new line? */
     font-weight: bold;
     font-size: 20px;
     padding: 0px 12px;
@@ -217,11 +221,10 @@ h1 {
     height: 100%;
 }
 
-#list-boxes {
-    width: 30%;
-    display: inline-flex;
-    vertical-align: top;
-    margin-right: 2.5em;
+.list-boxes {
+    width: 48%; /* 30% */
+    float: left;
+    position: relative;
 }
 
 .menu-item {
@@ -377,7 +380,11 @@ h1 {
 
 .machine-table td {
     padding-left: 6px;
+    padding-right: 30px !important;
     height: 100/3%;
+    width: 100%;
+    text-align-last: justify;
+    white-space: nowrap;
 }
 
 #body-container {
@@ -392,7 +399,7 @@ h1 {
     height: fit-content;
     min-height: 60%;
     position: absolute;
-    top: 20vh;
+    top: 18vh;
     /* width: 80%; */
     width: fit-content;
     min-width: 100%;
