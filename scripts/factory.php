@@ -17,12 +17,6 @@ function getSpeed($result) {
     }
 }
 
-date_default_timezone_set('Australia/Adelaide');
-// Uses GET to set the disply time. Defaults to the current time. This is should be in the expected SQL format
-$currentDisplayTimestamp = htmlspecialchars(isset($_GET['timestamp']) ? $_GET['timestamp'] : date('Y-m-d H:i:s'));
-// Reformats to the format required for the datetime input i'll mention in a minute
-$currentDisplayDateTimeLocal = date('Y-m-d\TH:i', strtotime($currentDisplayTimestamp));
-
     function appendMachineToList($assoc) {
         $background_colour = statusColor($assoc['operationalStatus']);
         $style = "background-color: $background_colour;";
@@ -54,17 +48,19 @@ function timeButtons() {
 }
 
 function lower30() { //Reduces timestamp in SQL query by 30mins? Then re-build list? How to minus from a timestamp string?
-    $sql = "SELECT DATEADD(MINUTE, -30, mostRecentTimestamp)";
-    echo "<a class=\"machines-button\"> -30 Minutes </a>";
+    // $sql = "SELECT DATEADD(MINUTE, -30, mostRecentTimestamp)";
+    echo "<button onclick='addMinutes(-30)' class=\"machines-button\"> -30 Minutes </button>";
 }
 
 function selectDate() {
     // echo "<a class=\"machines-button\"> Select Date </a>";
+    echo '<div id="datetime-inp-wrapper">';
     echo '<input class="machines-button" id="datetime-inp" type="datetime-local" value="$currentDisplayDateTimeLocal" onchange="setTimestamp()">';
+    echo '</div>';
 }
 
 function higher30() {
-    $current_time = new DateTime('2024-07-01 23:30'); 
-    $new_time = date_modify($current_time, '+30 minutes');
-    echo "<a class=\"machines-button\"> + 30 Minutes </a>";
+    // $current_time = new DateTime('2024-07-01 23:30'); 
+    // $new_time = date_modify($current_time, '+30 minutes');
+    echo "<button onclick='addMinutes(30)' class=\"machines-button\"> + 30 Minutes </button>";
 }

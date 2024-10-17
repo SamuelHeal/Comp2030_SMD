@@ -6,12 +6,18 @@
     <meta name="author" content="Group 18" />
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../scripts/banner.js"></script>
+    <script src="../scripts/factory.js"></script>
 </head>
 <body>
     <?php
         require_once '../include/page-defaults.php';
         require_once '../scripts/factory.php';
-        // require_once '../scripts/factory.js';
+        
+        date_default_timezone_set('Australia/Adelaide');
+        // Uses GET to set the disply time. Defaults to the current time. This is should be in the expected SQL format
+        $currentDisplayTimestamp = htmlspecialchars(isset($_GET['timestamp']) ? $_GET['timestamp'] : date('Y-m-d H:i:s'));
+        // Reformats to the format required for the datetime input i'll mention in a minute
+        $currentDisplayDateTimeLocal = date('Y-m-d\TH:i', strtotime($currentDisplayTimestamp));
         // mysqli_close($conn);
     ?>
     <div id=body-container-small>
