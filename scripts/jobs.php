@@ -91,15 +91,10 @@ function getJobHistoryManager($conn) {
     if ($result = mysqli_query($conn, $sql) ) {
         if ($rows = mysqli_num_rows($result)) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if ($row['status'] == 'Completed') {
-                    echo "<a class='job complete' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "&history=true'>";
-                } else {
-                    echo "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "&history=true'>";
-                }
-                
                 echo 
-                "<div class='job-id'>
-                    <p>" . $row['jobID'] . "</p>" .
+                "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "&history=true'>" .
+                "<div class='job-id'>" .
+                    "<p>" . $row['jobID'] . "</p>" .
                 "</div>" .
                 "<div class='job-info'>
                     <p class='bold'>" . $row['name'] . "</p>" .
@@ -130,13 +125,8 @@ function getJobHistoryOperator($conn) {
     if ($result = mysqli_query($conn, $sql) ) {
         if ($rows = mysqli_num_rows($result)) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if ($row['status'] == 'Completed') {
-                    echo "<a class='job complete' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "&history=true'>";
-                } else {
-                    echo "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "&history=true'>";
-                }
-
                 echo 
+                "<a class='job' href='job.php?id=" . $row['jobID'] . "&machineID=" . $machineID . "&history=true'>" .
                 "<div class='job-id'>" .
                     "<p>" . $row['jobID'] . "</p>" .
                 "</div>" .
