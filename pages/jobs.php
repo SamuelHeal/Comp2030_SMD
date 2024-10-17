@@ -32,11 +32,7 @@
         <div class='jobs-container'>
             <div class='job-list'>
                 <?php 
-                if ($isManager) {
-                    getJobsManager($conn);
-                } else {
-                    getJobsOperator($conn);
-                }
+                getJobs($conn, $isManager);
                 ?>
             </div>
         </div>
