@@ -17,10 +17,16 @@ function getSpeed($result) {
     }
 }
 
+date_default_timezone_set('Australia/Adelaide');
+// Uses GET to set the disply time. Defaults to the current time. This is should be in the expected SQL format
+$currentDisplayTimestamp = htmlspecialchars(isset($_GET['timestamp']) ? $_GET['timestamp'] : date('Y-m-d H:i:s'));
+// Reformats to the format required for the datetime input i'll mention in a minute
+$currentDisplayDateTimeLocal = date('Y-m-d\TH:i', strtotime($currentDisplayTimestamp));
+
     function appendMachineToList($assoc) {
         $background_colour = statusColor($assoc['operationalStatus']);
         $style = "background-color: $background_colour;";
-        echo '<li id="list-boxes">';
+        echo '<li class="list-boxes">';
             echo "<div style=\"$style\" class=\"listSmall-label\"> {$assoc['machineName']} </div>";
             echo '<table class="machine-table">';
                 echo '<tr>';
@@ -52,10 +58,13 @@ function lower30() { //Reduces timestamp in SQL query by 30mins? Then re-build l
     echo "<a class=\"machines-button\"> -30 Minutes </a>";
 }
 
-function selectDate() { //Use datetime input like in reports?
-    echo "<a class=\"machines-button\"> Select Date </a>";
+function selectDate() {
+    // echo "<a class=\"machines-button\"> Select Date </a>";
+    echo '<input class="machines-button" id="datetime-inp" type="datetime-local" value="$currentDisplayDateTimeLocal" onchange="setTimestamp()">';
 }
 
 function higher30() {
+    $current_time = new DateTime('2024-07-01 23:30'); 
+    $new_time = date_modify($current_time, '+30 minutes');
     echo "<a class=\"machines-button\"> + 30 Minutes </a>";
 }
