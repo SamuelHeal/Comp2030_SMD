@@ -16,7 +16,7 @@
         require_once '../scripts/users.php';
     ?>
     <div id="body-container">
-    <div class="header-container">
+    <div >
         <h1>Users</h1>
         <?php 
 
@@ -57,7 +57,7 @@
             mysqli_close($conn);
         ?>
         
-        <div class="top-layer-buttons">
+        <div class="top-layer-admin">
 
             <div class="sort-button">
                 <label for="sort" class="sort-label">Sort by:</label>

@@ -31,11 +31,10 @@
     ?>
 
     <div id="body-container">
-    <div class="header-container">
-        <h1> <?php if($user['isArchived']) echo 'Restore Archived ';
-        else echo 'Update ';
-         echo htmlspecialchars("User $firstName $lastName ($pID)") ?></h1>
 
+    <div class="header-form">
+        <h1>Update <?php if($user['isArchived']) echo 'Archived ';
+         echo htmlspecialchars("User {$user['firstName']} {$user['lastName']} ({$user['personID']})") ?></h1>
         <div class="top-layer-buttons">
             <?php 
             // Only show archive button for current users
