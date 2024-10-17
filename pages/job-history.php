@@ -26,11 +26,7 @@
         <div class='jobs-container'>
             <div class='job-list'>
                 <?php 
-                if ($isManager) {
-                    getJobHistoryManager($conn);
-                } else {
-                    getJobHistoryOperator($conn);
-                }
+                getJobsHistory($conn, $isManager);
                 ?>
             </div>
         </div>

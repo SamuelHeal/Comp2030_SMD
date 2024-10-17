@@ -30,10 +30,12 @@ function getJobsManager($conn) {
                 
                 echo "</div>" .
                 "</a>";
-            };  
+            }
+        } else {
+            echo '<p id="jobs-none">No jobs to show.</p>';
         }
         mysqli_free_result($result);
-    }
+    } 
 }
 
 function getJobsOperator($conn) {
@@ -68,8 +70,18 @@ function getJobsOperator($conn) {
                 echo "</div>" .
                 "</a>";
             };
+        } else {
+            echo '<p id="jobs-none">No jobs to show.</p>';
         }
         mysqli_free_result($result);
+    } 
+}
+
+function getJobs($conn, $isManager) {
+    if ($isManager) {
+        getJobsManager($conn);
+    } else {
+        getJobsOperator($conn);
     }
 }
 
@@ -105,10 +117,12 @@ function getJobHistoryManager($conn) {
                 echo "</div>" . 
                 "</a>";
             };
+        } else {
+            echo '<p id="jobs-none">No jobs to show.</p>';
         }
-        mysqli_free_result($result);
     }
-}
+        mysqli_free_result($result);
+} 
 
 function getJobHistoryOperator($conn) {
     $machineID = $_GET['machineID'];
@@ -140,8 +154,18 @@ function getJobHistoryOperator($conn) {
                 echo "</div>" .
                 "</a>";
             };
+        } else {
+            echo '<p id="jobs-none">No jobs to show.</p>';
         }
         mysqli_free_result($result);
+    } 
+}
+
+function getJobsHistory($conn, $isManager) {
+    if ($isManager) {
+        getJobHistoryManager($conn);
+    } else {
+        getJobHistoryOperator($conn);
     }
 }
 
