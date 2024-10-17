@@ -20,7 +20,7 @@ function getSpeed($result) {
     function appendMachineToList($assoc) {
         $background_colour = statusColor($assoc['operationalStatus']);
         $style = "background-color: $background_colour;";
-        echo '<li id="list-boxes">';
+        echo '<li class="list-boxes">';
             echo "<div style=\"$style\" class=\"listSmall-label\"> {$assoc['machineName']} </div>";
             echo '<table class="machine-table">';
                 echo '<tr>';
