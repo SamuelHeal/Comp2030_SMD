@@ -51,7 +51,7 @@ function appendSummaryRow() {
 function createSummaryAssoc($start, $end) {
     return array(
         'number_of_rows' => 0,
-        'number_of_speed_rows' => 1,
+        'number_of_speed_rows' => 0,
         'timestamp' => date_interval_format(date_diff(new DateTimeImmutable($end), new DateTimeImmutable($start)), '%a days'), // Difference
         'name' => '',
         'operationalStatus' => 0,  // Count maintenance
@@ -133,6 +133,7 @@ function setSummaryRow($assoc) {
     $number_of_maintenance = number_format($assoc['operationalStatus']);
     $power = round($assoc['powerConsumption']/1000, 2);
     $humidity = round($assoc['humidity']/$assoc['number_of_rows'], 2);
+    $assoc['number_of_speed_rows'] = $assoc['number_of_speed_rows'] ? $assoc['number_of_speed_rows'] : 1;
     $speed = round($assoc['speed']/$assoc['number_of_speed_rows'], 2);
     $pressure = round($assoc['pressure']/$assoc['number_of_rows'], 2);
     $vibration = round($assoc['vibration']/$assoc['number_of_rows'], 2);
