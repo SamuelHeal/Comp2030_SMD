@@ -20,7 +20,7 @@ function appendMachinesToSelect($conn) {
     $sql = "SELECT machineID, name FROM Machine WHERE isArchived = 0;";
     $result = mysqli_query($conn, $sql);
     if ($result && mysqli_num_rows($result)) {
-        echo '<option value="0">Select a machine</option>';
+        echo '<option value="0">All Machines</option>';
         while ($assoc = mysqli_fetch_assoc($result)) {
             echo "<option value =\"{$assoc['machineID']}\">{$assoc['name']}</option>";
         }
@@ -79,7 +79,7 @@ function getLogs($conn) {
         appendSummaryRow();
         while ($assoc = mysqli_fetch_assoc($result)) {
             $assoc['name'] = $machine_assoc[$assoc['machineID']];
-            updateSummaryRow($assoc, $error_codes_assoc, $summary_assoc);
+            updateSummaryRow($assoc, $summary_assoc);
             appendLogToTable($assoc);
         }
         setSummaryRow($summary_assoc);
@@ -133,6 +133,7 @@ function setSummaryRow($assoc) {
     $number_of_maintenance = number_format($assoc['operationalStatus']);
     $power = round($assoc['powerConsumption']/1000, 2);
     $humidity = round($assoc['humidity']/$assoc['number_of_rows'], 2);
+    $assoc['number_of_speed_rows'] = $assoc['number_of_speed_rows'] ? $assoc['number_of_speed_rows'] : 1;
     $speed = round($assoc['speed']/$assoc['number_of_speed_rows'], 2);
     $pressure = round($assoc['pressure']/$assoc['number_of_rows'], 2);
     $vibration = round($assoc['vibration']/$assoc['number_of_rows'], 2);
@@ -155,7 +156,7 @@ function setSummaryRow($assoc) {
     echo '</script>';
 }
 
-function updateSummaryRow($assoc, &$errors, &$summary) {
+function updateSummaryRow($assoc, &$summary) {
     $summary['number_of_rows']++;
     $summary['operationalStatus'] += $assoc['operationalStatus'] === 'maintenance' ? 1 : 0;
     if ($assoc['maintenanceLog']) {
