@@ -20,7 +20,7 @@ function appendMachinesToSelect($conn) {
     $sql = "SELECT machineID, name FROM Machine WHERE isArchived = 0;";
     $result = mysqli_query($conn, $sql);
     if ($result && mysqli_num_rows($result)) {
-        echo '<option value="0">Select a machine</option>';
+        echo '<option value="0">All Machines</option>';
         while ($assoc = mysqli_fetch_assoc($result)) {
             echo "<option value =\"{$assoc['machineID']}\">{$assoc['name']}</option>";
         }
