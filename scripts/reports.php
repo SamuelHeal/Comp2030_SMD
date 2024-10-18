@@ -51,7 +51,7 @@ function appendSummaryRow() {
 function createSummaryAssoc($start, $end) {
     return array(
         'number_of_rows' => 0,
-        'number_of_speed_rows' => 0,
+        'number_of_speed_rows' => 1,
         'timestamp' => date_interval_format(date_diff(new DateTimeImmutable($end), new DateTimeImmutable($start)), '%a days'), // Difference
         'name' => '',
         'operationalStatus' => 0,  // Count maintenance
@@ -79,7 +79,7 @@ function getLogs($conn) {
         appendSummaryRow();
         while ($assoc = mysqli_fetch_assoc($result)) {
             $assoc['name'] = $machine_assoc[$assoc['machineID']];
-            updateSummaryRow($assoc, $error_codes_assoc, $summary_assoc);
+            updateSummaryRow($assoc, $summary_assoc);
             appendLogToTable($assoc);
         }
         setSummaryRow($summary_assoc);
@@ -155,7 +155,7 @@ function setSummaryRow($assoc) {
     echo '</script>';
 }
 
-function updateSummaryRow($assoc, &$errors, &$summary) {
+function updateSummaryRow($assoc, &$summary) {
     $summary['number_of_rows']++;
     $summary['operationalStatus'] += $assoc['operationalStatus'] === 'maintenance' ? 1 : 0;
     if ($assoc['maintenanceLog']) {
